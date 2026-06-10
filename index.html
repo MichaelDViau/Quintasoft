@@ -3,16 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Quintasoft — Desarrollo de software de clase mundial desde Quintana Roo. Sitios web, apps, SEO y consultoría digital en Playa del Carmen, Cancún y Tulum.">
+<meta name="description" content="Quintasoft: Desarrollo de software de clase mundial desde Quintana Roo. Sitios web, apps, SEO y consultoría digital en Playa del Carmen, Cancún y Tulum.">
 <meta name="keywords" content="desarrollo web, quintana roo, playa del carmen, cancun, tulum, SEO, aplicaciones web, software">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Quintasoft — Software que define el futuro">
+<meta property="og:title" content="Quintasoft: Software que define el futuro">
 <meta property="og:description" content="Desarrollo de soluciones digitales de clase mundial desde Quintana Roo.">
 <meta property="og:type" content="website">
-<title>Quintasoft — Software que define el futuro</title>
+<title>Quintasoft: Software que define el futuro</title>
+<meta name="theme-color" content="#06060f">
+<link rel="preload" href="hero-bg.jpg" as="image" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="dns-prefetch" href="https://formsubmit.co">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 <style>
 :root {
   --bg: #06060f;
@@ -81,6 +85,7 @@ section{position:relative;padding:120px 0;overflow:hidden}
 .blob{
   position:absolute;border-radius:50%;filter:blur(80px);opacity:0.3;
   animation:float 8s ease-in-out infinite;pointer-events:none;
+  will-change:transform;
 }
 .blob-1{width:600px;height:600px;background:radial-gradient(circle,#5b5ef4,transparent);top:-100px;right:-100px;animation-delay:0s}
 .blob-2{width:500px;height:500px;background:radial-gradient(circle,#a78bfa,transparent);bottom:-100px;left:-100px;animation-delay:-3s}
@@ -111,7 +116,7 @@ nav.scrolled{background:rgba(6,6,15,0.85);box-shadow:0 8px 40px rgba(0,0,0,0.4)}
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   text-decoration:none;
 }
-.nav-links{display:flex;align-items:center;gap:8px;list-style:none}
+.nav-links{display:flex;align-items:center;gap:8px;list-style:none;position:absolute;left:50%;transform:translateX(-50%)}
 .nav-links a{
   color:var(--muted);font-size:0.875rem;font-weight:500;
   text-decoration:none;padding:6px 12px;border-radius:8px;
@@ -321,8 +326,7 @@ h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.03em;line-
 .testimonial-card{
   flex:0 0 calc((100% - 40px) / 3);
   padding:32px;
-  background:rgba(255,255,255,0.03);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(13,13,31,0.85);
   border:1px solid rgba(255,255,255,0.07);
   border-radius:24px;
   position:relative;
@@ -524,6 +528,14 @@ footer{
 }
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast.success{border-color:rgba(52,211,153,0.4);color:var(--green)}
+
+/* ── PERFORMANCE ── */
+#services,#why,#testimonials,#contact,footer{contain:layout paint}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+  .blob{animation:none}
+  .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -552,8 +564,8 @@ footer{
   <a href="#testimonials" onclick="toggleMenu()" data-i18n="nav.testimonials">Testimonios</a>
   <a href="#contact" onclick="toggleMenu()" data-i18n="nav.contact">Contacto</a>
   <div style="display:flex;gap:8px;margin-top:8px">
-    <button class="lang-btn active" data-lang="es" onclick="setLang('es');toggleMenu()">ES — Español</button>
-    <button class="lang-btn" data-lang="en" onclick="setLang('en');toggleMenu()">EN — English</button>
+    <button class="lang-btn active" data-lang="es" onclick="setLang('es');toggleMenu()">ES · Español</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en');toggleMenu()">EN · English</button>
   </div>
 </div>
 
@@ -571,7 +583,7 @@ footer{
     </div>
     <div class="reveal reveal-delay-2">
       <p class="hero-sub" data-i18n="hero.subtitle">
-        Desarrollamos soluciones digitales de clase mundial desde Quintana Roo. Presencia local en Playa del Carmen, Cancún y Tulum — alcance global.
+        Desarrollamos soluciones digitales de clase mundial desde Quintana Roo. Presencia local en Playa del Carmen, Cancún y Tulum, con alcance global.
       </p>
     </div>
     <div class="reveal reveal-delay-3">
@@ -669,7 +681,7 @@ footer{
           <div class="why-feature-icon" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#7dd3fc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <div>
             <h4 data-i18n="why.f2.title">Enfocados en resultados</h4>
-            <p data-i18n="why.f2.desc">No solo construimos sitios bonitos — construimos herramientas que aumentan ventas y conversiones.</p>
+            <p data-i18n="why.f2.desc">No solo construimos sitios bonitos: construimos herramientas que aumentan ventas y conversiones.</p>
           </div>
         </div>
         <div class="why-feature reveal reveal-delay-2">
@@ -1034,7 +1046,7 @@ const i18n = {
     'nav.testimonials':'Testimonios','nav.contact':'Contacto','nav.cta':'Empezar proyecto',
     'hero.badge':'Disponibles para nuevos proyectos',
     'hero.title1':'Software que','hero.title2':'define el futuro',
-    'hero.subtitle':'Desarrollamos soluciones digitales de clase mundial desde Quintana Roo. Presencia local en Playa del Carmen, Cancún y Tulum — alcance global.',
+    'hero.subtitle':'Desarrollamos soluciones digitales de clase mundial desde Quintana Roo. Presencia local en Playa del Carmen, Cancún y Tulum, con alcance global.',
     'hero.cta1':'Comenzar proyecto →','hero.cta2':'Ver servicios',
     'hero.stat1':'Proyectos entregados','hero.stat2':'Clientes satisfechos',
     'hero.stat3':'Años de experiencia','hero.stat4':'Soporte continuo',
@@ -1048,7 +1060,7 @@ const i18n = {
     's6.title':'Consultoría Técnica','s6.desc':'Asesoría experta en arquitectura digital, elección de tecnologías y estrategia de transformación digital para tu empresa.','s6.tag':'Consulting',
     'why.label':'Por qué Quintasoft','why.title':'Resultados reales,\nno solo promesas',
     'why.f1.title':'Velocidad de entrega','why.f1.desc':'Procesos ágiles y comunicación constante. Entregamos proyectos a tiempo, sin excusas.',
-    'why.f2.title':'Enfocados en resultados','why.f2.desc':'No solo construimos sitios bonitos — construimos herramientas que aumentan ventas y conversiones.',
+    'why.f2.title':'Enfocados en resultados','why.f2.desc':'No solo construimos sitios bonitos: construimos herramientas que aumentan ventas y conversiones.',
     'why.f3.title':'Local & global','why.f3.desc':'Raíces en Quintana Roo, alcance mundial. Trabajo presencial en la Riviera Maya y remoto en cualquier parte.',
     'why.f4.title':'Código de calidad','why.f4.desc':'Código limpio, seguro y mantenible. Tu inversión sigue creciendo con el tiempo, no se vuelve deuda técnica.',
     'why.f5.title':'Soporte post-lanzamiento','why.f5.desc':'No desaparecemos después del lanzamiento. Somos tu socio tecnológico a largo plazo.',
@@ -1110,7 +1122,7 @@ const i18n = {
     'nav.testimonials':'Testimonials','nav.contact':'Contact','nav.cta':'Start a project',
     'hero.badge':'Available for new projects',
     'hero.title1':'Software that','hero.title2':'defines the future',
-    'hero.subtitle':'We build world-class digital solutions from Quintana Roo. Local presence in Playa del Carmen, Cancún & Tulum — global reach.',
+    'hero.subtitle':'We build world-class digital solutions from Quintana Roo. Local presence in Playa del Carmen, Cancún & Tulum, with global reach.',
     'hero.cta1':'Start a project →','hero.cta2':'View services',
     'hero.stat1':'Projects delivered','hero.stat2':'Happy clients',
     'hero.stat3':'Years of experience','hero.stat4':'Continuous support',
@@ -1124,7 +1136,7 @@ const i18n = {
     's6.title':'Technical Consulting','s6.desc':'Expert advice on digital architecture, technology choice and digital transformation strategy for your company.','s6.tag':'Consulting',
     'why.label':'Why Quintasoft','why.title':'Real results,\nnot just promises',
     'why.f1.title':'Delivery speed','why.f1.desc':'Agile processes and constant communication. We deliver projects on time, no excuses.',
-    'why.f2.title':'Results-focused','why.f2.desc':'We don\'t just build pretty sites — we build tools that increase sales and conversions.',
+    'why.f2.title':'Results-focused','why.f2.desc':'We don\'t just build pretty sites: we build tools that increase sales and conversions.',
     'why.f3.title':'Local & global','why.f3.desc':'Roots in Quintana Roo, global reach. On-site work in the Riviera Maya and remote anywhere in the world.',
     'why.f4.title':'Quality code','why.f4.desc':'Clean, secure and maintainable code. Your investment keeps growing over time, not turning into technical debt.',
     'why.f5.title':'Post-launch support','why.f5.desc':'We don\'t disappear after launch. We\'re your long-term technology partner.',
@@ -1222,8 +1234,8 @@ function setLang(lang) {
 
   // Update document title
   document.title = lang === 'es'
-    ? 'Quintasoft — Software que define el futuro'
-    : 'Quintasoft — Software That Defines the Future';
+    ? 'Quintasoft: Software que define el futuro'
+    : 'Quintasoft: Software That Defines the Future';
 }
 
 // ── NAVBAR SCROLL ──
