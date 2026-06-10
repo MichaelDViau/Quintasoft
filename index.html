@@ -937,7 +937,7 @@ footer{
         </div>
       </div>
       <div class="contact-form reveal reveal-delay-2">
-        <form action="https://formsubmit.co/el/delali" method="POST">
+        <form id="contactForm" onsubmit="handleContact(event)">
           <input type="hidden" name="_subject" value="Nueva solicitud desde Quintasoft">
           <input type="hidden" name="_captcha" value="false">
           <div class="form-group">
@@ -1285,18 +1285,35 @@ function showToast(msg, type = '') {
 }
 
 // ── FORM SUBMIT ──
-function handleSubmit(e) {
+function handleContact(e) {
   e.preventDefault();
-  const btn = e.target.querySelector('.btn-submit');
+  const form = e.target;
+  const btn = form.querySelector('.btn-submit');
   const original = btn.textContent;
   btn.textContent = currentLang === 'es' ? 'Enviando...' : 'Sending...';
   btn.disabled = true;
-  setTimeout(() => {
+
+  fetch('https://formsubmit.co/ajax/el/delali', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: new FormData(form)
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.success === 'true' || data.success === true) {
+      showToast(i18n[currentLang]['toast.success'], 'success');
+      form.reset();
+    } else {
+      showToast(currentLang === 'es' ? 'Error al enviar. Inténtalo de nuevo.' : 'Error sending. Please try again.', '');
+    }
+  })
+  .catch(() => {
+    showToast(currentLang === 'es' ? 'Error al enviar. Inténtalo de nuevo.' : 'Error sending. Please try again.', '');
+  })
+  .finally(() => {
     btn.textContent = original;
     btn.disabled = false;
-    e.target.reset();
-    showToast(i18n[currentLang]['toast.success'], 'success');
-  }, 1200);
+  });
 }
 
 // ── SMOOTH SCROLL FOR NAV LINKS ──
