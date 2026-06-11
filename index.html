@@ -1,708 +1,363 @@
 <!DOCTYPE html>
-<html lang="es" data-lang="es">
+<!-- ===========================================================================
+  QUINTASOFT — Single-page marketing site
+  ---------------------------------------------------------------------------
+  Default language: English (en). Secondary: Spanish (es).
+  Translations are applied at runtime via data-i18n attributes (see js/i18n.js).
+
+  Project structure:
+    index.html            — this page (markup only, no inline styles/scripts)
+    css/styles.css        — source stylesheet (documented)
+    css/styles.min.css    — minified production build
+    js/i18n.js            — EN/ES translation dictionaries
+    js/main.js            — site behavior (nav, slider, form, i18n, reveal)
+    js/app.min.js         — minified production bundle (i18n + main)
+    assets/images/        — optimized images (WebP + JPEG fallback)
+
+  Rebuild minified assets after editing sources:  npm run build
+=========================================================================== -->
+<html lang="en" data-lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Quintasoft — Desarrollo de software de clase mundial desde Quintana Roo. Sitios web, apps, SEO y consultoría digital en Playa del Carmen, Cancún y Tulum.">
-<meta name="keywords" content="desarrollo web, quintana roo, playa del carmen, cancun, tulum, SEO, aplicaciones web, software">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="Quintasoft — Software que define el futuro">
-<meta property="og:description" content="Desarrollo de soluciones digitales de clase mundial desde Quintana Roo.">
-<meta property="og:type" content="website">
-<title>Quintasoft — Software que define el futuro</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #06060f;
-  --bg2: #0d0d1f;
-  --glass: rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.08);
-  --glass-hover: rgba(255,255,255,0.08);
-  --text: #f0f0f5;
-  --muted: rgba(240,240,245,0.5);
-  --accent: #0ea5e9;
-  --accent2: #38bdf8;
-  --accent3: #7dd3fc;
-  --green: #34d399;
-  --radius: 20px;
-  --radius-sm: 12px;
-  --blur: blur(24px);
-  --transition: 0.4s cubic-bezier(0.16,1,0.3,1);
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
-body{
-  font-family:'Inter',system-ui,-apple-system,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
+  <!-- ── SEO ── -->
+  <title>Quintasoft — Software That Defines the Future</title>
+  <meta name="description" content="World-class software development from Quintana Roo. Custom websites, web apps, SEO and digital consulting in Playa del Carmen, Cancún & Tulum — serving clients worldwide.">
+  <meta name="keywords" content="web development, software company, quintana roo, playa del carmen, cancun, tulum, SEO, web applications, desarrollo web">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#06060f">
 
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:3px}
+  <!-- ── Open Graph / social sharing ── -->
+  <meta property="og:title" content="Quintasoft — Software That Defines the Future">
+  <meta property="og:description" content="World-class software development from Quintana Roo. Websites, web apps, SEO and digital consulting — local presence, global reach.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_MX">
+  <meta name="twitter:card" content="summary">
 
-/* ── NOISE OVERLAY ── */
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:0;opacity:0.4;
-}
+  <!-- ── Favicon (inline SVG — zero extra requests) ── -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230ea5e9'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2306060f'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-size='38' font-weight='800' fill='url(%23g)' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E">
 
-/* ── GLASS UTILITY ── */
-.glass{
-  background:var(--glass);
-  backdrop-filter:var(--blur);
-  -webkit-backdrop-filter:var(--blur);
-  border:1px solid var(--glass-border);
-  border-radius:var(--radius);
-}
-.glass-sm{
-  background:var(--glass);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border:1px solid var(--glass-border);
-  border-radius:var(--radius-sm);
-}
+  <!-- ── Performance: preload the LCP hero image (WebP) ── -->
+  <link rel="preload" as="image" href="assets/images/hero-bg.webp" type="image/webp" fetchpriority="high">
 
-/* ── CONTAINER ── */
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
+  <!-- ── Fonts: Inter, only the weights actually used (400–900) ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-/* ── SECTION ── */
-section{position:relative;padding:120px 0;overflow:hidden}
+  <!-- ── Styles (minified production build of css/styles.css) ── -->
+  <link rel="stylesheet" href="css/styles.min.css">
 
-/* ── ANIMATED GRADIENT BLOBS ── */
-.blob{
-  position:absolute;border-radius:50%;filter:blur(80px);opacity:0.3;
-  animation:float 8s ease-in-out infinite;pointer-events:none;
-}
-.blob-1{width:600px;height:600px;background:radial-gradient(circle,#5b5ef4,transparent);top:-100px;right:-100px;animation-delay:0s}
-.blob-2{width:500px;height:500px;background:radial-gradient(circle,#a78bfa,transparent);bottom:-100px;left:-100px;animation-delay:-3s}
-.blob-3{width:400px;height:400px;background:radial-gradient(circle,#38bdf8,transparent);top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-6s}
-@keyframes float{
-  0%,100%{transform:translate(0,0) scale(1)}
-  33%{transform:translate(30px,-20px) scale(1.05)}
-  66%{transform:translate(-20px,30px) scale(0.95)}
-}
+  <!-- ── Scripts (deferred — non-render-blocking bundle of js/i18n.js + js/main.js) ── -->
+  <script src="js/app.min.js" defer></script>
 
-/* ── NAVBAR ── */
-nav{
-  position:fixed;top:16px;left:50%;transform:translateX(-50%);
-  width:calc(100% - 48px);max-width:1200px;
-  z-index:1000;
-  background:rgba(6,6,15,0.6);
-  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:18px;
-  padding:12px 24px;
-  display:flex;align-items:center;justify-content:space-between;
-  transition:var(--transition);
-}
-nav.scrolled{background:rgba(6,6,15,0.85);box-shadow:0 8px 40px rgba(0,0,0,0.4)}
-.nav-logo{
-  font-size:1.3rem;font-weight:800;letter-spacing:-0.03em;
-  background:linear-gradient(135deg,#fff 0%,var(--accent2) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  text-decoration:none;
-}
-.nav-links{display:flex;align-items:center;gap:8px;list-style:none}
-.nav-links a{
-  color:var(--muted);font-size:0.875rem;font-weight:500;
-  text-decoration:none;padding:6px 12px;border-radius:8px;
-  transition:all 0.2s;
-}
-.nav-links a:hover{color:var(--text);background:rgba(255,255,255,0.06)}
-.nav-right{display:flex;align-items:center;gap:8px}
-.lang-btn{
-  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
-  color:var(--muted);font-size:0.8rem;font-weight:600;
-  padding:5px 12px;border-radius:8px;cursor:pointer;
-  transition:all 0.2s;font-family:inherit;
-}
-.lang-btn:hover,.lang-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.btn-nav{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;font-size:0.875rem;font-weight:600;
-  padding:8px 18px;border-radius:10px;text-decoration:none;
-  transition:all 0.2s;box-shadow:0 4px 20px rgba(14,165,233,0.3);
-}
-.btn-nav:hover{transform:translateY(-1px);box-shadow:0 6px 30px rgba(14,165,233,0.5)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:var(--transition)}
-.mobile-menu{
-  display:none;position:fixed;top:80px;left:50%;transform:translateX(-50%);
-  width:calc(100% - 48px);max-width:1200px;z-index:999;
-  background:rgba(6,6,15,0.95);
-  backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);
-  border:1px solid rgba(255,255,255,0.08);border-radius:18px;
-  padding:20px 24px;flex-direction:column;gap:4px;
-}
-.mobile-menu.open{display:flex}
-.mobile-menu a{
-  color:var(--muted);font-size:1rem;font-weight:500;
-  text-decoration:none;padding:12px 16px;border-radius:10px;
-  transition:all 0.2s;
-}
-.mobile-menu a:hover{color:var(--text);background:rgba(255,255,255,0.06)}
-
-/* ── HERO ── */
-#hero{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:140px 24px 100px;
-  position:relative;
-  background:
-    linear-gradient(180deg,rgba(6,6,15,0.55) 0%,rgba(6,6,15,0.72) 60%,rgba(6,6,15,0.92) 100%),
-    url('hero-bg.jpg') center/cover no-repeat;
-}
-#hero .blob{display:none}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
-  background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.3);
-  color:var(--accent2);font-size:0.8rem;font-weight:600;letter-spacing:0.05em;
-  padding:6px 16px;border-radius:100px;margin-bottom:32px;
-}
-.hero-badge span{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse-dot 2s infinite}
-@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:0.4}}
-h1{
-  font-size:clamp(2.8rem,7vw,6rem);font-weight:900;letter-spacing:-0.04em;
-  line-height:1.05;margin-bottom:24px;
-}
-h1 .gradient-text{
-  background:linear-gradient(135deg,#fff 0%,var(--accent2) 50%,var(--accent3) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-.hero-sub{
-  font-size:clamp(1rem,2vw,1.25rem);color:var(--muted);
-  max-width:600px;margin:0 auto 40px;line-height:1.7;
-}
-.hero-ctas{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
-.btn-primary{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;font-size:1rem;font-weight:700;
-  padding:14px 32px;border-radius:14px;text-decoration:none;
-  transition:all 0.3s;box-shadow:0 8px 32px rgba(14,165,233,0.4);
-  position:relative;overflow:hidden;
-}
-.btn-primary::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,0.2),transparent);
-  opacity:0;transition:opacity 0.3s;
-}
-.btn-primary:hover::before{opacity:1}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(91,94,244,0.6)}
-.btn-secondary{
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);
-  color:var(--text);font-size:1rem;font-weight:600;
-  padding:14px 32px;border-radius:14px;text-decoration:none;
-  transition:all 0.3s;backdrop-filter:blur(10px);
-}
-.btn-secondary:hover{background:rgba(255,255,255,0.1);transform:translateY(-2px)}
-.hero-stats{
-  display:flex;align-items:center;justify-content:center;gap:40px;
-  margin-top:72px;flex-wrap:wrap;
-}
-.hero-stat{text-align:center}
-.hero-stat strong{display:block;font-size:2.2rem;font-weight:900;letter-spacing:-0.04em;
-  background:linear-gradient(135deg,#fff,var(--accent2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-stat span{font-size:0.85rem;color:var(--muted);font-weight:500}
-.stat-divider{width:1px;height:48px;background:rgba(255,255,255,0.1)}
-
-/* ── SECTION HEADERS ── */
-.section-label{
-  display:inline-block;font-size:0.75rem;font-weight:700;letter-spacing:0.12em;
-  text-transform:uppercase;color:var(--accent2);margin-bottom:12px;
-}
-h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px}
-.section-desc{font-size:1.1rem;color:var(--muted);max-width:560px;line-height:1.7}
-
-/* ── SERVICES ── */
-#services{background:linear-gradient(180deg,transparent,rgba(91,94,244,0.03) 50%,transparent)}
-.services-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-  gap:20px;margin-top:64px;
-}
-.service-card{
-  padding:36px;
-  background:rgba(255,255,255,0.03);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  display:flex;flex-direction:column;
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:24px;
-  transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
-  position:relative;overflow:hidden;cursor:default;
-}
-.service-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(14,165,233,0.06) 0%,transparent 60%);
-  opacity:0;transition:opacity 0.4s;border-radius:24px;
-}
-.service-card:hover{
-  background:rgba(255,255,255,0.06);
-  border-color:rgba(14,165,233,0.3);
-  transform:translateY(-6px);
-  box-shadow:0 20px 60px rgba(14,165,233,0.15);
-}
-.service-card:hover::before{opacity:1}
-.service-icon{
-  width:52px;height:52px;border-radius:14px;
-  background:linear-gradient(135deg,rgba(14,165,233,0.2),rgba(56,189,248,0.2));
-  border:1px solid rgba(14,165,233,0.3);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--accent2);
-  margin-bottom:24px;
-  transition:transform 0.3s;
-}
-.why-feature-icon svg,.service-icon svg,.contact-icon svg{display:block;flex-shrink:0}
-.service-card:hover .service-icon{transform:scale(1.1) rotate(5deg)}
-.service-card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;letter-spacing:-0.02em}
-.service-card p{font-size:0.9rem;color:var(--muted);line-height:1.7}
-.service-tag{
-  display:inline-block;margin-top:auto;padding-top:16px;align-self:flex-start;font-size:0.75rem;font-weight:600;
-  color:var(--accent2);background:rgba(14,165,233,0.1);
-  border:1px solid rgba(14,165,233,0.2);padding:3px 10px;border-radius:100px;
-}
-
-/* ── WHY ── */
-#why{background:linear-gradient(180deg,transparent,rgba(56,189,248,0.02) 50%,transparent)}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:64px}
-.why-features{display:flex;flex-direction:column;gap:16px}
-.why-feature{
-  display:flex;gap:16px;align-items:flex-start;
-  padding:20px;border-radius:16px;
-  transition:background 0.3s;
-}
-.why-feature:hover{background:rgba(255,255,255,0.03)}
-.why-feature-icon{
-  width:40px;height:40px;border-radius:10px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:1.1rem;
-}
-.why-feature h4{font-size:0.95rem;font-weight:700;margin-bottom:4px}
-.why-feature p{font-size:0.875rem;color:var(--muted);line-height:1.6}
-.why-visual{
-  position:relative;height:500px;
-  background:rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:28px;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-}
-.why-visual-inner{text-align:center;padding:40px}
-.big-number{
-  font-size:6rem;font-weight:900;letter-spacing:-0.05em;
-  background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  line-height:1;
-}
-.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px}
-.metric-card{
-  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
-  border-radius:14px;padding:16px;text-align:center;
-}
-.metric-card strong{display:block;font-size:1.6rem;font-weight:800;letter-spacing:-0.04em;
-  background:linear-gradient(135deg,#fff,var(--accent2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.metric-card span{font-size:0.75rem;color:var(--muted)}
-
-
-/* ── TESTIMONIALS ── */
-#testimonials{background:linear-gradient(180deg,transparent,rgba(56,189,248,0.03) 50%,transparent)}
-.testimonials-slider-wrapper{position:relative;overflow:hidden;margin-top:64px}
-.testimonials-grid{
-  display:flex;gap:20px;
-  transition:transform 0.55s cubic-bezier(0.16,1,0.3,1);
-  will-change:transform;
-}
-.testimonial-card{
-  flex:0 0 calc((100% - 40px) / 3);
-  padding:32px;
-  background:rgba(255,255,255,0.03);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:24px;
-  position:relative;
-}
-.slider-controls{
-  display:flex;align-items:center;justify-content:center;gap:16px;margin-top:32px;
-}
-.slider-btn{
-  width:48px;height:48px;border-radius:50%;
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
-  color:var(--text);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:all 0.25s;font-family:inherit;flex-shrink:0;
-}
-.slider-btn:hover:not(:disabled){background:var(--accent);border-color:var(--accent);transform:scale(1.08)}
-.slider-btn:disabled{opacity:0.25;cursor:default;pointer-events:none}
-.slider-dots{display:flex;gap:6px;align-items:center}
-.slider-dot{
-  width:6px;height:6px;border-radius:3px;
-  background:rgba(255,255,255,0.2);border:none;padding:0;
-  cursor:pointer;transition:all 0.3s;
-}
-.slider-dot.active{background:var(--accent);width:24px}
-@media(max-width:768px){
-  .testimonial-card{flex:0 0 calc((100% - 20px) / 2)}
-}
-@media(max-width:480px){
-  .testimonial-card{flex:0 0 100%}
-}
-.testimonial-card::before{
-  content:'\201C';
-  position:absolute;top:16px;right:24px;
-  font-size:4rem;line-height:1;color:var(--accent2);opacity:0.3;
-  font-family:Georgia,serif;
-}
-.stars{color:#f59e0b;font-size:0.85rem;margin-bottom:16px}
-.testimonial-text{font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:24px}
-.testimonial-author{display:flex;align-items:center;gap:12px}
-.author-avatar{
-  width:44px;height:44px;border-radius:50%;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;font-weight:700;flex-shrink:0;
-}
-.author-name{font-size:0.9rem;font-weight:700}
-.author-role{font-size:0.8rem;color:var(--muted)}
-
-/* ── CONTACT ── */
-#contact{background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(14,165,233,0.1) 0%,transparent 70%)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:64px}
-.contact-info{display:flex;flex-direction:column;gap:24px}
-.contact-item{
-  display:flex;align-items:flex-start;gap:16px;
-  padding:20px;border-radius:16px;
-  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
-  text-decoration:none;color:inherit;
-  transition:all 0.3s;
-}
-.contact-item:hover{background:rgba(255,255,255,0.06);border-color:rgba(14,165,233,0.3);transform:translateX(4px)}
-.contact-icon{
-  width:44px;height:44px;border-radius:12px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
-}
-.contact-item h4{font-size:0.9rem;font-weight:700;margin-bottom:2px}
-.contact-item span{font-size:0.85rem;color:var(--muted)}
-.whatsapp-btn{
-  display:flex;align-items:center;justify-content:center;gap:10px;
-  background:linear-gradient(135deg,#25D366,#128C7E);
-  color:#fff;font-size:1rem;font-weight:700;
-  padding:16px 32px;border-radius:14px;text-decoration:none;
-  transition:all 0.3s;box-shadow:0 8px 24px rgba(37,211,102,0.3);
-}
-.whatsapp-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,0.5)}
-.locations{
-  padding:20px;border-radius:16px;
-  background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);
-}
-.locations h4{font-size:0.9rem;font-weight:700;margin-bottom:14px;color:var(--accent2)}
-.location-list{display:flex;flex-wrap:wrap;gap:8px}
-.location-pill{
-  font-size:0.8rem;font-weight:600;
-  background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.2);
-  color:var(--text);padding:5px 12px;border-radius:100px;
-}
-.contact-form{
-  background:rgba(255,255,255,0.03);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:28px;padding:36px;
-}
-.form-group{margin-bottom:20px}
-.form-label{
-  display:block;font-size:0.8rem;font-weight:600;
-  color:var(--muted);margin-bottom:8px;letter-spacing:0.03em;
-}
-.form-input,.form-textarea{
-  width:100%;background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.1);
-  color:var(--text);font-size:0.95rem;font-family:inherit;
-  padding:12px 16px;border-radius:12px;outline:none;
-  transition:all 0.3s;
-}
-.form-input:focus,.form-textarea:focus{
-  border-color:var(--accent);background:rgba(14,165,233,0.05);
-  box-shadow:0 0 0 3px rgba(14,165,233,0.15);
-}
-.form-textarea{resize:vertical;min-height:120px;line-height:1.6}
-select.form-input{
-  appearance:none;-webkit-appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a0a0b0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat:no-repeat;
-  background-position:right 12px center;
-  padding-right:36px;
-}
-.form-input::placeholder,.form-textarea::placeholder{color:rgba(240,240,245,0.25)}
-.btn-submit{
-  width:100%;background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;font-size:1rem;font-weight:700;
-  padding:14px;border-radius:12px;border:none;cursor:pointer;
-  transition:all 0.3s;font-family:inherit;
-  box-shadow:0 8px 24px rgba(14,165,233,0.3);
-}
-.btn-submit:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(14,165,233,0.5)}
-
-/* ── FOOTER ── */
-footer{
-  border-top:1px solid rgba(255,255,255,0.06);
-  padding:60px 0 40px;
-}
-.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:48px}
-.footer-brand p{font-size:0.875rem;color:var(--muted);margin-top:12px;line-height:1.7;max-width:260px}
-.footer-col h5{font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
-.footer-col ul{list-style:none}
-.footer-col li{margin-bottom:10px}
-.footer-col a{font-size:0.875rem;color:rgba(240,240,245,0.5);text-decoration:none;transition:color 0.2s}
-.footer-col a:hover{color:var(--text)}
-.footer-bottom{
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
-  border-top:1px solid rgba(255,255,255,0.06);padding-top:32px;
-}
-.footer-bottom p{font-size:0.8rem;color:rgba(240,240,245,0.35)}
-.footer-social{display:flex;gap:8px}
-.social-link{
-  width:36px;height:36px;border-radius:8px;
-  background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);
-  display:flex;align-items:center;justify-content:center;
-  font-size:0.9rem;text-decoration:none;color:var(--muted);
-  transition:all 0.2s;
-}
-.social-link:hover{background:rgba(255,255,255,0.1);color:var(--text);transform:translateY(-2px)}
-
-/* ── SCROLL REVEAL ── */
-.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
-.reveal.visible{opacity:1;transform:none}
-.reveal-delay-1{transition-delay:0.1s}
-.reveal-delay-2{transition-delay:0.2s}
-.reveal-delay-3{transition-delay:0.3s}
-.reveal-delay-4{transition-delay:0.4s}
-.reveal-delay-5{transition-delay:0.5s}
-
-/* ── DECORATIVE LINES ── */
-.section-header{text-align:center;margin-bottom:0}
-
-/* ── RESPONSIVE ── */
-@media(max-width:1024px){
-  .why-grid{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
-}
-@media(max-width:768px){
-  section{padding:80px 0}
-  .nav-links,.btn-nav{display:none}
-  .hamburger{display:flex}
-  h1{font-size:clamp(2.2rem,8vw,3.5rem)}
-  .hero-stats{gap:20px}
-  .stat-divider{display:none}
-  .services-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .footer-bottom{flex-direction:column;text-align:center}
-  .why-visual{height:auto;padding:40px 24px}
-}
-@media(max-width:480px){
-  nav{width:calc(100% - 32px);padding:10px 16px}
-  .mobile-menu{width:calc(100% - 32px);top:74px}
-  .container{padding:0 16px}
-  .btn-primary,.btn-secondary{width:100%;text-align:center;justify-content:center}
-  .hero-ctas{flex-direction:column;align-items:stretch}
-  .metric-grid{grid-template-columns:1fr}
-}
-
-/* ── NOTIFICATION TOAST ── */
-.toast{
-  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);
-  background:rgba(20,20,40,0.95);border:1px solid rgba(255,255,255,0.1);
-  backdrop-filter:blur(20px);color:var(--text);
-  padding:14px 24px;border-radius:12px;font-size:0.9rem;font-weight:500;
-  z-index:9999;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
-  box-shadow:0 8px 32px rgba(0,0,0,0.5);
-}
-.toast.show{transform:translateX(-50%) translateY(0)}
-.toast.success{border-color:rgba(52,211,153,0.4);color:var(--green)}
-</style>
+  <!-- ── Structured data for local-business SEO ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Quintasoft",
+    "description": "Custom software development: websites, web applications, SEO and technical consulting.",
+    "email": "quintasoft@protonmail.com",
+    "telephone": "+52 984 167 0697",
+    "address": { "@type": "PostalAddress", "addressRegion": "Quintana Roo", "addressCountry": "MX" },
+    "areaServed": ["Playa del Carmen", "Cancún", "Tulum", "Worldwide"],
+    "knowsLanguage": ["en", "es"]
+  }
+  </script>
 </head>
 <body>
 
-<!-- ── NAVBAR ── -->
-<nav id="navbar">
+<!-- =========================================================================
+     ACCESSIBILITY: skip link for keyboard users
+========================================================================== -->
+<a class="skip-link" href="#hero">Skip to content</a>
+
+<!-- =========================================================================
+     HEADER / NAVIGATION
+     Fixed glassmorphism navbar: logo, section links, language switcher
+     (EN default / ES secondary), CTA button and mobile hamburger toggle.
+========================================================================== -->
+<nav id="navbar" aria-label="Main navigation">
   <a href="#" class="nav-logo">Quintasoft</a>
+
   <ul class="nav-links">
-    <li><a href="#services" data-i18n="nav.services">Servicios</a></li>
-    <li><a href="#why" data-i18n="nav.why">Por qué nosotros</a></li>
-    <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonios</a></li>
-    <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
+    <li><a href="#services" data-i18n="nav.services">Services</a></li>
+    <li><a href="#process" data-i18n="nav.process">Process</a></li>
+    <li><a href="#work" data-i18n="nav.work">Work</a></li>
+    <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
   </ul>
+
   <div class="nav-right">
-    <button class="lang-btn active" data-lang="es" onclick="setLang('es')">ES</button>
-    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-    <a href="#contact" class="btn-nav" data-i18n="nav.cta">Empezar proyecto</a>
-    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu" role="button" tabindex="0">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+    <a href="#contact" class="btn-nav" data-i18n="nav.cta">Start a project</a>
+    <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation menu" data-i18n-aria="aria.menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile dropdown menu (shown below 880px via the hamburger) -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#services" onclick="toggleMenu()" data-i18n="nav.services">Servicios</a>
-  <a href="#why" onclick="toggleMenu()" data-i18n="nav.why">Por qué nosotros</a>
-  <a href="#testimonials" onclick="toggleMenu()" data-i18n="nav.testimonials">Testimonios</a>
-  <a href="#contact" onclick="toggleMenu()" data-i18n="nav.contact">Contacto</a>
-  <div style="display:flex;gap:8px;margin-top:8px">
-    <button class="lang-btn active" data-lang="es" onclick="setLang('es');toggleMenu()">ES — Español</button>
-    <button class="lang-btn" data-lang="en" onclick="setLang('en');toggleMenu()">EN — English</button>
+  <a href="#services" data-i18n="nav.services">Services</a>
+  <a href="#process" data-i18n="nav.process">Process</a>
+  <a href="#work" data-i18n="nav.work">Work</a>
+  <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
+  <a href="#contact" data-i18n="nav.contact">Contact</a>
+  <div class="mobile-menu-langs">
+    <button class="lang-btn active" data-lang="en">EN — English</button>
+    <button class="lang-btn" data-lang="es">ES — Español</button>
   </div>
 </div>
 
-<!-- ── HERO ── -->
+<!-- =========================================================================
+     HERO
+     Full-viewport intro: availability badge, headline, subtitle, primary +
+     secondary CTAs and the key company stats row. Background image is the
+     LCP element (preloaded WebP with JPEG fallback, dark gradient overlay).
+========================================================================== -->
 <section id="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  <div class="container" style="position:relative;z-index:1">
+  <div class="container">
     <div class="reveal reveal-delay-1">
+      <div class="hero-badge">
+        <span class="dot" aria-hidden="true"></span>
+        <span data-i18n="hero.badge">Available for new projects</span>
+      </div>
       <h1>
-        <span data-i18n="hero.title1">Software que</span><br>
-        <span class="gradient-text" data-i18n="hero.title2">define el futuro</span>
+        <span data-i18n="hero.title1">Software that</span><br>
+        <span class="gradient-text" data-i18n="hero.title2">defines the future</span>
       </h1>
     </div>
+
     <div class="reveal reveal-delay-2">
       <p class="hero-sub" data-i18n="hero.subtitle">
-        Desarrollamos soluciones digitales de clase mundial desde Quintana Roo. Presencia local en Playa del Carmen, Cancún y Tulum — alcance global.
+        We build world-class digital solutions from Quintana Roo. Local presence in Playa del Carmen, Cancún &amp; Tulum — global reach.
       </p>
     </div>
+
     <div class="reveal reveal-delay-3">
       <div class="hero-ctas">
-        <a href="#contact" class="btn-primary" data-i18n="hero.cta1">Comenzar proyecto →</a>
-        <a href="#services" class="btn-secondary" data-i18n="hero.cta2">Ver servicios</a>
+        <a href="#contact" class="btn-primary" data-i18n="hero.cta1">Start a project →</a>
+        <a href="#services" class="btn-secondary" data-i18n="hero.cta2">View services</a>
       </div>
     </div>
+
+    <!-- Key stats -->
     <div class="hero-stats reveal reveal-delay-4">
       <div class="hero-stat">
         <strong>50+</strong>
-        <span data-i18n="hero.stat1">Proyectos entregados</span>
+        <span data-i18n="hero.stat1">Projects delivered</span>
       </div>
       <div class="stat-divider"></div>
       <div class="hero-stat">
         <strong>100%</strong>
-        <span data-i18n="hero.stat2">Clientes satisfechos</span>
+        <span data-i18n="hero.stat2">Happy clients</span>
       </div>
       <div class="stat-divider"></div>
       <div class="hero-stat">
         <strong>3+</strong>
-        <span data-i18n="hero.stat3">Años de experiencia</span>
+        <span data-i18n="hero.stat3">Years of experience</span>
       </div>
       <div class="stat-divider"></div>
       <div class="hero-stat">
         <strong>∞</strong>
-        <span data-i18n="hero.stat4">Soporte continuo</span>
+        <span data-i18n="hero.stat4">Continuous support</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── SERVICES ── -->
+<!-- =========================================================================
+     TECH-STACK STRIP
+     Slim band of technologies the team works with. Pure CSS pills — no
+     logo images, no extra requests.
+========================================================================== -->
+<section id="stack" aria-label="Technology stack">
+  <div class="container">
+    <p class="stack-title reveal" data-i18n="stack.title">Technologies we build with</p>
+    <div class="stack-pills reveal reveal-delay-1">
+      <span class="stack-pill">React</span>
+      <span class="stack-pill">Next.js</span>
+      <span class="stack-pill">Node.js</span>
+      <span class="stack-pill">TypeScript</span>
+      <span class="stack-pill">Python</span>
+      <span class="stack-pill">PostgreSQL</span>
+      <span class="stack-pill">AWS</span>
+      <span class="stack-pill">Tailwind CSS</span>
+      <span class="stack-pill">WordPress</span>
+      <span class="stack-pill">Shopify</span>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     SERVICES
+     Six-card grid of core offerings. Icons are inline SVG (Feather-style).
+========================================================================== -->
 <section id="services">
   <div class="blob blob-1" style="opacity:0.15;top:auto;bottom:-100px;right:-150px"></div>
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="services.label">Servicios</div>
-      <h2 data-i18n="services.title">Todo lo que tu negocio<br>digital necesita</h2>
-      <p class="section-desc" style="margin:0 auto" data-i18n="services.desc">Desde el diseño hasta el lanzamiento, ofrecemos soluciones completas adaptadas a tus objetivos de negocio.</p>
+      <div class="section-label" data-i18n="services.label">Services</div>
+      <h2 data-i18n="services.title">Everything your digital<br>business needs</h2>
+      <p class="section-desc" style="margin:0 auto" data-i18n="services.desc">From design to launch, we offer complete solutions tailored to your business goals.</p>
     </div>
+
     <div class="services-grid">
+      <!-- Service: Custom Website Development -->
       <div class="service-card reveal">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h3 data-i18n="s1.title">Desarrollo Web Personalizado</h3>
-        <p data-i18n="s1.desc">Sitios web a medida con diseño único, código limpio y rendimiento excepcional. Cada pixel construido para convertir.</p>
+        <h3 data-i18n="s1.title">Custom Website Development</h3>
+        <p data-i18n="s1.desc">Tailor-made websites with unique design, clean code and exceptional performance. Every pixel built to convert.</p>
       </div>
+
+      <!-- Service: Optimization & Performance -->
       <div class="service-card reveal reveal-delay-1">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <h3 data-i18n="s2.title">Optimización & Rendimiento</h3>
-        <p data-i18n="s2.desc">Transformamos sitios lentos en experiencias ultrarrápidas. Core Web Vitals, carga instantánea, conversión máxima.</p>
+        <h3 data-i18n="s2.title">Optimization &amp; Performance</h3>
+        <p data-i18n="s2.desc">We transform slow sites into ultra-fast experiences. Core Web Vitals, instant load, maximum conversion.</p>
       </div>
+
+      <!-- Service: Repairs & Maintenance -->
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3 data-i18n="s3.title">Reparación & Mantenimiento</h3>
-        <p data-i18n="s3.desc">¿Tu sitio tiene errores? Lo solucionamos rápido. Correcciones de bugs, actualizaciones y soporte técnico confiable.</p>
+        <h3 data-i18n="s3.title">Repairs &amp; Maintenance</h3>
+        <p data-i18n="s3.desc">Is your site broken? We fix it fast. Bug fixes, updates and reliable technical support.</p>
       </div>
+
+      <!-- Service: SEO & Rankings -->
       <div class="service-card reveal reveal-delay-3">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-        <h3 data-i18n="s4.title">SEO & Posicionamiento</h3>
-        <p data-i18n="s4.desc">Llevamos tu negocio a la primera página de Google. SEO técnico, contenido optimizado y estrategia digital integral.</p>
+        <h3 data-i18n="s4.title">SEO &amp; Rankings</h3>
+        <p data-i18n="s4.desc">We take your business to the first page of Google. Technical SEO, optimized content and comprehensive digital strategy.</p>
       </div>
+
+      <!-- Service: Web Applications -->
       <div class="service-card reveal reveal-delay-1">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
-        <h3 data-i18n="s5.title">Aplicaciones Web</h3>
-        <p data-i18n="s5.desc">Desarrollamos apps web robustas y escalables: dashboards, SaaS, portales de clientes y sistemas a medida.</p>
+        <h3 data-i18n="s5.title">Web Applications</h3>
+        <p data-i18n="s5.desc">We develop robust and scalable web apps: dashboards, SaaS, client portals and custom systems.</p>
       </div>
+
+      <!-- Service: Technical Consulting -->
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></div>
-        <h3 data-i18n="s6.title">Consultoría Técnica</h3>
-        <p data-i18n="s6.desc">Asesoría experta en arquitectura digital, elección de tecnologías y estrategia de transformación digital para tu empresa.</p>
+        <h3 data-i18n="s6.title">Technical Consulting</h3>
+        <p data-i18n="s6.desc">Expert advice on digital architecture, technology choice and digital transformation strategy for your company.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── WHY ── -->
+<!-- =========================================================================
+     PROCESS
+     Five-step "how we work" timeline: Discovery → Strategy & Design →
+     Development → Launch → Support & Growth.
+========================================================================== -->
+<section id="process">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label" data-i18n="process.label">Process</div>
+      <h2 data-i18n="process.title">From idea to launch,<br>without the guesswork</h2>
+      <p class="section-desc" style="margin:0 auto" data-i18n="process.desc">A proven, transparent workflow. You always know what we're doing, why, and what comes next.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-card reveal">
+        <div class="process-num">01</div>
+        <h3 data-i18n="proc1.title">Discovery</h3>
+        <p data-i18n="proc1.desc">We dig into your goals, audience and competitors to define exactly what success looks like.</p>
+      </div>
+      <div class="process-card reveal reveal-delay-1">
+        <div class="process-num">02</div>
+        <h3 data-i18n="proc2.title">Strategy &amp; Design</h3>
+        <p data-i18n="proc2.desc">Wireframes, branding and UX decisions backed by data — approved by you before a single line of code.</p>
+      </div>
+      <div class="process-card reveal reveal-delay-2">
+        <div class="process-num">03</div>
+        <h3 data-i18n="proc3.title">Development</h3>
+        <p data-i18n="proc3.desc">Clean, scalable code with weekly check-ins, so you always know where your project stands.</p>
+      </div>
+      <div class="process-card reveal reveal-delay-3">
+        <div class="process-num">04</div>
+        <h3 data-i18n="proc4.title">Launch</h3>
+        <p data-i18n="proc4.desc">Rigorous testing across devices, SEO setup and a smooth, zero-downtime deployment.</p>
+      </div>
+      <div class="process-card reveal reveal-delay-4">
+        <div class="process-num">05</div>
+        <h3 data-i18n="proc5.title">Support &amp; Growth</h3>
+        <p data-i18n="proc5.desc">Ongoing maintenance, analytics and continuous improvements. We grow with your business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     WHY US
+     Differentiators list (left) + satisfaction metrics panel (right).
+========================================================================== -->
 <section id="why">
   <div class="blob blob-2" style="opacity:0.12;bottom:auto;top:-100px;left:-150px"></div>
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="why.label">Por qué Quintasoft</div>
-      <h2 data-i18n="why.title">Resultados reales,<br>no solo promesas</h2>
+      <div class="section-label" data-i18n="why.label">Why Quintasoft</div>
+      <h2 data-i18n="why.title">Real results,<br>not just promises</h2>
     </div>
+
     <div class="why-grid">
+      <!-- Differentiator list -->
       <div class="why-features">
         <div class="why-feature reveal">
           <div class="why-feature-icon" style="background:rgba(14,165,233,0.15);border:1px solid rgba(14,165,233,0.3);color:#38bdf8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
           <div>
-            <h4 data-i18n="why.f1.title">Velocidad de entrega</h4>
-            <p data-i18n="why.f1.desc">Procesos ágiles y comunicación constante. Entregamos proyectos a tiempo, sin excusas.</p>
+            <h4 data-i18n="why.f1.title">Delivery speed</h4>
+            <p data-i18n="why.f1.desc">Agile processes and constant communication. We deliver projects on time, no excuses.</p>
           </div>
         </div>
         <div class="why-feature reveal reveal-delay-1">
           <div class="why-feature-icon" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#7dd3fc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <div>
-            <h4 data-i18n="why.f2.title">Enfocados en resultados</h4>
-            <p data-i18n="why.f2.desc">No solo construimos sitios bonitos — construimos herramientas que aumentan ventas y conversiones.</p>
+            <h4 data-i18n="why.f2.title">Results-focused</h4>
+            <p data-i18n="why.f2.desc">We don't just build pretty sites — we build tools that increase sales and conversions.</p>
           </div>
         </div>
         <div class="why-feature reveal reveal-delay-2">
           <div class="why-feature-icon" style="background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.3);color:#34d399"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
           <div>
-            <h4 data-i18n="why.f3.title">Local & global</h4>
-            <p data-i18n="why.f3.desc">Raíces en Quintana Roo, alcance mundial. Trabajo presencial en la Riviera Maya y remoto en cualquier parte.</p>
+            <h4 data-i18n="why.f3.title">Local &amp; global</h4>
+            <p data-i18n="why.f3.desc">Roots in Quintana Roo, global reach. On-site work in the Riviera Maya and remote anywhere in the world.</p>
           </div>
         </div>
         <div class="why-feature reveal reveal-delay-3">
           <div class="why-feature-icon" style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);color:#fbbf24"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div>
-            <h4 data-i18n="why.f4.title">Código de calidad</h4>
-            <p data-i18n="why.f4.desc">Código limpio, seguro y mantenible. Tu inversión sigue creciendo con el tiempo, no se vuelve deuda técnica.</p>
+            <h4 data-i18n="why.f4.title">Quality code</h4>
+            <p data-i18n="why.f4.desc">Clean, secure and maintainable code. Your investment keeps growing over time, not turning into technical debt.</p>
           </div>
         </div>
         <div class="why-feature reveal reveal-delay-4">
           <div class="why-feature-icon" style="background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.3);color:#a78bfa"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div>
-            <h4 data-i18n="why.f5.title">Soporte post-lanzamiento</h4>
-            <p data-i18n="why.f5.desc">No desaparecemos después del lanzamiento. Somos tu socio tecnológico a largo plazo.</p>
+            <h4 data-i18n="why.f5.title">Post-launch support</h4>
+            <p data-i18n="why.f5.desc">We don't disappear after launch. We're your long-term technology partner.</p>
           </div>
         </div>
       </div>
+
+      <!-- Metrics panel -->
       <div class="why-visual reveal reveal-delay-2">
         <div class="blob blob-3" style="width:300px;height:300px;opacity:0.2"></div>
-        <div class="why-visual-inner" style="position:relative;z-index:1">
+        <div class="why-visual-inner">
           <div class="big-number">100%</div>
-          <p style="color:var(--muted);font-size:0.9rem;margin-top:8px" data-i18n="why.satisfaction">Satisfacción de clientes</p>
+          <p style="color:var(--muted);font-size:0.9rem;margin-top:8px" data-i18n="why.satisfaction">Client satisfaction</p>
           <div class="metric-grid">
             <div class="metric-card">
               <strong>&lt;1s</strong>
-              <span data-i18n="why.m1">Tiempo de carga</span>
+              <span data-i18n="why.m1">Load time</span>
             </div>
             <div class="metric-card">
               <strong>98+</strong>
@@ -710,11 +365,11 @@ footer{
             </div>
             <div class="metric-card">
               <strong>24h</strong>
-              <span data-i18n="why.m3">Tiempo de respuesta</span>
+              <span data-i18n="why.m3">Response time</span>
             </div>
             <div class="metric-card">
               <strong>50+</strong>
-              <span data-i18n="why.m4">Proyectos exitosos</span>
+              <span data-i18n="why.m4">Successful projects</span>
             </div>
           </div>
         </div>
@@ -723,189 +378,355 @@ footer{
   </div>
 </section>
 
+<!-- =========================================================================
+     WORK / PORTFOLIO (featured content)
+     Six recent projects with outcome metrics. Thumbnails are pure CSS
+     gradients — no image downloads required.
+========================================================================== -->
+<section id="work">
+  <div class="blob blob-3" style="opacity:0.12;top:-50px;left:auto;right:-100px;transform:none"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-header reveal">
+      <div class="section-label" data-i18n="portfolio.label">Our work</div>
+      <h2 data-i18n="portfolio.title">Recent projects</h2>
+      <p class="section-desc" style="margin:0 auto" data-i18n="portfolio.desc">Digital solutions that generate real impact for businesses in Mexico and worldwide.</p>
+    </div>
 
-<!-- ── TESTIMONIALS ── -->
+    <div class="work-grid">
+      <article class="work-card reveal">
+        <div class="work-thumb thumb-1"><span class="work-metric" data-i18n="p1.metric">+180% online bookings</span></div>
+        <div class="work-info">
+          <div class="work-type" data-i18n="p1.type">Website &amp; online bookings</div>
+          <h3 data-i18n="p1.title">Boutique Resort Tulum</h3>
+          <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Booking API</span></div>
+        </div>
+      </article>
+
+      <article class="work-card reveal reveal-delay-1">
+        <div class="work-thumb thumb-2"><span class="work-metric" data-i18n="p2.metric">+240% sales in 2 months</span></div>
+        <div class="work-info">
+          <div class="work-type" data-i18n="p2.type">Custom online store</div>
+          <h3 data-i18n="p2.title">Fashion E-commerce</h3>
+          <div class="work-tags"><span class="work-tag">Shopify</span><span class="work-tag">UX</span></div>
+        </div>
+      </article>
+
+      <article class="work-card reveal reveal-delay-2">
+        <div class="work-thumb thumb-3"><span class="work-metric" data-i18n="p3.metric">60% faster workflows</span></div>
+        <div class="work-info">
+          <div class="work-type" data-i18n="p3.type">Web app &amp; dashboard</div>
+          <h3 data-i18n="p3.title">Corporate Portal</h3>
+          <div class="work-tags"><span class="work-tag">React</span><span class="work-tag">Node.js</span></div>
+        </div>
+      </article>
+
+      <article class="work-card reveal">
+        <div class="work-thumb thumb-4"><span class="work-metric" data-i18n="p4.metric">Top 3 on Google Maps</span></div>
+        <div class="work-info">
+          <div class="work-type" data-i18n="p4.type">Website &amp; digital menu</div>
+          <h3 data-i18n="p4.title">Restaurant Playa del Carmen</h3>
+          <div class="work-tags"><span class="work-tag">WordPress</span><span class="work-tag">SEO</span></div>
+        </div>
+      </article>
+
+      <article class="work-card reveal reveal-delay-1">
+        <div class="work-thumb thumb-5"><span class="work-metric" data-i18n="p5.metric">2× conversion rate</span></div>
+        <div class="work-info">
+          <div class="work-type" data-i18n="p5.type">Landing page &amp; bookings</div>
+          <h3 data-i18n="p5.title">Wellness Center</h3>
+          <div class="work-tags"><span class="work-tag">Performance</span><span class="work-tag">CRO</span></div>
+        </div>
+      </article>
+
+      <article class="work-card reveal reveal-delay-2">
+        <div class="work-thumb thumb-6"><span class="work-metric" data-i18n="p6.metric">3× international clients</span></div>
+        <div class="work-info">
+          <div class="work-type" data-i18n="p6.type">Multilingual site &amp; SEO</div>
+          <h3 data-i18n="p6.title">Travel Agency Platform</h3>
+          <div class="work-tags"><span class="work-tag">i18n</span><span class="work-tag">SEO</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     TESTIMONIALS (top slider)
+     Responsive carousel — 3 cards per view on desktop, 2 on tablet,
+     1 on mobile — with arrows, page dots and touch-swipe support.
+========================================================================== -->
 <section id="testimonials">
   <div class="blob blob-1" style="opacity:0.12;bottom:-50px;right:-100px;top:auto"></div>
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="test.label">Testimonios</div>
-      <h2 data-i18n="test.title">Lo que dicen<br>nuestros clientes</h2>
+      <div class="section-label" data-i18n="test.label">Testimonials</div>
+      <h2 data-i18n="test.title">What our<br>clients say</h2>
     </div>
+
     <div class="testimonials-slider-wrapper">
-    <div class="testimonials-grid" id="testimonialsTrack">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t1.text">"Quintasoft transformó completamente mi negocio digital. En 3 meses triplicamos las reservas en línea. El equipo fue increíblemente profesional y siempre disponible. ¡100% recomendados!"</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">MR</div>
-          <div>
-            <div class="author-name" data-i18n="t1.name">María R.</div>
-            <div class="author-role" data-i18n="t1.role">Dueña, Boutique Hotel Tulum</div>
+      <div class="testimonials-grid" id="testimonialsTrack">
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t1.text">"Quintasoft completely transformed my digital business. In 3 months we tripled online bookings. The team was incredibly professional and always available. 100% recommended!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">MR</div>
+            <div>
+              <div class="author-name" data-i18n="t1.name">María R.</div>
+              <div class="author-role" data-i18n="t1.role">Owner, Boutique Hotel Tulum</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t2.text">"El SEO que implementaron llevó mi restaurante del puesto 30 al top 3 en Google Maps. Ahora recibo llamadas y reservas todos los días. Excelente inversión."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">CL</div>
-          <div>
-            <div class="author-name" data-i18n="t2.name">Carlos L.</div>
-            <div class="author-role" data-i18n="t2.role">Chef & Propietario, Playa del Carmen</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t2.text">"The SEO they implemented moved my restaurant from position 30 to top 3 on Google Maps. Now I get calls and reservations every day. Excellent investment."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">CL</div>
+            <div>
+              <div class="author-name" data-i18n="t2.name">Carlos L.</div>
+              <div class="author-role" data-i18n="t2.role">Chef &amp; Owner, Playa del Carmen</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t3.text">"Nuestra plataforma SaaS fue entregada a tiempo y superó todas las expectativas. La calidad del código es impecable. Quintasoft es nuestro equipo de tecnología de confianza."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">AP</div>
-          <div>
-            <div class="author-name" data-i18n="t3.name">Andrés P.</div>
-            <div class="author-role" data-i18n="t3.role">CEO, Startup Cancún</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t3.text">"Our SaaS platform was delivered on time and exceeded all expectations. The code quality is impeccable. Quintasoft is our trusted technology team."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">AP</div>
+            <div>
+              <div class="author-name" data-i18n="t3.name">Andrés P.</div>
+              <div class="author-role" data-i18n="t3.role">CEO, Cancún Startup</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t4.text">"Rediseñaron mi tienda en línea y las ventas se dispararon un 240% en dos meses. Saben exactamente cómo combinar diseño y conversión. Extraordinario trabajo."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">SV</div>
-          <div>
-            <div class="author-name" data-i18n="t4.name">Sofía V.</div>
-            <div class="author-role" data-i18n="t4.role">Fundadora, E-commerce CDMX</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t4.text">"They redesigned my online store and sales skyrocketed 240% in two months. They know exactly how to blend design with conversion. Extraordinary work."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">SV</div>
+            <div>
+              <div class="author-name" data-i18n="t4.name">Sofía V.</div>
+              <div class="author-role" data-i18n="t4.role">Founder, E-commerce CDMX</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t5.text">"El nuevo sitio web de nuestra inmobiliaria genera leads todos los días de forma automática. La inversión se recuperó en menos de 6 semanas. Totalmente recomendados."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">RM</div>
-          <div>
-            <div class="author-name" data-i18n="t5.name">Roberto M.</div>
-            <div class="author-role" data-i18n="t5.role">Director, Inmobiliaria Cancún</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t5.text">"Our real estate agency's new website generates leads automatically every day. We recovered the investment in less than 6 weeks. Highly recommended."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">RM</div>
+            <div>
+              <div class="author-name" data-i18n="t5.name">Roberto M.</div>
+              <div class="author-role" data-i18n="t5.role">Director, Real Estate Agency Cancún</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t6.text">"Mi landing page para el estudio de yoga es simplemente perfecta. Carga en medio segundo y convierte visitantes en clientes reales. El equipo entiende el negocio, no solo el código."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">LT</div>
-          <div>
-            <div class="author-name" data-i18n="t6.name">Laura T.</div>
-            <div class="author-role" data-i18n="t6.role">Instructora & Propietaria, Tulum Yoga</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t6.text">"My landing page for the yoga studio is simply perfect. Loads in half a second and converts visitors into real clients. The team understands business, not just code."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">LT</div>
+            <div>
+              <div class="author-name" data-i18n="t6.name">Laura T.</div>
+              <div class="author-role" data-i18n="t6.role">Instructor &amp; Owner, Tulum Yoga</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t7.text">"Desarrollaron el sistema de pedidos en línea para mis 4 sucursales. Ahora el 60% de las ventas son digitales. Eficiencia, velocidad y profesionalismo en cada etapa del proyecto."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">DC</div>
-          <div>
-            <div class="author-name" data-i18n="t7.name">Diego C.</div>
-            <div class="author-role" data-i18n="t7.role">CEO, Cadena de Restaurantes PDC</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t7.text">"They built the online ordering system for my 4 locations. Now 60% of sales are digital. Efficiency, speed and professionalism at every stage of the project."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">DC</div>
+            <div>
+              <div class="author-name" data-i18n="t7.name">Diego C.</div>
+              <div class="author-role" data-i18n="t7.role">CEO, Restaurant Chain PDC</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t8.text">"Working with Quintasoft remotely was seamless. They built our bilingual e-commerce site in record time. Our conversion rate doubled and the design is stunning. Highly recommend!"</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">VR</div>
-          <div>
-            <div class="author-name" data-i18n="t8.name">Valentina R.</div>
-            <div class="author-role" data-i18n="t8.role">Owner, Fashion Boutique NYC</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t8.text">"Working with Quintasoft remotely was seamless. They built our bilingual e-commerce site in record time. Our conversion rate doubled and the design is stunning. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">VR</div>
+            <div>
+              <div class="author-name" data-i18n="t8.name">Valentina R.</div>
+              <div class="author-role" data-i18n="t8.role">Owner, Fashion Boutique NYC</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t9.text">"Necesitaba una presencia digital seria para mi despacho jurídico. Quintasoft entregó exactamente eso: elegante, rápido y profesional. Ahora captamos clientes desde Google todos los días."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">JO</div>
-          <div>
-            <div class="author-name" data-i18n="t9.name">Javier O.</div>
-            <div class="author-role" data-i18n="t9.role">Abogado, Despacho Mérida</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t9.text">"I needed a serious digital presence for my law firm. Quintasoft delivered exactly that: elegant, fast and professional. We now attract clients from Google every single day."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">JO</div>
+            <div>
+              <div class="author-name" data-i18n="t9.name">Javier O.</div>
+              <div class="author-role" data-i18n="t9.role">Attorney, Law Firm Mérida</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t10.text">"El SEO que implementaron fue un antes y un después. Pasamos de ser invisibles en Google a aparecer en el top 5 para más de 40 palabras clave. Los resultados hablan solos."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">EK</div>
-          <div>
-            <div class="author-name" data-i18n="t10.name">Emma K.</div>
-            <div class="author-role" data-i18n="t10.role">CEO, Agencia de Viajes Cancún</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t10.text">"The SEO they implemented was a before-and-after moment. We went from invisible on Google to appearing in the top 5 for over 40 keywords. The results speak for themselves."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">EK</div>
+            <div>
+              <div class="author-name" data-i18n="t10.name">Emma K.</div>
+              <div class="author-role" data-i18n="t10.role">CEO, Travel Agency Cancún</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t11.text">"Construyeron nuestra app web desde cero en tiempo récord. La arquitectura es sólida, el código limpio y el equipo siempre dispuesto a iterar. Definitivamente los volvería a contratar."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">AN</div>
-          <div>
-            <div class="author-name" data-i18n="t11.name">Alejandro N.</div>
-            <div class="author-role" data-i18n="t11.role">CTO, Startup Tecnológica GDL</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t11.text">"They built our web app from scratch in record time. The architecture is solid, the code is clean and the team is always ready to iterate. I would definitely hire them again."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">AN</div>
+            <div>
+              <div class="author-name" data-i18n="t11.name">Alejandro N.</div>
+              <div class="author-role" data-i18n="t11.role">CTO, Tech Startup GDL</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t12.text">"They built us a complete multilingual website that works perfectly in Spanish and English. Our international client base grew 3x in just four months. Outstanding quality and communication."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">MS</div>
-          <div>
-            <div class="author-name" data-i18n="t12.name">Mark S.</div>
-            <div class="author-role" data-i18n="t12.role">Real Estate Investor, Miami FL</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t12.text">"They built us a complete multilingual website that works perfectly in Spanish and English. Our international client base grew 3x in just four months. Outstanding quality and communication."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">MS</div>
+            <div>
+              <div class="author-name" data-i18n="t12.name">Mark S.</div>
+              <div class="author-role" data-i18n="t12.role">Real Estate Investor, Miami FL</div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text" data-i18n="t13.text">"Mi clínica dental necesitaba modernizarse digitalmente. Quintasoft lo logró con creces: agenda en línea, SEO local y un diseño que da confianza desde el primer click. Excelente servicio."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">IF</div>
-          <div>
-            <div class="author-name" data-i18n="t13.name">Isabella F.</div>
-            <div class="author-role" data-i18n="t13.role">Dentista & Propietaria, Playa del Carmen</div>
+        <div class="testimonial-card">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text" data-i18n="t13.text">"My dental clinic needed to modernize digitally. Quintasoft exceeded expectations: online booking, local SEO and a design that builds trust from the first click. Excellent service."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" aria-hidden="true">IF</div>
+            <div>
+              <div class="author-name" data-i18n="t13.name">Isabella F.</div>
+              <div class="author-role" data-i18n="t13.role">Dentist &amp; Owner, Playa del Carmen</div>
+            </div>
           </div>
         </div>
-      </div>
-    </div><!-- /testimonials-grid -->
+      </div><!-- /testimonials-grid -->
     </div><!-- /testimonials-slider-wrapper -->
+
+    <!-- Slider controls: prev/next arrows + page dots (built by JS) -->
     <div class="slider-controls">
-      <button class="slider-btn" id="sliderPrev" aria-label="Anterior">
+      <button class="slider-btn" id="sliderPrev" aria-label="Previous testimonials" data-i18n-aria="aria.prev">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
       <div class="slider-dots" id="sliderDots"></div>
-      <button class="slider-btn" id="sliderNext" aria-label="Siguiente">
+      <button class="slider-btn" id="sliderNext" aria-label="Next testimonials" data-i18n-aria="aria.next">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
     </div>
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
+<!-- =========================================================================
+     FAQ
+     Native <details>/<summary> accordion — accessible by default, zero JS.
+========================================================================== -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label" data-i18n="faq.label">FAQ</div>
+      <h2 data-i18n="faq.title">Frequently asked<br>questions</h2>
+      <p class="section-desc" style="margin:0 auto" data-i18n="faq.desc">Everything you need to know before starting a project with us.</p>
+    </div>
+
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>
+          <span data-i18n="faq1.q">How long does a typical project take?</span>
+          <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="faq-answer" data-i18n="faq1.a">Most websites launch in 2–4 weeks. Larger web applications usually take 6–12 weeks. You get a clear timeline before we start and weekly updates along the way.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-i18n="faq2.q">How much does a website cost?</span>
+          <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="faq-answer" data-i18n="faq2.a">Every project is scoped individually. After a free consultation we send a fixed, transparent quote — no hourly surprises and no hidden fees.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-i18n="faq3.q">Do you work with clients outside Mexico?</span>
+          <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="faq-answer" data-i18n="faq3.a">Absolutely. We work with clients across the US, Canada and Europe. We are fully bilingual (English/Spanish) and used to remote collaboration across time zones.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-i18n="faq4.q">What happens after launch?</span>
+          <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="faq-answer" data-i18n="faq4.a">Launch is just the beginning. We offer maintenance plans covering updates, security, backups and continuous improvements — or we hand everything over with full documentation.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-i18n="faq5.q">Can you fix or improve my existing website?</span>
+          <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="faq-answer" data-i18n="faq5.a">Yes. We audit, repair and optimize existing sites: bug fixes, speed, SEO and redesigns. You don't have to start from scratch.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-i18n="faq6.q">What technologies do you use?</span>
+          <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </summary>
+        <p class="faq-answer" data-i18n="faq6.a">We choose the right tool for each job — React, Next.js, Node.js, WordPress or Shopify — always prioritizing performance, security and maintainability.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     CALL-TO-ACTION BANNER
+     Final conversion push before the contact section.
+========================================================================== -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-banner reveal">
+      <div class="blob blob-3" style="opacity:0.2"></div>
+      <div class="container">
+        <h2 data-i18n="cta.title">Ready to build<br>something great?</h2>
+        <p data-i18n="cta.desc">Tell us about your project and get a free consultation within 24 hours. No strings attached.</p>
+        <a href="#contact" class="btn-primary" data-i18n="cta.btn">Get a free quote →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================================
+     CONTACT
+     Left: WhatsApp / email / phone quick actions + service-area pills.
+     Right: AJAX contact form (FormSubmit — stays on page, shows a toast).
+========================================================================== -->
 <section id="contact">
   <div class="blob blob-2" style="opacity:0.15;top:-100px;left:-150px;bottom:auto"></div>
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="contact.label">Contacto</div>
-      <h2 data-i18n="contact.title">Hablemos de tu proyecto</h2>
-      <p class="section-desc" style="margin:0 auto" data-i18n="contact.desc">¿Tienes una idea? Cuéntanos y te damos una consulta gratuita. Sin compromisos.</p>
+      <div class="section-label" data-i18n="contact.label">Contact</div>
+      <h2 data-i18n="contact.title">Let's talk about your project</h2>
+      <p class="section-desc" style="margin:0 auto" data-i18n="contact.desc">Have an idea? Tell us and we'll give you a free consultation. No strings attached.</p>
     </div>
+
     <div class="contact-grid">
+      <!-- Direct contact channels -->
       <div class="contact-info reveal">
-        <a href="https://wa.me/529841670697?text=Hola%20Quintasoft%2C%20me%20interesa%20su%20servicio" target="_blank" rel="noopener" class="whatsapp-btn">
+        <a href="https://wa.me/529841670697?text=Hi%20Quintasoft%2C%20I%27m%20interested%20in%20your%20services" target="_blank" rel="noopener" class="whatsapp-btn">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <span data-i18n="contact.whatsapp">Chatear por WhatsApp</span>
+          <span data-i18n="contact.whatsapp">Chat on WhatsApp</span>
         </a>
+
         <a href="mailto:quintasoft@protonmail.com" class="contact-item">
           <div class="contact-icon" style="background:rgba(14,165,233,0.15);border:1px solid rgba(14,165,233,0.3);color:#38bdf8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <div>
@@ -913,86 +734,109 @@ footer{
             <span>quintasoft@protonmail.com</span>
           </div>
         </a>
+
         <a href="tel:+529841670697" class="contact-item">
           <div class="contact-icon" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#7dd3fc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
           <div>
-            <h4 data-i18n="contact.phone.title">Teléfono / WhatsApp</h4>
+            <h4 data-i18n="contact.phone.title">Phone / WhatsApp</h4>
             <span>+52 984 167 0697</span>
           </div>
         </a>
+
+        <!-- Service areas -->
         <div class="locations">
-          <h4 data-i18n="contact.locations.title">🗺️ Servicio presencial en</h4>
+          <h4 data-i18n="contact.locations.title">🗺️ On-site service in</h4>
           <div class="location-list">
-            <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Playa del Carmen</span>
-            <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cancún</span>
-            <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Tulum</span>
-            <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span data-i18n="contact.remote">Remoto mundial</span></span>
+            <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Playa del Carmen</span>
+            <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cancún</span>
+            <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Tulum</span>
+            <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span data-i18n="contact.remote">Worldwide remote</span></span>
           </div>
         </div>
       </div>
+
+      <!-- Contact form (AJAX via FormSubmit — no page redirect) -->
       <div class="contact-form reveal reveal-delay-2">
-        <form id="contactForm" onsubmit="handleContact(event)">
-          <input type="hidden" name="_subject" value="Nueva solicitud desde Quintasoft">
+        <form id="contactForm">
+          <input type="hidden" name="_subject" value="New inquiry from the Quintasoft website">
           <input type="hidden" name="_captcha" value="false">
+
           <div class="form-group">
-            <label class="form-label" data-i18n="form.name">Nombre completo</label>
-            <input type="text" name="name" class="form-input" required placeholder="Juan García" autocomplete="name">
+            <label class="form-label" for="contact-name" data-i18n="form.name">Full name</label>
+            <input type="text" id="contact-name" name="name" class="form-input" required placeholder="John Smith" data-i18n="form.name.placeholder" autocomplete="name">
           </div>
+
           <div class="form-group">
-            <label class="form-label" data-i18n="form.email">Correo electrónico</label>
-            <input type="email" name="email" class="form-input" required placeholder="juan@empresa.com" autocomplete="email">
+            <label class="form-label" for="contact-email" data-i18n="form.email">Email address</label>
+            <input type="email" id="contact-email" name="email" class="form-input" required placeholder="john@company.com" data-i18n="form.email.placeholder" autocomplete="email">
           </div>
+
           <div class="form-group">
-            <label class="form-label" data-i18n="form.service">Servicio de interés</label>
-            <select name="servicio" class="form-input" style="cursor:pointer">
-              <option value="" data-i18n="form.service.placeholder">Selecciona un servicio...</option>
-              <option value="web" data-i18n="s1.title">Desarrollo Web</option>
-              <option value="perf" data-i18n="s2.title">Optimización & Rendimiento</option>
-              <option value="repair" data-i18n="s3.title">Reparación & Mantenimiento</option>
-              <option value="seo" data-i18n="s4.title">SEO & Posicionamiento</option>
-              <option value="app" data-i18n="s5.title">Aplicaciones Web</option>
-              <option value="consulting" data-i18n="s6.title">Consultoría Técnica</option>
+            <label class="form-label" for="contact-service" data-i18n="form.service">Service of interest</label>
+            <select id="contact-service" name="service" class="form-input">
+              <option value="" data-i18n="form.service.placeholder">Select a service...</option>
+              <option value="web" data-i18n="s1.title">Custom Website Development</option>
+              <option value="perf" data-i18n="s2.title">Optimization &amp; Performance</option>
+              <option value="repair" data-i18n="s3.title">Repairs &amp; Maintenance</option>
+              <option value="seo" data-i18n="s4.title">SEO &amp; Rankings</option>
+              <option value="app" data-i18n="s5.title">Web Applications</option>
+              <option value="consulting" data-i18n="s6.title">Technical Consulting</option>
             </select>
           </div>
+
           <div class="form-group">
-            <label class="form-label" data-i18n="form.message">Tu mensaje</label>
-            <textarea name="mensaje" class="form-textarea" required placeholder="Cuéntame sobre tu proyecto..." data-placeholder-es="Cuéntame sobre tu proyecto..." data-placeholder-en="Tell me about your project..."></textarea>
+            <label class="form-label" for="contact-message" data-i18n="form.message">Your message</label>
+            <textarea id="contact-message" name="message" class="form-textarea" required placeholder="Tell us about your project..." data-i18n="form.message.placeholder"></textarea>
           </div>
-          <button type="submit" class="btn-submit" data-i18n="form.submit">Enviar mensaje →</button>
+
+          <button type="submit" class="btn-submit" data-i18n="form.submit">Send message →</button>
         </form>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- =========================================================================
+     FOOTER
+     Brand blurb, link columns (services / company / contact), language
+     switcher, copyright and social links.
+========================================================================== -->
 <footer>
   <div class="container">
     <div class="footer-grid">
+      <!-- Brand -->
       <div class="footer-brand">
-        <a href="#" class="nav-logo" style="font-size:1.4rem">Quintasoft</a>
-        <p data-i18n="footer.desc">Software de clase mundial desde Quintana Roo. Construimos el futuro digital de tu negocio.</p>
+        <a href="#" class="nav-logo">Quintasoft</a>
+        <p data-i18n="footer.desc">World-class software from Quintana Roo. We build the digital future of your business.</p>
       </div>
+
+      <!-- Services column -->
       <div class="footer-col">
-        <h5 data-i18n="footer.services">Servicios</h5>
+        <h5 data-i18n="footer.services">Services</h5>
         <ul>
-          <li><a href="#services" data-i18n="s1.title">Desarrollo Web</a></li>
-          <li><a href="#services" data-i18n="s2.title">Optimización</a></li>
-          <li><a href="#services" data-i18n="s4.title">SEO</a></li>
-          <li><a href="#services" data-i18n="s5.title">Aplicaciones Web</a></li>
-          <li><a href="#services" data-i18n="s6.title">Consultoría</a></li>
+          <li><a href="#services" data-i18n="s1.title">Custom Website Development</a></li>
+          <li><a href="#services" data-i18n="s2.title">Optimization &amp; Performance</a></li>
+          <li><a href="#services" data-i18n="s4.title">SEO &amp; Rankings</a></li>
+          <li><a href="#services" data-i18n="s5.title">Web Applications</a></li>
+          <li><a href="#services" data-i18n="s6.title">Technical Consulting</a></li>
         </ul>
       </div>
+
+      <!-- Company column -->
       <div class="footer-col">
-        <h5 data-i18n="footer.company">Empresa</h5>
+        <h5 data-i18n="footer.company">Company</h5>
         <ul>
-          <li><a href="#why" data-i18n="footer.about">Sobre nosotros</a></li>
-          <li><a href="#testimonials" data-i18n="footer.testimonials">Testimonios</a></li>
-          <li><a href="#contact" data-i18n="footer.contact">Contacto</a></li>
+          <li><a href="#why" data-i18n="footer.about">About us</a></li>
+          <li><a href="#process" data-i18n="footer.process">Process</a></li>
+          <li><a href="#work" data-i18n="footer.work">Our work</a></li>
+          <li><a href="#testimonials" data-i18n="footer.testimonials">Testimonials</a></li>
+          <li><a href="#faq" data-i18n="footer.faq">FAQ</a></li>
         </ul>
       </div>
+
+      <!-- Contact column + language switcher -->
       <div class="footer-col">
-        <h5 data-i18n="footer.contact.col">Contacto</h5>
+        <h5 data-i18n="footer.contact.col">Contact</h5>
         <ul>
           <li><a href="mailto:quintasoft@protonmail.com">quintasoft@protonmail.com</a></li>
           <li><a href="tel:+529841670697">+52 984 167 0697</a></li>
@@ -1000,14 +844,16 @@ footer{
           <li><a href="#contact" data-i18n="footer.cancun">Cancún</a></li>
           <li><a href="#contact" data-i18n="footer.tulum">Tulum</a></li>
         </ul>
-        <div style="display:flex;gap:8px;margin-top:16px">
-          <button class="lang-btn active" style="font-size:0.7rem" data-lang="es" onclick="setLang('es')">🇲🇽 ES</button>
-          <button class="lang-btn" style="font-size:0.7rem" data-lang="en" onclick="setLang('en')">🇺🇸 EN</button>
+        <div class="footer-langs">
+          <button class="lang-btn active" data-lang="en">🇺🇸 EN</button>
+          <button class="lang-btn" data-lang="es">🇲🇽 ES</button>
         </div>
       </div>
     </div>
+
+    <!-- Copyright + social -->
     <div class="footer-bottom">
-      <p data-i18n="footer.copy">© 2024 Quintasoft. Todos los derechos reservados. Quintana Roo, México.</p>
+      <p data-i18n="footer.copy">© 2026 Quintasoft. All rights reserved. Quintana Roo, México.</p>
       <div class="footer-social">
         <a href="#" class="social-link" aria-label="Instagram">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -1023,385 +869,8 @@ footer{
   </div>
 </footer>
 
-<!-- ── TOAST ── -->
-<div class="toast" id="toast"></div>
+<!-- Toast notification (form feedback) -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script>
-// ── I18N ──
-const i18n = {
-  es: {
-    'nav.services':'Servicios','nav.why':'Por qué nosotros',
-    'nav.testimonials':'Testimonios','nav.contact':'Contacto','nav.cta':'Empezar proyecto',
-    'hero.badge':'Disponibles para nuevos proyectos',
-    'hero.title1':'Software que','hero.title2':'define el futuro',
-    'hero.subtitle':'Desarrollamos soluciones digitales de clase mundial desde Quintana Roo. Presencia local en Playa del Carmen, Cancún y Tulum — alcance global.',
-    'hero.cta1':'Comenzar proyecto →','hero.cta2':'Ver servicios',
-    'hero.stat1':'Proyectos entregados','hero.stat2':'Clientes satisfechos',
-    'hero.stat3':'Años de experiencia','hero.stat4':'Soporte continuo',
-    'services.label':'Servicios','services.title':'Todo lo que tu negocio\ndigital necesita',
-    'services.desc':'Desde el diseño hasta el lanzamiento, ofrecemos soluciones completas adaptadas a tus objetivos de negocio.',
-    's1.title':'Desarrollo Web Personalizado','s1.desc':'Sitios web a medida con diseño único, código limpio y rendimiento excepcional. Cada pixel construido para convertir.','s1.tag':'Web Development',
-    's2.title':'Optimización & Rendimiento','s2.desc':'Transformamos sitios lentos en experiencias ultrarrápidas. Core Web Vitals, carga instantánea, conversión máxima.','s2.tag':'Performance',
-    's3.title':'Reparación & Mantenimiento','s3.desc':'¿Tu sitio tiene errores? Lo solucionamos rápido. Correcciones de bugs, actualizaciones y soporte técnico confiable.','s3.tag':'Support',
-    's4.title':'SEO & Posicionamiento','s4.desc':'Llevamos tu negocio a la primera página de Google. SEO técnico, contenido optimizado y estrategia digital integral.','s4.tag':'SEO',
-    's5.title':'Aplicaciones Web','s5.desc':'Desarrollamos apps web robustas y escalables: dashboards, SaaS, portales de clientes y sistemas a medida.','s5.tag':'Web Apps',
-    's6.title':'Consultoría Técnica','s6.desc':'Asesoría experta en arquitectura digital, elección de tecnologías y estrategia de transformación digital para tu empresa.','s6.tag':'Consulting',
-    'why.label':'Por qué Quintasoft','why.title':'Resultados reales,\nno solo promesas',
-    'why.f1.title':'Velocidad de entrega','why.f1.desc':'Procesos ágiles y comunicación constante. Entregamos proyectos a tiempo, sin excusas.',
-    'why.f2.title':'Enfocados en resultados','why.f2.desc':'No solo construimos sitios bonitos — construimos herramientas que aumentan ventas y conversiones.',
-    'why.f3.title':'Local & global','why.f3.desc':'Raíces en Quintana Roo, alcance mundial. Trabajo presencial en la Riviera Maya y remoto en cualquier parte.',
-    'why.f4.title':'Código de calidad','why.f4.desc':'Código limpio, seguro y mantenible. Tu inversión sigue creciendo con el tiempo, no se vuelve deuda técnica.',
-    'why.f5.title':'Soporte post-lanzamiento','why.f5.desc':'No desaparecemos después del lanzamiento. Somos tu socio tecnológico a largo plazo.',
-    'why.satisfaction':'Satisfacción de clientes',
-    'why.m1':'Tiempo de carga','why.m2':'PageSpeed Score','why.m3':'Tiempo de respuesta','why.m4':'Proyectos exitosos',
-    'portfolio.label':'Portafolio','portfolio.title':'Proyectos recientes',
-    'portfolio.desc':'Soluciones digitales que generan impacto real para negocios en México y el mundo.',
-    'p1.title':'Resort Boutique Tulum','p1.type':'Sitio web & reservas online',
-    'p2.title':'E-commerce Moda','p2.type':'Tienda online personalizada',
-    'p3.title':'Portal Corporativo','p3.type':'Web app & dashboard',
-    'p4.title':'Restaurante Playa del Carmen','p4.type':'Sitio web & menú digital',
-    'p5.title':'Centro Wellness','p5.type':'Landing page & reservas',
-    'test.label':'Testimonios','test.title':'Lo que dicen\nnuestros clientes',
-    't1.text':'"Quintasoft transformó completamente mi negocio digital. En 3 meses triplicamos las reservas en línea. El equipo fue increíblemente profesional y siempre disponible. ¡100% recomendados!"',
-    't1.name':'María R.','t1.role':'Dueña, Boutique Hotel Tulum',
-    't2.text':'"El SEO que implementaron llevó mi restaurante del puesto 30 al top 3 en Google Maps. Ahora recibo llamadas y reservas todos los días. Excelente inversión."',
-    't2.name':'Carlos L.','t2.role':'Chef & Propietario, Playa del Carmen',
-    't3.text':'"Nuestra plataforma SaaS fue entregada a tiempo y superó todas las expectativas. La calidad del código es impecable. Quintasoft es nuestro equipo de tecnología de confianza."',
-    't3.name':'Andrés P.','t3.role':'CEO, Startup Cancún',
-    't4.text':'"Rediseñaron mi tienda en línea y las ventas se dispararon un 240% en dos meses. Saben exactamente cómo combinar diseño y conversión. Extraordinario trabajo."',
-    't4.name':'Sofía V.','t4.role':'Fundadora, E-commerce CDMX',
-    't5.text':'"El nuevo sitio web de nuestra inmobiliaria genera leads todos los días de forma automática. La inversión se recuperó en menos de 6 semanas. Totalmente recomendados."',
-    't5.name':'Roberto M.','t5.role':'Director, Inmobiliaria Cancún',
-    't6.text':'"Mi landing page para el estudio de yoga es simplemente perfecta. Carga en medio segundo y convierte visitantes en clientes reales. El equipo entiende el negocio, no solo el código."',
-    't6.name':'Laura T.','t6.role':'Instructora & Propietaria, Tulum Yoga',
-    't7.text':'"Desarrollaron el sistema de pedidos en línea para mis 4 sucursales. Ahora el 60% de las ventas son digitales. Eficiencia, velocidad y profesionalismo en cada etapa del proyecto."',
-    't7.name':'Diego C.','t7.role':'CEO, Cadena de Restaurantes PDC',
-    't8.text':'"Working with Quintasoft remotely was seamless. They built our bilingual e-commerce site in record time. Our conversion rate doubled and the design is stunning. Highly recommend!"',
-    't8.name':'Valentina R.','t8.role':'Owner, Fashion Boutique NYC',
-    't9.text':'"Necesitaba una presencia digital seria para mi despacho jurídico. Quintasoft entregó exactamente eso: elegante, rápido y profesional. Ahora captamos clientes desde Google todos los días."',
-    't9.name':'Javier O.','t9.role':'Abogado, Despacho Mérida',
-    't10.text':'"El SEO que implementaron fue un antes y un después. Pasamos de ser invisibles en Google a aparecer en el top 5 para más de 40 palabras clave. Los resultados hablan solos."',
-    't10.name':'Emma K.','t10.role':'CEO, Agencia de Viajes Cancún',
-    't11.text':'"Construyeron nuestra app web desde cero en tiempo récord. La arquitectura es sólida, el código limpio y el equipo siempre dispuesto a iterar. Definitivamente los volvería a contratar."',
-    't11.name':'Alejandro N.','t11.role':'CTO, Startup Tecnológica GDL',
-    't12.text':'"They built us a complete multilingual website that works perfectly in Spanish and English. Our international client base grew 3x in just four months. Outstanding quality and communication."',
-    't12.name':'Mark S.','t12.role':'Real Estate Investor, Miami FL',
-    't13.text':'"Mi clínica dental necesitaba modernizarse digitalmente. Quintasoft lo logró con creces: agenda en línea, SEO local y un diseño que da confianza desde el primer click. Excelente servicio."',
-    't13.name':'Isabella F.','t13.role':'Dentista & Propietaria, Playa del Carmen',
-    'contact.label':'Contacto','contact.title':'Hablemos de tu proyecto',
-    'contact.desc':'¿Tienes una idea? Cuéntanos y te damos una consulta gratuita. Sin compromisos.',
-    'contact.whatsapp':'Chatear por WhatsApp',
-    'contact.email.title':'Email','contact.phone.title':'Teléfono / WhatsApp',
-    'contact.locations.title':'🗺️ Servicio presencial en','contact.remote':'Remoto mundial',
-    'form.name':'Nombre completo','form.email':'Correo electrónico',
-    'form.service':'Servicio de interés','form.service.placeholder':'Selecciona un servicio...',
-    'form.message':'Tu mensaje','form.submit':'Enviar mensaje →',
-    'footer.desc':'Software de clase mundial desde Quintana Roo. Construimos el futuro digital de tu negocio.',
-    'footer.available':'Disponibles para nuevos proyectos',
-    'footer.services':'Servicios','footer.company':'Empresa',
-    'footer.about':'Sobre nosotros',
-    'footer.testimonials':'Testimonios','footer.contact':'Contacto','footer.contact.col':'Contacto',
-    'footer.playa':'Playa del Carmen','footer.cancun':'Cancún','footer.tulum':'Tulum',
-    'footer.copy':'© 2024 Quintasoft. Todos los derechos reservados. Quintana Roo, México.',
-    'toast.success':'¡Mensaje enviado! Te contactaremos pronto. 🎉',
-  },
-  en: {
-    'nav.services':'Services','nav.why':'Why us',
-    'nav.testimonials':'Testimonials','nav.contact':'Contact','nav.cta':'Start a project',
-    'hero.badge':'Available for new projects',
-    'hero.title1':'Software that','hero.title2':'defines the future',
-    'hero.subtitle':'We build world-class digital solutions from Quintana Roo. Local presence in Playa del Carmen, Cancún & Tulum — global reach.',
-    'hero.cta1':'Start a project →','hero.cta2':'View services',
-    'hero.stat1':'Projects delivered','hero.stat2':'Happy clients',
-    'hero.stat3':'Years of experience','hero.stat4':'Continuous support',
-    'services.label':'Services','services.title':'Everything your digital\nbusiness needs',
-    'services.desc':'From design to launch, we offer complete solutions tailored to your business goals.',
-    's1.title':'Custom Website Development','s1.desc':'Tailor-made websites with unique design, clean code and exceptional performance. Every pixel built to convert.','s1.tag':'Web Development',
-    's2.title':'Optimization & Performance','s2.desc':'We transform slow sites into ultra-fast experiences. Core Web Vitals, instant load, maximum conversion.','s2.tag':'Performance',
-    's3.title':'Repairs & Maintenance','s3.desc':'Is your site broken? We fix it fast. Bug fixes, updates and reliable technical support.','s3.tag':'Support',
-    's4.title':'SEO & Rankings','s4.desc':'We take your business to the first page of Google. Technical SEO, optimized content and comprehensive digital strategy.','s4.tag':'SEO',
-    's5.title':'Web Applications','s5.desc':'We develop robust and scalable web apps: dashboards, SaaS, client portals and custom systems.','s5.tag':'Web Apps',
-    's6.title':'Technical Consulting','s6.desc':'Expert advice on digital architecture, technology choice and digital transformation strategy for your company.','s6.tag':'Consulting',
-    'why.label':'Why Quintasoft','why.title':'Real results,\nnot just promises',
-    'why.f1.title':'Delivery speed','why.f1.desc':'Agile processes and constant communication. We deliver projects on time, no excuses.',
-    'why.f2.title':'Results-focused','why.f2.desc':'We don\'t just build pretty sites — we build tools that increase sales and conversions.',
-    'why.f3.title':'Local & global','why.f3.desc':'Roots in Quintana Roo, global reach. On-site work in the Riviera Maya and remote anywhere in the world.',
-    'why.f4.title':'Quality code','why.f4.desc':'Clean, secure and maintainable code. Your investment keeps growing over time, not turning into technical debt.',
-    'why.f5.title':'Post-launch support','why.f5.desc':'We don\'t disappear after launch. We\'re your long-term technology partner.',
-    'why.satisfaction':'Client satisfaction',
-    'why.m1':'Load time','why.m2':'PageSpeed Score','why.m3':'Response time','why.m4':'Successful projects',
-    'portfolio.label':'Portfolio','portfolio.title':'Recent projects',
-    'portfolio.desc':'Digital solutions that generate real impact for businesses in Mexico and worldwide.',
-    'p1.title':'Boutique Resort Tulum','p1.type':'Website & online bookings',
-    'p2.title':'Fashion E-commerce','p2.type':'Custom online store',
-    'p3.title':'Corporate Portal','p3.type':'Web app & dashboard',
-    'p4.title':'Restaurant Playa del Carmen','p4.type':'Website & digital menu',
-    'p5.title':'Wellness Center','p5.type':'Landing page & bookings',
-    'test.label':'Testimonials','test.title':'What our\nclients say',
-    't1.text':'"Quintasoft completely transformed my digital business. In 3 months we tripled online bookings. The team was incredibly professional and always available. 100% recommended!"',
-    't1.name':'María R.','t1.role':'Owner, Boutique Hotel Tulum',
-    't2.text':'"The SEO they implemented moved my restaurant from position 30 to top 3 on Google Maps. Now I get calls and reservations every day. Excellent investment."',
-    't2.name':'Carlos L.','t2.role':'Chef & Owner, Playa del Carmen',
-    't3.text':'"Our SaaS platform was delivered on time and exceeded all expectations. The code quality is impeccable. Quintasoft is our trusted technology team."',
-    't3.name':'Andrés P.','t3.role':'CEO, Cancún Startup',
-    't4.text':'"They redesigned my online store and sales skyrocketed 240% in two months. They know exactly how to blend design with conversion. Extraordinary work."',
-    't4.name':'Sofía V.','t4.role':'Founder, E-commerce CDMX',
-    't5.text':'"Our real estate agency\'s new website generates leads automatically every day. We recovered the investment in less than 6 weeks. Highly recommended."',
-    't5.name':'Roberto M.','t5.role':'Director, Real Estate Agency Cancún',
-    't6.text':'"My landing page for the yoga studio is simply perfect. Loads in half a second and converts visitors into real clients. The team understands business, not just code."',
-    't6.name':'Laura T.','t6.role':'Instructor & Owner, Tulum Yoga',
-    't7.text':'"They built the online ordering system for my 4 locations. Now 60% of sales are digital. Efficiency, speed and professionalism at every stage of the project."',
-    't7.name':'Diego C.','t7.role':'CEO, Restaurant Chain PDC',
-    't8.text':'"Working with Quintasoft remotely was seamless. They built our bilingual e-commerce site in record time. Our conversion rate doubled and the design is stunning. Highly recommend!"',
-    't8.name':'Valentina R.','t8.role':'Owner, Fashion Boutique NYC',
-    't9.text':'"I needed a serious digital presence for my law firm. Quintasoft delivered exactly that: elegant, fast and professional. We now attract clients from Google every single day."',
-    't9.name':'Javier O.','t9.role':'Attorney, Law Firm Mérida',
-    't10.text':'"The SEO they implemented was a before-and-after moment. We went from invisible on Google to appearing in the top 5 for over 40 keywords. The results speak for themselves."',
-    't10.name':'Emma K.','t10.role':'CEO, Travel Agency Cancún',
-    't11.text':'"They built our web app from scratch in record time. The architecture is solid, the code is clean and the team is always ready to iterate. I would definitely hire them again."',
-    't11.name':'Alejandro N.','t11.role':'CTO, Tech Startup GDL',
-    't12.text':'"They built us a complete multilingual website that works perfectly in Spanish and English. Our international client base grew 3x in just four months. Outstanding quality and communication."',
-    't12.name':'Mark S.','t12.role':'Real Estate Investor, Miami FL',
-    't13.text':'"My dental clinic needed to modernize digitally. Quintasoft exceeded expectations: online booking, local SEO and a design that builds trust from the first click. Excellent service."',
-    't13.name':'Isabella F.','t13.role':'Dentist & Owner, Playa del Carmen',
-    'contact.label':'Contact','contact.title':'Let\'s talk about your project',
-    'contact.desc':'Have an idea? Tell us and we\'ll give you a free consultation. No strings attached.',
-    'contact.whatsapp':'Chat on WhatsApp',
-    'contact.email.title':'Email','contact.phone.title':'Phone / WhatsApp',
-    'contact.locations.title':'🗺️ On-site service in','contact.remote':'Worldwide remote',
-    'form.name':'Full name','form.email':'Email address',
-    'form.service':'Service of interest','form.service.placeholder':'Select a service...',
-    'form.message':'Your message','form.submit':'Send message →',
-    'footer.desc':'World-class software from Quintana Roo. We build the digital future of your business.',
-    'footer.available':'Available for new projects',
-    'footer.services':'Services','footer.company':'Company',
-    'footer.about':'About us',
-    'footer.testimonials':'Testimonials','footer.contact':'Contact','footer.contact.col':'Contact',
-    'footer.playa':'Playa del Carmen','footer.cancun':'Cancún','footer.tulum':'Tulum',
-    'footer.copy':'© 2024 Quintasoft. All rights reserved. Quintana Roo, México.',
-    'toast.success':'Message sent! We\'ll be in touch soon. 🎉',
-  }
-};
-
-let currentLang = 'es';
-
-function setLang(lang) {
-  currentLang = lang;
-  document.documentElement.lang = lang;
-  document.documentElement.setAttribute('data-lang', lang);
-
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (i18n[lang][key]) {
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.placeholder = i18n[lang][key];
-      } else {
-        el.textContent = i18n[lang][key];
-      }
-    }
-  });
-
-  // Update textarea placeholder specifically
-  document.querySelectorAll('.form-textarea').forEach(ta => {
-    ta.placeholder = lang === 'es' ? ta.getAttribute('data-placeholder-es') : ta.getAttribute('data-placeholder-en');
-  });
-
-  // Update lang buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-  });
-
-  // Update select placeholder
-  const selects = document.querySelectorAll('select.form-input');
-  selects.forEach(sel => {
-    Array.from(sel.options).forEach(opt => {
-      const key = opt.getAttribute('data-i18n');
-      if (key && i18n[lang][key]) opt.textContent = i18n[lang][key];
-    });
-  });
-
-  // Update document title
-  document.title = lang === 'es'
-    ? 'Quintasoft — Software que define el futuro'
-    : 'Quintasoft — Software That Defines the Future';
-}
-
-// ── NAVBAR SCROLL ──
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-}, {passive: true});
-
-// ── HAMBURGER MENU ──
-function toggleMenu() {
-  const menu = document.getElementById('mobile-menu');
-  const hamburger = document.querySelector('.hamburger');
-  menu.classList.toggle('open');
-  const spans = hamburger.querySelectorAll('span');
-  if (menu.classList.contains('open')) {
-    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-    spans[1].style.opacity = '0';
-    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-  } else {
-    spans[0].style.transform = '';
-    spans[1].style.opacity = '';
-    spans[2].style.transform = '';
-  }
-}
-
-// Close menu on outside click
-document.addEventListener('click', e => {
-  const menu = document.getElementById('mobile-menu');
-  const hamburger = document.querySelector('.hamburger');
-  if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
-    toggleMenu();
-  }
-});
-
-// ── SCROLL REVEAL ──
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// ── TOAST ──
-function showToast(msg, type = '') {
-  const toast = document.getElementById('toast');
-  toast.textContent = msg;
-  toast.className = 'toast ' + type;
-  setTimeout(() => toast.classList.add('show'), 10);
-  setTimeout(() => toast.classList.remove('show'), 4000);
-}
-
-// ── FORM SUBMIT ──
-function handleContact(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('.btn-submit');
-  const original = btn.textContent;
-  btn.textContent = currentLang === 'es' ? 'Enviando...' : 'Sending...';
-  btn.disabled = true;
-
-  fetch('https://formsubmit.co/ajax/el/delali', {
-    method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: new FormData(form)
-  })
-  .then(r => r.json())
-  .then(data => {
-    if (data.success === 'true' || data.success === true) {
-      showToast(i18n[currentLang]['toast.success'], 'success');
-      form.reset();
-    } else {
-      showToast(currentLang === 'es' ? 'Error al enviar. Inténtalo de nuevo.' : 'Error sending. Please try again.', '');
-    }
-  })
-  .catch(() => {
-    showToast(currentLang === 'es' ? 'Error al enviar. Inténtalo de nuevo.' : 'Error sending. Please try again.', '');
-  })
-  .finally(() => {
-    btn.textContent = original;
-    btn.disabled = false;
-  });
-}
-
-// ── SMOOTH SCROLL FOR NAV LINKS ──
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', e => {
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({behavior: 'smooth', block: 'start'});
-    }
-  });
-});
-
-// ── PARALLAX BLOBS (subtle) ──
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  document.querySelectorAll('.blob').forEach((blob, i) => {
-    const speed = (i % 3 + 1) * 0.03;
-    blob.style.transform = `translateY(${y * speed}px)`;
-  });
-}, {passive: true});
-
-// ── TESTIMONIALS SLIDER ──
-(function(){
-  const track = document.getElementById('testimonialsTrack');
-  const prevBtn = document.getElementById('sliderPrev');
-  const nextBtn = document.getElementById('sliderNext');
-  const dotsContainer = document.getElementById('sliderDots');
-  if(!track) return;
-
-  const cards = track.querySelectorAll('.testimonial-card');
-  const total = cards.length;
-  let current = 0;
-
-  function getPerView(){
-    if(window.innerWidth <= 480) return 1;
-    if(window.innerWidth <= 768) return 2;
-    return 3;
-  }
-
-  function maxIndex(){
-    return Math.max(0, total - getPerView());
-  }
-
-  function buildDots(){
-    dotsContainer.innerHTML='';
-    const pv = getPerView();
-    const pages = Math.ceil(total / pv);
-    for(let i=0;i<pages;i++){
-      const d = document.createElement('button');
-      d.className='slider-dot'+(i===0?' active':'');
-      d.setAttribute('aria-label','Página '+(i+1));
-      d.addEventListener('click',()=>goTo(i * pv));
-      dotsContainer.appendChild(d);
-    }
-  }
-
-  function updateDots(){
-    const pv = getPerView();
-    const activePage = Math.floor(current / pv);
-    dotsContainer.querySelectorAll('.slider-dot').forEach((d,i)=>{
-      d.classList.toggle('active', i===activePage);
-    });
-  }
-
-  function goTo(index){
-    current = Math.max(0, Math.min(index, maxIndex()));
-    const cardW = cards[0].getBoundingClientRect().width;
-    const gap = 20;
-    track.style.transform = `translateX(-${current*(cardW+gap)}px)`;
-    prevBtn.disabled = current === 0;
-    nextBtn.disabled = current >= maxIndex();
-    updateDots();
-  }
-
-  prevBtn.addEventListener('click',()=>goTo(current - getPerView()));
-  nextBtn.addEventListener('click',()=>goTo(current + getPerView()));
-
-  // Touch/swipe support
-  let touchStartX = 0;
-  track.addEventListener('touchstart', e=>{ touchStartX = e.touches[0].clientX; }, {passive:true});
-  track.addEventListener('touchend', e=>{
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if(Math.abs(diff) > 40) goTo(diff > 0 ? current + getPerView() : current - getPerView());
-  }, {passive:true});
-
-  window.addEventListener('resize', ()=>{ buildDots(); goTo(0); }, {passive:true});
-
-  buildDots();
-  goTo(0);
-})();
-
-// ── INIT ──
-setLang('es');
-</script>
 </body>
 </html>
