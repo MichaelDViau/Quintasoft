@@ -20,14 +20,13 @@
    13. Solutions (what we can build)
    14. Testimonials slider
    15. FAQ
-   16. CTA banner
-   17. Contact (info + form)
-   18. Footer
-   19. Buttons (shared)
-   20. Custom-build messaging
-   21. Scroll-reveal animation
-   22. Toast notification
-   23. Responsive breakpoints
+   16. Contact (info + form)
+   17. Footer (logo + links)
+   18. Buttons (shared)
+   19. Custom-build messaging
+   20. Scroll-reveal animation
+   21. Toast notification
+   22. Responsive breakpoints
    ========================================================================== */
 
 /* ── 01. DESIGN TOKENS ── */
@@ -180,7 +179,7 @@ nav.scrolled { background: rgba(6, 6, 15, 0.85); box-shadow: 0 8px 40px rgba(0, 
 
 .nav-right { display: flex; align-items: center; gap: 8px; }
 
-/* Language switcher pills (EN default / ES secondary) */
+/* Language switcher pills (ES default / EN secondary) */
 .lang-btn {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -273,28 +272,6 @@ nav.scrolled { background: rgba(6, 6, 15, 0.85); box-shadow: 0 8px 40px rgba(0, 
       url('../assets/images/hero-bg.webp') type('image/webp'),
       url('../assets/images/hero-bg.jpg') type('image/jpeg')
     );
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-  background: rgba(14, 165, 233, 0.1);
-  border: 1px solid rgba(14, 165, 233, 0.3);
-  color: var(--accent2);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  padding: 6px 16px;
-  border-radius: 100px;
-  margin-bottom: 32px;
-}
-.hero-badge .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse-dot 2s infinite; }
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.4; }
 }
 
 h1 {
@@ -809,22 +786,7 @@ h2[data-i18n] { white-space: pre-line; }
 
 .faq-answer { padding: 0 24px 22px; font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
 
-/* ── 16. CTA BANNER ── */
-#cta { padding: 60px 0; }
-
-.cta-banner {
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  padding: 72px 32px;
-  border-radius: 32px;
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(56, 189, 248, 0.04));
-  border: 1px solid rgba(14, 165, 233, 0.25);
-}
-.cta-banner > .container { position: relative; z-index: 1; }
-.cta-banner p { color: var(--muted); max-width: 480px; margin: 0 auto 32px; font-size: 1.05rem; line-height: 1.7; }
-
-/* ── 17. CONTACT ── */
+/* ── 16. CONTACT ── */
 #contact { background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(14, 165, 233, 0.1) 0%, transparent 70%); }
 
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 64px; }
@@ -957,12 +919,21 @@ select.form-input {
 }
 .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(14, 165, 233, 0.5); }
 
-/* ── 18. FOOTER ── */
+/* ── 17. FOOTER ── */
 footer { border-top: 1px solid rgba(255, 255, 255, 0.06); padding: 60px 0 40px; }
 
 .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; margin-bottom: 48px; }
-.footer-brand .nav-logo { font-size: 1.4rem; }
-.footer-brand p { font-size: 0.875rem; color: var(--muted); margin-top: 12px; line-height: 1.7; max-width: 260px; }
+
+/* Brand block: logo mark + wordmark as the footer's primary visual element */
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+.footer-logo img { width: 50px; height: 56px; display: block; flex-shrink: 0; }
+.footer-brand .nav-logo { font-size: 1.5rem; }
+.footer-brand p { font-size: 0.875rem; color: var(--muted); margin-top: 16px; line-height: 1.7; max-width: 280px; }
 
 .footer-col h5 {
   font-size: 0.8rem;
@@ -1007,7 +978,7 @@ footer { border-top: 1px solid rgba(255, 255, 255, 0.06); padding: 60px 0 40px; 
 }
 .social-link:hover { background: rgba(255, 255, 255, 0.1); color: var(--text); transform: translateY(-2px); }
 
-/* ── 19. BUTTONS (SHARED) ── */
+/* ── 18. BUTTONS (SHARED) ── */
 .btn-primary {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: #fff;
@@ -1049,7 +1020,7 @@ footer { border-top: 1px solid rgba(255, 255, 255, 0.06); padding: 60px 0 40px; 
 }
 .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
 
-/* ── 20. CUSTOM-BUILD MESSAGING ──
+/* ── 19. CUSTOM-BUILD MESSAGING ──
    Reusable accent banner that reinforces "everything is built from scratch".
    Appears in services, solutions and contact section headers. */
 .hero-custom {
@@ -1080,7 +1051,7 @@ footer { border-top: 1px solid rgba(255, 255, 255, 0.06); padding: 60px 0 40px; 
 }
 .custom-note svg { flex-shrink: 0; color: var(--accent2); }
 
-/* ── 21. SCROLL-REVEAL ANIMATION ── */
+/* ── 20. SCROLL-REVEAL ANIMATION ── */
 .reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -1093,7 +1064,7 @@ footer { border-top: 1px solid rgba(255, 255, 255, 0.06); padding: 60px 0 40px; 
 .reveal-delay-4 { transition-delay: 0.4s; }
 .reveal-delay-5 { transition-delay: 0.5s; }
 
-/* ── 22. TOAST NOTIFICATION ── */
+/* ── 21. TOAST NOTIFICATION ── */
 .toast {
   position: fixed;
   bottom: 24px;
@@ -1115,7 +1086,7 @@ footer { border-top: 1px solid rgba(255, 255, 255, 0.06); padding: 60px 0 40px; 
 .toast.show { transform: translateX(-50%) translateY(0); }
 .toast.success { border-color: rgba(52, 211, 153, 0.4); color: var(--green); }
 
-/* ── 23. RESPONSIVE BREAKPOINTS ── */
+/* ── 22. RESPONSIVE BREAKPOINTS ── */
 @media (max-width: 1024px) {
   .why-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
@@ -1138,7 +1109,6 @@ footer { border-top: 1px solid rgba(255, 255, 255, 0.06); padding: 60px 0 40px; 
   .footer-bottom { flex-direction: column; text-align: center; }
   .why-visual { height: auto; padding: 40px 24px; }
   .testimonial-card { flex: 0 0 calc((100% - 20px) / 2); }
-  .cta-banner { padding: 56px 24px; }
 }
 
 @media (max-width: 640px) {

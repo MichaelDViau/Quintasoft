@@ -23,10 +23,9 @@ const I18N = {
     'aria.menu': 'Abrir o cerrar el menú',
 
     // Hero
-    'hero.badge': 'Disponibles para nuevos proyectos',
     'hero.title1': 'Software a medida que',
     'hero.title2': 'define el futuro',
-    'hero.subtitle': 'Desarrollamos software totalmente a medida desde Quintana Roo, con presencia local en Playa del Carmen, Cancún y Tulum, y alcance global.',
+    'hero.subtitle': 'Desarrollamos software totalmente a medida desde Quintana Roo, con presencia local en Playa del Carmen, Cancún y Tulum, con alcance global.',
     'hero.custom': 'Sin plantillas. Sin soluciones genéricas. Todo nuestro software se diseña y se construye desde cero para tu negocio.',
     'hero.cta1': 'Comenzar proyecto',
     'hero.cta2': 'Ver servicios',
@@ -169,11 +168,6 @@ const I18N = {
     'faq6.q': '¿Qué tecnologías utilizan?',
     'faq6.a': 'Elegimos la herramienta adecuada para cada proyecto, como React, Next.js, Node.js, Flutter o Swift, priorizando siempre rendimiento, seguridad y mantenibilidad.',
 
-    // CTA banner
-    'cta.title': '¿Listo para construir\nalgo grandioso?',
-    'cta.desc': 'Cuéntanos tu proyecto y recibe una consulta gratuita en menos de 24 horas. Sin compromisos.',
-    'cta.btn': 'Cotiza gratis',
-
     // Contact
     'contact.label': 'Contacto',
     'contact.title': 'Hablemos de tu proyecto',
@@ -198,7 +192,7 @@ const I18N = {
     'form.sending': 'Enviando...',
 
     // Footer
-    'footer.desc': 'Software de clase mundial, 100% a medida, desde Quintana Roo. Construimos el futuro digital de tu negocio.',
+    'footer.desc': 'Sin plantillas. Sin soluciones genéricas. Todo nuestro software se diseña y se construye desde cero para tu negocio.',
     'footer.services': 'Servicios',
     'footer.company': 'Empresa',
     'footer.about': 'Sobre nosotros',
@@ -232,10 +226,9 @@ const I18N = {
     'aria.menu': 'Toggle navigation menu',
 
     // Hero
-    'hero.badge': 'Available for new projects',
     'hero.title1': 'Custom software that',
     'hero.title2': 'defines the future',
-    'hero.subtitle': 'We build fully custom software from Quintana Roo, with local presence in Playa del Carmen, Cancún and Tulum, and global reach.',
+    'hero.subtitle': 'We build fully custom software from Quintana Roo, with local presence in Playa del Carmen, Cancún and Tulum, with global reach.',
     'hero.custom': 'No templates. No generic solutions. All our software is designed and built from scratch for your business.',
     'hero.cta1': 'Start a project',
     'hero.cta2': 'View services',
@@ -378,11 +371,6 @@ const I18N = {
     'faq6.q': 'What technologies do you use?',
     'faq6.a': 'We choose the right tool for each job, such as React, Next.js, Node.js, Flutter or Swift, always prioritizing performance, security and maintainability.',
 
-    // CTA banner
-    'cta.title': 'Ready to build\nsomething great?',
-    'cta.desc': 'Tell us about your project and get a free consultation within 24 hours. No strings attached.',
-    'cta.btn': 'Get a free quote',
-
     // Contact
     'contact.label': 'Contact',
     'contact.title': 'Let\'s talk about your project',
@@ -407,7 +395,7 @@ const I18N = {
     'form.sending': 'Sending...',
 
     // Footer
-    'footer.desc': 'World-class, 100% custom software from Quintana Roo. We build the digital future of your business.',
+    'footer.desc': 'No templates. No generic solutions. All our software is designed and built from scratch for your business.',
     'footer.services': 'Services',
     'footer.company': 'Company',
     'footer.about': 'About us',
