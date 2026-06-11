@@ -121,7 +121,7 @@
      Watches the main chapters and mirrors the current one onto the mobile
      dock items and the desktop nav links. */
   const sectionMap = {
-    hero: ['hero', 'stats'],
+    hero: ['hero'],
     services: ['services', 'stack'],
     process: ['process', 'solutions'],
     contact: ['faq', 'contact']
@@ -371,9 +371,11 @@
       });
   });
 
-  /* ── 10. MAGNETIC BUTTONS ──
-     Desktop only: primary CTAs lean a few pixels toward the cursor and
-     spring back when it leaves. Subtle by design. */
+  /* ── 10. POINTER INTERACTIONS (hover-capable, fine pointer only) ──
+     a) Magnetic CTAs lean a few pixels toward the cursor and spring back.
+     b) Frosted cards carry a specular highlight that tracks the cursor: we
+        feed the pointer position into the --mx / --my custom properties that
+        the [data-spotlight]::after radial-gradient reads. */
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reducedMotion) {
     document.querySelectorAll('[data-magnetic]').forEach((el) => {
       const STRENGTH = 0.22;
@@ -384,8 +386,26 @@
         const dy = (e.clientY - r.top - r.height / 2) * STRENGTH;
         el.style.transform = `translate(${Math.max(-LIMIT, Math.min(LIMIT, dx))}px, ${Math.max(-LIMIT, Math.min(LIMIT, dy))}px)`;
       });
+      el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+    });
+
+    document.querySelectorAll('[data-spotlight]').forEach((el) => {
+      let spotTicking = false;
+      el.addEventListener('pointermove', (e) => {
+        if (spotTicking) return;
+        spotTicking = true;
+        requestAnimationFrame(() => {
+          const r = el.getBoundingClientRect();
+          el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+          el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+          spotTicking = false;
+        });
+      });
+      el.addEventListener('pointerenter', () => el.classList.add('spot-on'));
       el.addEventListener('pointerleave', () => {
-        el.style.transform = '';
+        el.classList.remove('spot-on');
+        el.style.removeProperty('--mx');
+        el.style.removeProperty('--my');
       });
     });
   }
@@ -400,11 +420,12 @@
      page behind each surface genuinely bends at the edges. Safari and
      Firefox keep the layered blur fallback from the stylesheet. */
   (() => {
-    // Per-surface tuning: bezel = rim width (px), scale = refraction depth (px)
+    // Per-surface tuning: bezel = rim width (px), scale = refraction depth (px).
+    // On a light canvas the refraction stays subtle and brightness is held at
+    // 1.0 so content behind the glass never washes out.
     const PRESETS = {
-      nav:  { bezel: 14, scale: 36, blur: 16, saturate: 1.8 },
-      dock: { bezel: 16, scale: 44, blur: 16, saturate: 1.8 },
-      lens: { bezel: 90, scale: 90, blur: 2,  saturate: 1.6 }
+      nav:  { bezel: 13, scale: 26, blur: 13, saturate: 1.5, brightness: 1.0 },
+      dock: { bezel: 15, scale: 32, blur: 13, saturate: 1.5, brightness: 1.0 }
     };
 
     // backdrop-filter: url() only renders in Chromium. CSS.supports also
@@ -537,7 +558,7 @@
       feDisp.setAttribute('yChannelSelector', 'G');
       filter.appendChild(feDisp);
 
-      const chain = `url(#${id}) blur(${preset.blur}px) saturate(${preset.saturate}) brightness(1.06)`;
+      const chain = `url(#${id}) blur(${preset.blur}px) saturate(${preset.saturate}) brightness(${preset.brightness})`;
       el.style.backdropFilter = chain;
       el.style.webkitBackdropFilter = chain;
     }

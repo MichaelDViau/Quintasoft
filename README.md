@@ -4,12 +4,13 @@ Bilingual (Spanish default / English secondary) static single-page site for Quin
 
 ## Design language: Liquid Glass
 
-The site is built around a dark, editorial "liquid glass" design system:
+The site is built around a bright, airy, editorial "liquid glass" design system on a near-white canvas tinted with soft brand light:
 
-- **Glass surfaces** (navigation capsule, mobile dock, hero lens, cards, form) use a layered recipe that works in every browser: backdrop blur + saturation, a mask-composited gradient rim, and a specular top sheen.
-- **True refraction** on Chromium: `js/main.js` (section 11) generates a per-element displacement map on a canvas (signed-distance-field of the rounded shape, smoothstep bezel profile) and applies it through an SVG `feDisplacementMap` via `backdrop-filter: url(#...)`, so the page content genuinely bends at the edges of glass surfaces. Safari and Firefox keep the layered fallback.
-- **Typography**: Inter (UI/body), Instrument Serif italic (display accents), IBM Plex Mono (micro-labels, numerals).
-- **Mobile-first**: chapter navigation lives in an iOS-style glass dock fixed to the bottom of the screen on small viewports.
+- **Frosted glass surfaces** (navigation capsule, mobile dock, hero numbers panel, process cards, contact form) use a layered recipe that works in every browser: translucent-white blur + saturation, a bright mask-composited rim, a specular top sheen, and a soft coloured shadow.
+- **Cursor-tracking highlight**: frosted cards marked `[data-spotlight]` carry a specular reflection that follows the pointer (the `--mx` / `--my` custom properties feed a radial-gradient), so the glass appears to react to light as you move across it.
+- **True refraction** on Chromium: `js/main.js` (section 11) generates a per-element displacement map on a canvas (signed-distance-field of the rounded shape, smoothstep bezel profile) and applies it through an SVG `feDisplacementMap` via `backdrop-filter: url(#...)`, so the page content genuinely bends at the edges of the nav and dock. Safari and Firefox keep the layered fallback.
+- **Typography**: Inter (UI/body), Instrument Serif italic (display accents, in a brand-blue gradient), IBM Plex Mono (micro-labels, numerals).
+- **Mobile-first**: chapter navigation lives in an iOS-style frosted-glass dock fixed to the bottom of the screen on small viewports.
 - Honors `prefers-reduced-motion` and `prefers-reduced-transparency`.
 
 ## Project structure

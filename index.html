@@ -5,10 +5,12 @@
   Default language: Spanish (es). Secondary: English (en).
   Translations are applied at runtime via data-i18n attributes (see js/i18n.js).
 
-  Design language: "Liquid Glass" (dark editorial, chaptered layout).
-  Glass surfaces use a layered fallback (backdrop blur + saturation + specular
-  rim) everywhere, progressively enhanced on Chromium with true SVG
-  displacement-map refraction generated at runtime (see js/main.js, section 11).
+  Design language: "Liquid Glass" (bright, editorial, chaptered layout).
+  A light, airy canvas with translucent frosted-glass surfaces. Each glass
+  panel uses a layered fallback (backdrop blur + saturation + bright rim +
+  specular sheen) everywhere, progressively enhanced on Chromium with true
+  SVG displacement-map refraction (see js/main.js, section 11). Frosted cards
+  carry a cursor-tracking specular highlight (section 10).
 
   Project structure:
     index.html            : this page (markup only, no inline styles/scripts)
@@ -31,7 +33,8 @@
   <meta name="description" content="Estudio de desarrollo de software 100% a medida en la Riviera Maya. Apps móviles, plataformas SaaS, sistemas empresariales e inteligencia artificial desde Playa del Carmen, Cancún y Tulum, para clientes en todo el mundo.">
   <meta name="keywords" content="desarrollo de software a medida, apps móviles, ios, android, saas, inteligencia artificial, quintana roo, playa del carmen, cancun, tulum, desarrollo web, software empresarial">
   <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#06060f">
+  <meta name="theme-color" content="#eef1f6">
+  <meta name="color-scheme" content="light">
 
   <!-- ── Open Graph / social sharing ── -->
   <meta property="og:title" content="Quintasoft, software a medida que define el futuro">
@@ -42,7 +45,7 @@
   <meta name="twitter:card" content="summary">
 
   <!-- ── Favicon (inline SVG: zero extra requests) ── -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23e3f1ff'/%3E%3Cstop offset='.45' stop-color='%2384c7f9'/%3E%3Cstop offset='1' stop-color='%231e9bf0'/%3E%3C/linearGradient%3E%3Cmask id='m'%3E%3Crect width='64' height='64' fill='%23fff'/%3E%3Cline x1='24.7' y1='25.9' x2='62.9' y2='64.1' stroke='%23000' stroke-width='14.2'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2306060f'/%3E%3Ccircle cx='32' cy='29' r='17.2' fill='none' stroke='url(%23g)' stroke-width='9.1' mask='url(%23m)'/%3E%3Cpath d='M36.7 33.2 50.6 47.1 50.6 55.2 36.7 41.3Z' fill='url(%23g)' stroke='url(%23g)' stroke-width='2.9' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2384c7f9'/%3E%3Cstop offset='1' stop-color='%230a6fbf'/%3E%3C/linearGradient%3E%3Cmask id='m'%3E%3Crect width='64' height='64' fill='%23fff'/%3E%3Cline x1='24.7' y1='25.9' x2='62.9' y2='64.1' stroke='%23000' stroke-width='14.2'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%23ffffff'/%3E%3Ccircle cx='32' cy='29' r='17.2' fill='none' stroke='url(%23g)' stroke-width='9.1' mask='url(%23m)'/%3E%3Cpath d='M36.7 33.2 50.6 47.1 50.6 55.2 36.7 41.3Z' fill='url(%23g)' stroke='url(%23g)' stroke-width='2.9' stroke-linejoin='round'/%3E%3C/svg%3E">
 
   <!-- ── Fonts: Inter (UI), Instrument Serif (display accents), IBM Plex Mono (labels) ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -134,22 +137,14 @@
 
 <!-- =========================================================================
      HERO
-     Full-viewport opening: a slow aurora of brand light, a circular glass
-     lens (echo of the logo ring) refracting it, and an editorial headline
-     that mixes the grotesk with the serif italic. The bottom rail carries
-     the studio coordinates and the scroll cue.
+     A calm, centred opening on a soft light wash. The headline mixes the
+     grotesk with a serif italic accent; below the calls to action, a single
+     floating frosted-glass panel holds the studio's key numbers. That panel
+     is the hero's one tangible object (it replaces the old decorative mark)
+     and carries a cursor-tracking specular highlight.
 ========================================================================== -->
 <section id="hero">
-  <div class="aurora" aria-hidden="true">
-    <span class="aurora-a"></span>
-    <span class="aurora-b"></span>
-    <span class="aurora-c"></span>
-  </div>
-
-  <!-- Glass lens: pure ornament, refracts the aurora behind it -->
-  <div class="lens" data-liquid="lens" aria-hidden="true">
-    <img src="assets/images/logo.svg" alt="" width="120" height="136" loading="eager">
-  </div>
+  <div class="hero-wash" aria-hidden="true"><span></span><span></span><span></span></div>
 
   <div class="container hero-inner">
     <p class="eyebrow intro intro-1">
@@ -166,49 +161,33 @@
       Diseñamos y construimos productos digitales desde cero, desde Playa del Carmen, Cancún y Tulum, para clientes en todo el mundo.
     </p>
 
-    <p class="hero-manifesto intro intro-5" data-i18n="hero.manifesto">Sin plantillas. Sin atajos. Cada línea de código, escrita para ti.</p>
-
-    <div class="hero-ctas intro intro-6">
+    <div class="hero-ctas intro intro-5">
       <a href="#contact" class="btn btn-accent" data-magnetic data-i18n="hero.cta1">Iniciar un proyecto</a>
       <a href="#services" class="link-arrow" data-i18n="hero.cta2">Explorar servicios</a>
     </div>
-  </div>
 
-  <!-- Bottom rail: coordinates + scroll cue -->
-  <div class="container hero-meta intro intro-7">
-    <span class="hero-coords">20.6296° N · 87.0739° W</span>
-    <span class="hero-scroll">
-      <span data-i18n="hero.scroll">Desliza</span>
-      <span class="scroll-line" aria-hidden="true"><i></i></span>
-    </span>
-  </div>
-</section>
-
-<!-- =========================================================================
-     STATS STRIP
-     One hairline-bound row of studio numbers, set in mono.
-========================================================================== -->
-<section id="stats" aria-label="Cifras del estudio">
-  <div class="container">
-    <div class="stats-strip reveal">
-      <div class="stat">
+    <!-- Floating glass numbers panel (absorbs the old stats strip) -->
+    <div class="hero-panel glass intro intro-6" data-spotlight>
+      <div class="hp-stat">
         <strong>50+</strong>
         <span data-i18n="stats.s1">Proyectos entregados</span>
       </div>
-      <div class="stat">
+      <div class="hp-stat">
         <strong>100%</strong>
         <span data-i18n="stats.s2">Clientes satisfechos</span>
       </div>
-      <div class="stat">
+      <div class="hp-stat">
         <strong>3+</strong>
         <span data-i18n="stats.s3">Años de experiencia</span>
       </div>
-      <div class="stat">
+      <div class="hp-stat">
         <strong>∞</strong>
         <span data-i18n="stats.s4">Soporte continuo</span>
       </div>
     </div>
   </div>
+
+  <span class="hero-scrollcue intro intro-7" aria-hidden="true"><i></i></span>
 </section>
 
 <!-- =========================================================================
@@ -315,8 +294,9 @@
 
 <!-- =========================================================================
      PROCESS (chapter 02)
-     A horizontal rail of five glass cards with scroll snapping, a progress
-     hairline and desktop arrows. On mobile it is swiped naturally.
+     A horizontal rail of five frosted-glass cards with scroll snapping, a
+     progress hairline and desktop arrows. Each card carries a cursor-tracking
+     specular highlight. On mobile it is swiped naturally.
 ========================================================================== -->
 <section id="process">
   <div class="container">
@@ -329,27 +309,27 @@
 
   <div class="rail-wrap reveal">
     <div class="rail" id="processRail" tabindex="0" aria-label="Etapas del proceso">
-      <article class="rail-card glass">
+      <article class="rail-card glass" data-spotlight>
         <span class="rail-num">01</span>
         <h3 data-i18n="proc1.title">Descubrimiento</h3>
         <p data-i18n="proc1.desc">Analizamos tus objetivos, audiencia y competencia para definir exactamente cómo se ve el éxito.</p>
       </article>
-      <article class="rail-card glass">
+      <article class="rail-card glass" data-spotlight>
         <span class="rail-num">02</span>
         <h3 data-i18n="proc2.title">Estrategia y Diseño</h3>
         <p data-i18n="proc2.desc">Wireframes, branding y decisiones de UX respaldadas por datos, aprobadas por ti antes de escribir código.</p>
       </article>
-      <article class="rail-card glass">
+      <article class="rail-card glass" data-spotlight>
         <span class="rail-num">03</span>
         <h3 data-i18n="proc3.title">Desarrollo</h3>
         <p data-i18n="proc3.desc">Código limpio y escalable con avances semanales, para que siempre sepas cómo va tu proyecto.</p>
       </article>
-      <article class="rail-card glass">
+      <article class="rail-card glass" data-spotlight>
         <span class="rail-num">04</span>
         <h3 data-i18n="proc4.title">Lanzamiento</h3>
         <p data-i18n="proc4.desc">Pruebas rigurosas en todos los dispositivos, configuración SEO y un despliegue sin interrupciones.</p>
       </article>
-      <article class="rail-card glass">
+      <article class="rail-card glass" data-spotlight>
         <span class="rail-num">05</span>
         <h3 data-i18n="proc5.title">Soporte y Crecimiento</h3>
         <p data-i18n="proc5.desc">Mantenimiento continuo, analítica y mejoras constantes. Crecemos junto con tu negocio.</p>
@@ -550,11 +530,12 @@
 
 <!-- =========================================================================
      CONTACT (chapter 06)
-     Split layout: direct channels on the left (WhatsApp first), the glass
-     form on the right. The form posts via FormSubmit AJAX and stays on page.
+     Split layout: direct channels on the left (WhatsApp first), the frosted
+     glass form on the right. The form posts via FormSubmit AJAX and stays on
+     page. The form panel carries a cursor-tracking specular highlight.
 ========================================================================== -->
 <section id="contact">
-  <div class="aurora aurora-contact" aria-hidden="true"><span class="aurora-a"></span></div>
+  <div class="hero-wash contact-wash" aria-hidden="true"><span></span></div>
   <div class="container">
     <header class="chapter reveal">
       <p class="chapter-label"><span>06</span><span data-i18n="contact.label">Contacto</span></p>
@@ -589,7 +570,7 @@
         </div>
       </div>
 
-      <div class="contact-form glass reveal">
+      <div class="contact-form glass reveal" data-spotlight>
         <form id="contactForm" novalidate>
           <input type="hidden" name="_subject" value="Nueva solicitud desde el sitio de Quintasoft">
           <input type="hidden" name="_captcha" value="false">
