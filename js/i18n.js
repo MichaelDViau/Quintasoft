@@ -156,7 +156,7 @@ const I18N = {
     'faq.title': 'Preguntas\nfrecuentes',
     'faq.desc': 'Todo lo que necesitas saber antes de comenzar un proyecto con nosotros.',
     'faq1.q': '¿Cuánto tarda un proyecto típico?',
-    'faq1.a': 'La mayoría de los sitios web se lanzan en 2 a 4 semanas. Las aplicaciones web grandes suelen tomar de 6 a 12 semanas. Recibes un cronograma claro antes de empezar y avances semanales.',
+    'faq1.a': 'La mayoría de los sitios web se lanzan en 1 a 2 semanas. Las aplicaciones web grandes suelen tomar de 6 a 12 semanas. Recibes un cronograma claro antes de empezar y avances semanales.',
     'faq2.q': '¿Cuánto cuesta un sitio web?',
     'faq2.a': 'Cada proyecto se cotiza individualmente. Después de una consulta gratuita te enviamos una cotización fija y transparente, sin sorpresas por hora ni costos ocultos.',
     'faq3.q': '¿Trabajan con clientes fuera de México?',
@@ -208,7 +208,8 @@ const I18N = {
 
     // Toast notifications
     'toast.success': '¡Mensaje enviado! Te contactaremos pronto. 🎉',
-    'toast.error': 'Error al enviar. Inténtalo de nuevo.'
+    'toast.error': 'Error al enviar. Inténtalo de nuevo.',
+    'toast.fallback': 'Abrimos tu correo para completar el envío. Si no se abre, escríbenos a quintasoft@protonmail.com'
   },
 
   /* ────────────────────────── ENGLISH (secondary) ──────────────────────── */
@@ -359,7 +360,7 @@ const I18N = {
     'faq.title': 'Frequently asked\nquestions',
     'faq.desc': 'Everything you need to know before starting a project with us.',
     'faq1.q': 'How long does a typical project take?',
-    'faq1.a': 'Most websites launch in 2 to 4 weeks. Larger web applications usually take 6 to 12 weeks. You get a clear timeline before we start and weekly updates along the way.',
+    'faq1.a': 'Most websites launch in 1 to 2 weeks. Larger web applications usually take 6 to 12 weeks. You get a clear timeline before we start and weekly updates along the way.',
     'faq2.q': 'How much does a website cost?',
     'faq2.a': 'Every project is scoped individually. After a free consultation we send a fixed, transparent quote, with no hourly surprises and no hidden fees.',
     'faq3.q': 'Do you work with clients outside Mexico?',
@@ -411,6 +412,7 @@ const I18N = {
 
     // Toast notifications
     'toast.success': 'Message sent! We\'ll be in touch soon. 🎉',
-    'toast.error': 'Error sending. Please try again.'
+    'toast.error': 'Error sending. Please try again.',
+    'toast.fallback': 'We opened your email app to finish sending. If it doesn\'t open, write to quintasoft@protonmail.com'
   }
 };

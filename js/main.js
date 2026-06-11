@@ -161,9 +161,39 @@
     toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
   }
 
-  /* ── 06. CONTACT FORM (FormSubmit AJAX) ──
-     Submits in-page: no redirect, shows a success/error toast instead. */
+  /* ── 06. CONTACT FORM (FormSubmit AJAX + mailto fallback) ──
+     Submits in-page (no redirect) and shows a success toast. FormSubmit
+     delivers the message to the address below; the first submission triggers
+     a one-time confirmation email that the owner must click to activate the
+     form. While unconfirmed — or if the request is blocked/offline — we fall
+     back to opening the visitor's email client pre-filled, so a message is
+     never lost. */
+  const CONTACT_EMAIL = 'quintasoft@protonmail.com';
+  const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + CONTACT_EMAIL;
   const contactForm = document.getElementById('contactForm');
+
+  // Build a pre-filled mailto: from the current form values (fallback path).
+  function buildMailto() {
+    const data = new FormData(contactForm);
+    const name = (data.get('name') || '').toString().trim();
+    const email = (data.get('email') || '').toString().trim();
+    const service = (data.get('service') || '').toString().trim();
+    const message = (data.get('message') || '').toString().trim();
+    const subject = 'Solicitud desde el sitio de Quintasoft';
+    const body =
+      'Nombre: ' + name + '\n' +
+      'Correo: ' + email + '\n' +
+      'Servicio: ' + (service || '—') + '\n\n' +
+      message;
+    return 'mailto:' + CONTACT_EMAIL +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+  }
+
+  function fallbackToMail() {
+    showToast(I18N[currentLang]['toast.fallback'], 'success');
+    window.location.href = buildMailto();
+  }
 
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -172,21 +202,22 @@
     btn.textContent = I18N[currentLang]['form.sending'];
     btn.disabled = true;
 
-    fetch('https://formsubmit.co/ajax/el/delali', {
+    fetch(FORM_ENDPOINT, {
       method: 'POST',
       headers: { Accept: 'application/json' },
       body: new FormData(contactForm)
     })
       .then((r) => r.json())
       .then((data) => {
-        if (data.success === 'true' || data.success === true) {
+        if (data && (data.success === 'true' || data.success === true)) {
           showToast(I18N[currentLang]['toast.success'], 'success');
           contactForm.reset();
         } else {
-          showToast(I18N[currentLang]['toast.error']);
+          // FormSubmit not yet confirmed (or rejected) — keep the message alive.
+          fallbackToMail();
         }
       })
-      .catch(() => showToast(I18N[currentLang]['toast.error']))
+      .catch(() => fallbackToMail())
       .finally(() => {
         btn.textContent = originalLabel;
         btn.disabled = false;
