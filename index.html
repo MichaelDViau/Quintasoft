@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <!-- ===========================================================================
-  QUINTASOFT — Single-page marketing site
+  QUINTASOFT: Single-page marketing site
   ---------------------------------------------------------------------------
-  Default language: English (en). Secondary: Spanish (es).
+  Default language: Spanish (es). Secondary: English (en).
   Translations are applied at runtime via data-i18n attributes (see js/i18n.js).
 
   Project structure:
-    index.html            — this page (markup only, no inline styles/scripts)
-    css/styles.css        — source stylesheet (documented)
-    css/styles.min.css    — minified production build
-    js/i18n.js            — EN/ES translation dictionaries
-    js/main.js            — site behavior (nav, slider, form, i18n, reveal)
-    js/app.min.js         — minified production bundle (i18n + main)
-    assets/images/        — optimized images (WebP + JPEG fallback)
+    index.html            : this page (markup only, no inline styles/scripts)
+    css/styles.css        : source stylesheet (documented)
+    css/styles.min.css    : minified production build
+    js/i18n.js            : ES/EN translation dictionaries
+    js/main.js            : site behavior (nav, slider, form, i18n, marquee)
+    js/app.min.js         : minified production bundle (i18n + main)
+    assets/images/        : optimized images (WebP + JPEG fallback)
 
   Rebuild minified assets after editing sources:  npm run build
 =========================================================================== -->
-<html lang="en" data-lang="en">
+<html lang="es" data-lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ── SEO ── -->
-  <title>Quintasoft — Software That Defines the Future</title>
-  <meta name="description" content="World-class software development from Quintana Roo. Custom websites, web apps, SEO and digital consulting in Playa del Carmen, Cancún & Tulum — serving clients worldwide.">
-  <meta name="keywords" content="web development, software company, quintana roo, playa del carmen, cancun, tulum, SEO, web applications, desarrollo web">
+  <title>Quintasoft, software a medida que define el futuro</title>
+  <meta name="description" content="Desarrollo de software 100% a medida desde Quintana Roo. Apps móviles, plataformas SaaS, sistemas empresariales e inteligencia artificial en Playa del Carmen, Cancún y Tulum, para clientes en todo el mundo.">
+  <meta name="keywords" content="desarrollo de software a medida, apps móviles, ios, android, saas, inteligencia artificial, quintana roo, playa del carmen, cancun, tulum, desarrollo web, software empresarial">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#06060f">
 
   <!-- ── Open Graph / social sharing ── -->
-  <meta property="og:title" content="Quintasoft — Software That Defines the Future">
-  <meta property="og:description" content="World-class software development from Quintana Roo. Websites, web apps, SEO and digital consulting — local presence, global reach.">
+  <meta property="og:title" content="Quintasoft, software a medida que define el futuro">
+  <meta property="og:description" content="Desarrollo de software 100% a medida desde Quintana Roo: apps móviles, SaaS, inteligencia artificial y sistemas empresariales. Presencia local, alcance global.">
   <meta property="og:type" content="website">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="es_MX">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary">
 
-  <!-- ── Favicon (inline SVG — zero extra requests) ── -->
+  <!-- ── Favicon (inline SVG: zero extra requests) ── -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230ea5e9'/%3E%3Cstop offset='1' stop-color='%2338bdf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2306060f'/%3E%3Ctext x='32' y='45' font-family='Arial,sans-serif' font-size='38' font-weight='800' fill='url(%23g)' text-anchor='middle'%3EQ%3C/text%3E%3C/svg%3E">
 
   <!-- ── Performance: preload the LCP hero image (WebP) ── -->
   <link rel="preload" as="image" href="assets/images/hero-bg.webp" type="image/webp" fetchpriority="high">
 
-  <!-- ── Fonts: Inter, only the weights actually used (400–900) ── -->
+  <!-- ── Fonts: Inter, only the weights actually used (400 to 900) ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -50,7 +50,7 @@
   <!-- ── Styles (minified production build of css/styles.css) ── -->
   <link rel="stylesheet" href="css/styles.min.css">
 
-  <!-- ── Scripts (deferred — non-render-blocking bundle of js/i18n.js + js/main.js) ── -->
+  <!-- ── Scripts (deferred, non-render-blocking bundle of js/i18n.js + js/main.js) ── -->
   <script src="js/app.min.js" defer></script>
 
   <!-- ── Structured data for local-business SEO ── -->
@@ -59,12 +59,12 @@
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Quintasoft",
-    "description": "Custom software development: websites, web applications, SEO and technical consulting.",
+    "description": "Desarrollo de software 100% a medida: apps móviles, plataformas SaaS, sistemas empresariales, inteligencia artificial y sitios web.",
     "email": "quintasoft@protonmail.com",
     "telephone": "+52 984 167 0697",
     "address": { "@type": "PostalAddress", "addressRegion": "Quintana Roo", "addressCountry": "MX" },
     "areaServed": ["Playa del Carmen", "Cancún", "Tulum", "Worldwide"],
-    "knowsLanguage": ["en", "es"]
+    "knowsLanguage": ["es", "en"]
   }
   </script>
 </head>
@@ -73,29 +73,29 @@
 <!-- =========================================================================
      ACCESSIBILITY: skip link for keyboard users
 ========================================================================== -->
-<a class="skip-link" href="#hero">Skip to content</a>
+<a class="skip-link" href="#hero">Saltar al contenido</a>
 
 <!-- =========================================================================
      HEADER / NAVIGATION
      Fixed glassmorphism navbar: logo, section links, language switcher
-     (EN default / ES secondary), CTA button and mobile hamburger toggle.
+     (ES default / EN secondary), CTA button and mobile hamburger toggle.
 ========================================================================== -->
-<nav id="navbar" aria-label="Main navigation">
+<nav id="navbar" aria-label="Navegación principal">
   <a href="#" class="nav-logo">Quintasoft</a>
 
   <ul class="nav-links">
-    <li><a href="#services" data-i18n="nav.services">Services</a></li>
-    <li><a href="#process" data-i18n="nav.process">Process</a></li>
-    <li><a href="#work" data-i18n="nav.work">Work</a></li>
-    <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
-    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="#services" data-i18n="nav.services">Servicios</a></li>
+    <li><a href="#process" data-i18n="nav.process">Proceso</a></li>
+    <li><a href="#solutions" data-i18n="nav.solutions">Soluciones</a></li>
+    <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonios</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
   </ul>
 
   <div class="nav-right">
-    <button class="lang-btn active" data-lang="en">EN</button>
-    <button class="lang-btn" data-lang="es">ES</button>
-    <a href="#contact" class="btn-nav" data-i18n="nav.cta">Start a project</a>
-    <button class="hamburger" id="nav-toggle" aria-label="Toggle navigation menu" data-i18n-aria="aria.menu" aria-expanded="false" aria-controls="mobile-menu">
+    <button class="lang-btn active" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <a href="#contact" class="btn-nav" data-i18n="nav.cta">Empezar proyecto</a>
+    <button class="hamburger" id="nav-toggle" aria-label="Abrir o cerrar el menú" data-i18n-aria="aria.menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -103,46 +103,50 @@
 
 <!-- Mobile dropdown menu (shown below 880px via the hamburger) -->
 <div class="mobile-menu" id="mobile-menu">
-  <a href="#services" data-i18n="nav.services">Services</a>
-  <a href="#process" data-i18n="nav.process">Process</a>
-  <a href="#work" data-i18n="nav.work">Work</a>
-  <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
-  <a href="#contact" data-i18n="nav.contact">Contact</a>
+  <a href="#services" data-i18n="nav.services">Servicios</a>
+  <a href="#process" data-i18n="nav.process">Proceso</a>
+  <a href="#solutions" data-i18n="nav.solutions">Soluciones</a>
+  <a href="#testimonials" data-i18n="nav.testimonials">Testimonios</a>
+  <a href="#contact" data-i18n="nav.contact">Contacto</a>
   <div class="mobile-menu-langs">
-    <button class="lang-btn active" data-lang="en">EN — English</button>
-    <button class="lang-btn" data-lang="es">ES — Español</button>
+    <button class="lang-btn active" data-lang="es">ES · Español</button>
+    <button class="lang-btn" data-lang="en">EN · English</button>
   </div>
 </div>
 
 <!-- =========================================================================
      HERO
-     Full-viewport intro: availability badge, headline, subtitle, primary +
-     secondary CTAs and the key company stats row. Background image is the
-     LCP element (preloaded WebP with JPEG fallback, dark gradient overlay).
+     Full-viewport intro: availability badge, headline, subtitle, a custom-build
+     statement, primary + secondary CTAs and the key company stats row. The
+     background image is the LCP element (preloaded WebP with JPEG fallback).
 ========================================================================== -->
 <section id="hero">
   <div class="container">
     <div class="reveal reveal-delay-1">
       <div class="hero-badge">
         <span class="dot" aria-hidden="true"></span>
-        <span data-i18n="hero.badge">Available for new projects</span>
+        <span data-i18n="hero.badge">Disponibles para nuevos proyectos</span>
       </div>
       <h1>
-        <span data-i18n="hero.title1">Software that</span><br>
-        <span class="gradient-text" data-i18n="hero.title2">defines the future</span>
+        <span data-i18n="hero.title1">Software a medida que</span><br>
+        <span class="gradient-text" data-i18n="hero.title2">define el futuro</span>
       </h1>
     </div>
 
     <div class="reveal reveal-delay-2">
       <p class="hero-sub" data-i18n="hero.subtitle">
-        We build world-class digital solutions from Quintana Roo. Local presence in Playa del Carmen, Cancún &amp; Tulum — global reach.
+        Desarrollamos software totalmente a medida desde Quintana Roo, con presencia local en Playa del Carmen, Cancún y Tulum, y alcance global.
+      </p>
+      <!-- Custom-build messaging (1 of 4): hero -->
+      <p class="hero-custom" data-i18n="hero.custom">
+        Sin plantillas. Sin soluciones genéricas. Todo nuestro software se diseña y se construye desde cero para tu negocio.
       </p>
     </div>
 
     <div class="reveal reveal-delay-3">
       <div class="hero-ctas">
-        <a href="#contact" class="btn-primary" data-i18n="hero.cta1">Start a project →</a>
-        <a href="#services" class="btn-secondary" data-i18n="hero.cta2">View services</a>
+        <a href="#contact" class="btn-primary" data-i18n="hero.cta1">Comenzar proyecto</a>
+        <a href="#services" class="btn-secondary" data-i18n="hero.cta2">Ver servicios</a>
       </div>
     </div>
 
@@ -150,104 +154,151 @@
     <div class="hero-stats reveal reveal-delay-4">
       <div class="hero-stat">
         <strong>50+</strong>
-        <span data-i18n="hero.stat1">Projects delivered</span>
+        <span data-i18n="hero.stat1">Proyectos entregados</span>
       </div>
       <div class="stat-divider"></div>
       <div class="hero-stat">
         <strong>100%</strong>
-        <span data-i18n="hero.stat2">Happy clients</span>
+        <span data-i18n="hero.stat2">Clientes satisfechos</span>
       </div>
       <div class="stat-divider"></div>
       <div class="hero-stat">
         <strong>3+</strong>
-        <span data-i18n="hero.stat3">Years of experience</span>
+        <span data-i18n="hero.stat3">Años de experiencia</span>
       </div>
       <div class="stat-divider"></div>
       <div class="hero-stat">
         <strong>∞</strong>
-        <span data-i18n="hero.stat4">Continuous support</span>
+        <span data-i18n="hero.stat4">Soporte continuo</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================================
-     TECH-STACK STRIP
-     Slim band of technologies the team works with. Pure CSS pills — no
-     logo images, no extra requests.
+     TECH-STACK MARQUEE (top slider)
+     Two rows of technology pills scroll automatically and continuously in
+     opposite directions. The set inside each .marquee-track is cloned by JS
+     so the CSS animation loops seamlessly (no jumps, pauses or resets).
 ========================================================================== -->
-<section id="stack" aria-label="Technology stack">
+<section id="stack" aria-label="Tecnologías">
   <div class="container">
-    <p class="stack-title reveal" data-i18n="stack.title">Technologies we build with</p>
-    <div class="stack-pills reveal reveal-delay-1">
-      <span class="stack-pill">React</span>
-      <span class="stack-pill">Next.js</span>
-      <span class="stack-pill">Node.js</span>
-      <span class="stack-pill">TypeScript</span>
-      <span class="stack-pill">Python</span>
-      <span class="stack-pill">PostgreSQL</span>
-      <span class="stack-pill">AWS</span>
-      <span class="stack-pill">Tailwind CSS</span>
-      <span class="stack-pill">WordPress</span>
-      <span class="stack-pill">Shopify</span>
+    <p class="stack-title reveal" data-i18n="stack.title">Tecnologías con las que construimos</p>
+  </div>
+
+  <div class="tech-marquee">
+    <!-- Row 1: scrolls left -->
+    <div class="marquee-row">
+      <div class="marquee-track">
+        <div class="marquee-set">
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">Next.js</span>
+          <span class="tech-pill">Node.js</span>
+          <span class="tech-pill">TypeScript</span>
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">Swift</span>
+          <span class="tech-pill">Kotlin</span>
+          <span class="tech-pill">Android</span>
+          <span class="tech-pill">iOS</span>
+          <span class="tech-pill">Flutter</span>
+          <span class="tech-pill">React Native</span>
+          <span class="tech-pill">Ruby on Rails</span>
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Django</span>
+          <span class="tech-pill">Laravel</span>
+          <span class="tech-pill">PHP</span>
+          <span class="tech-pill">PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: scrolls right -->
+    <div class="marquee-row reverse">
+      <div class="marquee-track">
+        <div class="marquee-set">
+          <span class="tech-pill">MySQL</span>
+          <span class="tech-pill">MongoDB</span>
+          <span class="tech-pill">AWS</span>
+          <span class="tech-pill">Google Cloud</span>
+          <span class="tech-pill">Azure</span>
+          <span class="tech-pill">Docker</span>
+          <span class="tech-pill">Kubernetes</span>
+          <span class="tech-pill">GraphQL</span>
+          <span class="tech-pill">Firebase</span>
+          <span class="tech-pill">OpenAI</span>
+          <span class="tech-pill">AI Agents</span>
+          <span class="tech-pill">Machine Learning</span>
+          <span class="tech-pill">WebRTC</span>
+          <span class="tech-pill">Stripe</span>
+          <span class="tech-pill">Shopify Integrations</span>
+          <span class="tech-pill">REST APIs</span>
+          <span class="tech-pill">Microservices</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- =========================================================================
      SERVICES
-     Six-card grid of core offerings. Icons are inline SVG (Feather-style).
+     Six-card grid of core offerings plus a custom-build statement. Icons are
+     inline SVG (Feather-style).
 ========================================================================== -->
 <section id="services">
   <div class="blob blob-1" style="opacity:0.15;top:auto;bottom:-100px;right:-150px"></div>
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="services.label">Services</div>
-      <h2 data-i18n="services.title">Everything your digital<br>business needs</h2>
-      <p class="section-desc" style="margin:0 auto" data-i18n="services.desc">From design to launch, we offer complete solutions tailored to your business goals.</p>
+      <div class="section-label" data-i18n="services.label">Servicios</div>
+      <h2 data-i18n="services.title">Todo lo que tu negocio<br>digital necesita</h2>
+      <p class="section-desc" style="margin:0 auto" data-i18n="services.desc">Desde el diseño hasta el lanzamiento, ofrecemos soluciones completas y a la medida de tus objetivos de negocio.</p>
+      <!-- Custom-build messaging (2 of 4): services -->
+      <div class="custom-note reveal reveal-delay-1">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span data-i18n="services.custom">Cada proyecto es completamente personalizado para adaptarse a tus procesos, objetivos y crecimiento.</span>
+      </div>
     </div>
 
     <div class="services-grid">
       <!-- Service: Custom Website Development -->
       <div class="service-card reveal">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h3 data-i18n="s1.title">Custom Website Development</h3>
-        <p data-i18n="s1.desc">Tailor-made websites with unique design, clean code and exceptional performance. Every pixel built to convert.</p>
+        <h3 data-i18n="s1.title">Desarrollo Web a Medida</h3>
+        <p data-i18n="s1.desc">Sitios web a medida con diseño único, código limpio y rendimiento excepcional. Cada pixel construido para convertir.</p>
       </div>
 
       <!-- Service: Optimization & Performance -->
       <div class="service-card reveal reveal-delay-1">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-        <h3 data-i18n="s2.title">Optimization &amp; Performance</h3>
-        <p data-i18n="s2.desc">We transform slow sites into ultra-fast experiences. Core Web Vitals, instant load, maximum conversion.</p>
+        <h3 data-i18n="s2.title">Optimización y Rendimiento</h3>
+        <p data-i18n="s2.desc">Transformamos sitios lentos en experiencias ultrarrápidas. Core Web Vitals, carga instantánea, conversión máxima.</p>
       </div>
 
       <!-- Service: Repairs & Maintenance -->
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3 data-i18n="s3.title">Repairs &amp; Maintenance</h3>
-        <p data-i18n="s3.desc">Is your site broken? We fix it fast. Bug fixes, updates and reliable technical support.</p>
+        <h3 data-i18n="s3.title">Reparación y Mantenimiento</h3>
+        <p data-i18n="s3.desc">¿Tu sitio tiene errores? Lo solucionamos rápido. Correcciones de bugs, actualizaciones y soporte técnico confiable.</p>
       </div>
 
       <!-- Service: SEO & Rankings -->
       <div class="service-card reveal reveal-delay-3">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-        <h3 data-i18n="s4.title">SEO &amp; Rankings</h3>
-        <p data-i18n="s4.desc">We take your business to the first page of Google. Technical SEO, optimized content and comprehensive digital strategy.</p>
+        <h3 data-i18n="s4.title">SEO y Posicionamiento</h3>
+        <p data-i18n="s4.desc">Llevamos tu negocio a la primera página de Google. SEO técnico, contenido optimizado y estrategia digital integral.</p>
       </div>
 
-      <!-- Service: Web Applications -->
+      <!-- Service: Web & Mobile Applications -->
       <div class="service-card reveal reveal-delay-1">
-        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
-        <h3 data-i18n="s5.title">Web Applications</h3>
-        <p data-i18n="s5.desc">We develop robust and scalable web apps: dashboards, SaaS, client portals and custom systems.</p>
+        <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <h3 data-i18n="s5.title">Aplicaciones Web y Móviles</h3>
+        <p data-i18n="s5.desc">Desarrollamos apps web y móviles robustas y escalables: dashboards, SaaS, portales de clientes y sistemas a medida.</p>
       </div>
 
       <!-- Service: Technical Consulting -->
       <div class="service-card reveal reveal-delay-2">
         <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg></div>
-        <h3 data-i18n="s6.title">Technical Consulting</h3>
-        <p data-i18n="s6.desc">Expert advice on digital architecture, technology choice and digital transformation strategy for your company.</p>
+        <h3 data-i18n="s6.title">Consultoría Técnica</h3>
+        <p data-i18n="s6.desc">Asesoría experta en arquitectura digital, elección de tecnologías y estrategia de transformación digital para tu empresa.</p>
       </div>
     </div>
   </div>
@@ -255,42 +306,41 @@
 
 <!-- =========================================================================
      PROCESS
-     Five-step "how we work" timeline: Discovery → Strategy & Design →
-     Development → Launch → Support & Growth.
+     Five-step "how we work" timeline.
 ========================================================================== -->
 <section id="process">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="process.label">Process</div>
-      <h2 data-i18n="process.title">From idea to launch,<br>without the guesswork</h2>
-      <p class="section-desc" style="margin:0 auto" data-i18n="process.desc">A proven, transparent workflow. You always know what we're doing, why, and what comes next.</p>
+      <div class="section-label" data-i18n="process.label">Proceso</div>
+      <h2 data-i18n="process.title">De la idea al lanzamiento,<br>sin improvisación</h2>
+      <p class="section-desc" style="margin:0 auto" data-i18n="process.desc">Un flujo de trabajo probado y transparente. Siempre sabes qué hacemos, por qué y qué sigue.</p>
     </div>
 
     <div class="process-grid">
       <div class="process-card reveal">
         <div class="process-num">01</div>
-        <h3 data-i18n="proc1.title">Discovery</h3>
-        <p data-i18n="proc1.desc">We dig into your goals, audience and competitors to define exactly what success looks like.</p>
+        <h3 data-i18n="proc1.title">Descubrimiento</h3>
+        <p data-i18n="proc1.desc">Analizamos tus objetivos, audiencia y competencia para definir exactamente cómo se ve el éxito.</p>
       </div>
       <div class="process-card reveal reveal-delay-1">
         <div class="process-num">02</div>
-        <h3 data-i18n="proc2.title">Strategy &amp; Design</h3>
-        <p data-i18n="proc2.desc">Wireframes, branding and UX decisions backed by data — approved by you before a single line of code.</p>
+        <h3 data-i18n="proc2.title">Estrategia y Diseño</h3>
+        <p data-i18n="proc2.desc">Wireframes, branding y decisiones de UX respaldadas por datos, aprobadas por ti antes de escribir código.</p>
       </div>
       <div class="process-card reveal reveal-delay-2">
         <div class="process-num">03</div>
-        <h3 data-i18n="proc3.title">Development</h3>
-        <p data-i18n="proc3.desc">Clean, scalable code with weekly check-ins, so you always know where your project stands.</p>
+        <h3 data-i18n="proc3.title">Desarrollo</h3>
+        <p data-i18n="proc3.desc">Código limpio y escalable con avances semanales, para que siempre sepas cómo va tu proyecto.</p>
       </div>
       <div class="process-card reveal reveal-delay-3">
         <div class="process-num">04</div>
-        <h3 data-i18n="proc4.title">Launch</h3>
-        <p data-i18n="proc4.desc">Rigorous testing across devices, SEO setup and a smooth, zero-downtime deployment.</p>
+        <h3 data-i18n="proc4.title">Lanzamiento</h3>
+        <p data-i18n="proc4.desc">Pruebas rigurosas en todos los dispositivos, configuración SEO y un despliegue sin interrupciones.</p>
       </div>
       <div class="process-card reveal reveal-delay-4">
         <div class="process-num">05</div>
-        <h3 data-i18n="proc5.title">Support &amp; Growth</h3>
-        <p data-i18n="proc5.desc">Ongoing maintenance, analytics and continuous improvements. We grow with your business.</p>
+        <h3 data-i18n="proc5.title">Soporte y Crecimiento</h3>
+        <p data-i18n="proc5.desc">Mantenimiento continuo, analítica y mejoras constantes. Crecemos junto con tu negocio.</p>
       </div>
     </div>
   </div>
@@ -304,8 +354,8 @@
   <div class="blob blob-2" style="opacity:0.12;bottom:auto;top:-100px;left:-150px"></div>
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="why.label">Why Quintasoft</div>
-      <h2 data-i18n="why.title">Real results,<br>not just promises</h2>
+      <div class="section-label" data-i18n="why.label">Por qué Quintasoft</div>
+      <h2 data-i18n="why.title">Resultados reales,<br>no solo promesas</h2>
     </div>
 
     <div class="why-grid">
@@ -314,36 +364,36 @@
         <div class="why-feature reveal">
           <div class="why-feature-icon" style="background:rgba(14,165,233,0.15);border:1px solid rgba(14,165,233,0.3);color:#38bdf8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
           <div>
-            <h4 data-i18n="why.f1.title">Delivery speed</h4>
-            <p data-i18n="why.f1.desc">Agile processes and constant communication. We deliver projects on time, no excuses.</p>
+            <h4 data-i18n="why.f1.title">Velocidad de entrega</h4>
+            <p data-i18n="why.f1.desc">Procesos ágiles y comunicación constante. Entregamos proyectos a tiempo, sin excusas.</p>
           </div>
         </div>
         <div class="why-feature reveal reveal-delay-1">
           <div class="why-feature-icon" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#7dd3fc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
           <div>
-            <h4 data-i18n="why.f2.title">Results-focused</h4>
-            <p data-i18n="why.f2.desc">We don't just build pretty sites — we build tools that increase sales and conversions.</p>
+            <h4 data-i18n="why.f2.title">Enfocados en resultados</h4>
+            <p data-i18n="why.f2.desc">No solo construimos sitios bonitos: construimos herramientas que aumentan ventas y conversiones.</p>
           </div>
         </div>
         <div class="why-feature reveal reveal-delay-2">
           <div class="why-feature-icon" style="background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.3);color:#34d399"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
           <div>
-            <h4 data-i18n="why.f3.title">Local &amp; global</h4>
-            <p data-i18n="why.f3.desc">Roots in Quintana Roo, global reach. On-site work in the Riviera Maya and remote anywhere in the world.</p>
+            <h4 data-i18n="why.f3.title">Local y global</h4>
+            <p data-i18n="why.f3.desc">Raíces en Quintana Roo, alcance mundial. Trabajo presencial en la Riviera Maya y remoto en cualquier parte.</p>
           </div>
         </div>
         <div class="why-feature reveal reveal-delay-3">
           <div class="why-feature-icon" style="background:rgba(251,191,36,0.15);border:1px solid rgba(251,191,36,0.3);color:#fbbf24"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div>
-            <h4 data-i18n="why.f4.title">Quality code</h4>
-            <p data-i18n="why.f4.desc">Clean, secure and maintainable code. Your investment keeps growing over time, not turning into technical debt.</p>
+            <h4 data-i18n="why.f4.title">Código de calidad</h4>
+            <p data-i18n="why.f4.desc">Código limpio, seguro y mantenible. Tu inversión sigue creciendo con el tiempo, no se vuelve deuda técnica.</p>
           </div>
         </div>
         <div class="why-feature reveal reveal-delay-4">
           <div class="why-feature-icon" style="background:rgba(167,139,250,0.15);border:1px solid rgba(167,139,250,0.3);color:#a78bfa"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div>
-            <h4 data-i18n="why.f5.title">Post-launch support</h4>
-            <p data-i18n="why.f5.desc">We don't disappear after launch. We're your long-term technology partner.</p>
+            <h4 data-i18n="why.f5.title">Soporte post-lanzamiento</h4>
+            <p data-i18n="why.f5.desc">No desaparecemos después del lanzamiento. Somos tu socio tecnológico a largo plazo.</p>
           </div>
         </div>
       </div>
@@ -353,11 +403,11 @@
         <div class="blob blob-3" style="width:300px;height:300px;opacity:0.2"></div>
         <div class="why-visual-inner">
           <div class="big-number">100%</div>
-          <p style="color:var(--muted);font-size:0.9rem;margin-top:8px" data-i18n="why.satisfaction">Client satisfaction</p>
+          <p style="color:var(--muted);font-size:0.9rem;margin-top:8px" data-i18n="why.satisfaction">Satisfacción de clientes</p>
           <div class="metric-grid">
             <div class="metric-card">
               <strong>&lt;1s</strong>
-              <span data-i18n="why.m1">Load time</span>
+              <span data-i18n="why.m1">Tiempo de carga</span>
             </div>
             <div class="metric-card">
               <strong>98+</strong>
@@ -365,11 +415,11 @@
             </div>
             <div class="metric-card">
               <strong>24h</strong>
-              <span data-i18n="why.m3">Response time</span>
+              <span data-i18n="why.m3">Tiempo de respuesta</span>
             </div>
             <div class="metric-card">
               <strong>50+</strong>
-              <span data-i18n="why.m4">Successful projects</span>
+              <span data-i18n="why.m4">Proyectos exitosos</span>
             </div>
           </div>
         </div>
@@ -379,232 +429,267 @@
 </section>
 
 <!-- =========================================================================
-     WORK / PORTFOLIO (featured content)
-     Six recent projects with outcome metrics. Thumbnails are pure CSS
-     gradients — no image downloads required.
+     SOLUTIONS (featured content)
+     Sales-focused grid of what we can custom build, plus a custom-build
+     statement. Icons are inline SVG (Feather-style); no image requests.
 ========================================================================== -->
-<section id="work">
+<section id="solutions">
   <div class="blob blob-3" style="opacity:0.12;top:-50px;left:auto;right:-100px;transform:none"></div>
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="portfolio.label">Our work</div>
-      <h2 data-i18n="portfolio.title">Recent projects</h2>
-      <p class="section-desc" style="margin:0 auto" data-i18n="portfolio.desc">Digital solutions that generate real impact for businesses in Mexico and worldwide.</p>
+      <div class="section-label" data-i18n="solutions.label">Soluciones a medida</div>
+      <h2 data-i18n="solutions.title">Lo que podemos construir para tu negocio</h2>
+      <p class="section-desc" style="margin:0 auto" data-i18n="solutions.desc">Desarrollamos soluciones digitales totalmente personalizadas para resolver desafíos específicos, automatizar procesos y acelerar el crecimiento de tu empresa.</p>
+      <!-- Custom-build messaging (3 of 4): solutions -->
+      <div class="custom-note reveal reveal-delay-1">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span data-i18n="solutions.custom">Desarrollamos cada solución desde cero según las necesidades específicas de tu negocio.</span>
+      </div>
     </div>
 
-    <div class="work-grid">
-      <article class="work-card reveal">
-        <div class="work-thumb thumb-1"><span class="work-metric" data-i18n="p1.metric">+180% online bookings</span></div>
-        <div class="work-info">
-          <div class="work-type" data-i18n="p1.type">Website &amp; online bookings</div>
-          <h3 data-i18n="p1.title">Boutique Resort Tulum</h3>
-          <div class="work-tags"><span class="work-tag">Next.js</span><span class="work-tag">Booking API</span></div>
-        </div>
+    <div class="solutions-grid">
+      <!-- SaaS Platforms -->
+      <article class="solution-card reveal">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
+        <h3 data-i18n="sol1.title">Plataformas SaaS</h3>
+        <p data-i18n="sol1.desc">Productos en la nube escalables, con suscripciones, multiusuario y paneles de administración.</p>
       </article>
 
-      <article class="work-card reveal reveal-delay-1">
-        <div class="work-thumb thumb-2"><span class="work-metric" data-i18n="p2.metric">+240% sales in 2 months</span></div>
-        <div class="work-info">
-          <div class="work-type" data-i18n="p2.type">Custom online store</div>
-          <h3 data-i18n="p2.title">Fashion E-commerce</h3>
-          <div class="work-tags"><span class="work-tag">Shopify</span><span class="work-tag">UX</span></div>
-        </div>
+      <!-- Mobile apps -->
+      <article class="solution-card reveal reveal-delay-1">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <h3 data-i18n="sol2.title">Aplicaciones móviles iOS y Android</h3>
+        <p data-i18n="sol2.desc">Apps nativas y multiplataforma rápidas, seguras y listas para escalar.</p>
       </article>
 
-      <article class="work-card reveal reveal-delay-2">
-        <div class="work-thumb thumb-3"><span class="work-metric" data-i18n="p3.metric">60% faster workflows</span></div>
-        <div class="work-info">
-          <div class="work-type" data-i18n="p3.type">Web app &amp; dashboard</div>
-          <h3 data-i18n="p3.title">Corporate Portal</h3>
-          <div class="work-tags"><span class="work-tag">React</span><span class="work-tag">Node.js</span></div>
-        </div>
+      <!-- Internal systems -->
+      <article class="solution-card reveal reveal-delay-2">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+        <h3 data-i18n="sol3.title">Sistemas internos para empresas</h3>
+        <p data-i18n="sol3.desc">Software que automatiza tus operaciones y centraliza la información de tu equipo.</p>
       </article>
 
-      <article class="work-card reveal">
-        <div class="work-thumb thumb-4"><span class="work-metric" data-i18n="p4.metric">Top 3 on Google Maps</span></div>
-        <div class="work-info">
-          <div class="work-type" data-i18n="p4.type">Website &amp; digital menu</div>
-          <h3 data-i18n="p4.title">Restaurant Playa del Carmen</h3>
-          <div class="work-tags"><span class="work-tag">WordPress</span><span class="work-tag">SEO</span></div>
-        </div>
+      <!-- Client portals -->
+      <article class="solution-card reveal">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3 data-i18n="sol4.title">Portales de clientes</h3>
+        <p data-i18n="sol4.desc">Espacios privados donde tus clientes gestionan su cuenta, pagos y servicios.</p>
       </article>
 
-      <article class="work-card reveal reveal-delay-1">
-        <div class="work-thumb thumb-5"><span class="work-metric" data-i18n="p5.metric">2× conversion rate</span></div>
-        <div class="work-info">
-          <div class="work-type" data-i18n="p5.type">Landing page &amp; bookings</div>
-          <h3 data-i18n="p5.title">Wellness Center</h3>
-          <div class="work-tags"><span class="work-tag">Performance</span><span class="work-tag">CRO</span></div>
-        </div>
+      <!-- Marketplaces -->
+      <article class="solution-card reveal reveal-delay-1">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+        <h3 data-i18n="sol5.title">Marketplaces</h3>
+        <p data-i18n="sol5.desc">Plataformas que conectan compradores y vendedores con pagos y comisiones integrados.</p>
       </article>
 
-      <article class="work-card reveal reveal-delay-2">
-        <div class="work-thumb thumb-6"><span class="work-metric" data-i18n="p6.metric">3× international clients</span></div>
-        <div class="work-info">
-          <div class="work-type" data-i18n="p6.type">Multilingual site &amp; SEO</div>
-          <h3 data-i18n="p6.title">Travel Agency Platform</h3>
-          <div class="work-tags"><span class="work-tag">i18n</span><span class="work-tag">SEO</span></div>
-        </div>
+      <!-- Booking platforms -->
+      <article class="solution-card reveal reveal-delay-2">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3 data-i18n="sol6.title">Plataformas de reservas</h3>
+        <p data-i18n="sol6.desc">Sistemas de agenda y reservaciones en línea con disponibilidad en tiempo real.</p>
+      </article>
+
+      <!-- AI solutions -->
+      <article class="solution-card reveal">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+        <h3 data-i18n="sol7.title">Soluciones con Inteligencia Artificial</h3>
+        <p data-i18n="sol7.desc">Agentes, chatbots y modelos a medida que automatizan tareas y decisiones.</p>
+      </article>
+
+      <!-- Business automations -->
+      <article class="solution-card reveal reveal-delay-1">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <h3 data-i18n="sol8.title">Automatizaciones empresariales</h3>
+        <p data-i18n="sol8.desc">Conectamos tus herramientas y eliminamos el trabajo manual repetitivo.</p>
+      </article>
+
+      <!-- Dashboards & analytics -->
+      <article class="solution-card reveal reveal-delay-2">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>
+        <h3 data-i18n="sol9.title">Dashboards y analítica</h3>
+        <p data-i18n="sol9.desc">Visualiza tus métricas clave en tiempo real para tomar mejores decisiones.</p>
+      </article>
+
+      <!-- Custom e-commerce -->
+      <article class="solution-card reveal">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+        <h3 data-i18n="sol10.title">E-commerce personalizado</h3>
+        <p data-i18n="sol10.desc">Tiendas en línea a medida, optimizadas para vender y crecer.</p>
+      </article>
+
+      <!-- API integrations -->
+      <article class="solution-card reveal reveal-delay-1">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+        <h3 data-i18n="sol11.title">Integraciones API</h3>
+        <p data-i18n="sol11.desc">Conectamos tu software con pasarelas de pago, ERPs y servicios externos.</p>
+      </article>
+
+      <!-- Enterprise management software -->
+      <article class="solution-card reveal reveal-delay-2">
+        <div class="solution-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+        <h3 data-i18n="sol12.title">Software de gestión empresarial</h3>
+        <p data-i18n="sol12.desc">Sistemas ERP y CRM diseñados a la medida de tus procesos.</p>
       </article>
     </div>
   </div>
 </section>
 
 <!-- =========================================================================
-     TESTIMONIALS (top slider)
-     Responsive carousel — 3 cards per view on desktop, 2 on tablet,
-     1 on mobile — with arrows, page dots and touch-swipe support.
+     TESTIMONIALS (slider)
+     Responsive carousel: 3 cards per view on desktop, 2 on tablet, 1 on
+     mobile, with arrows, page dots and touch-swipe support.
 ========================================================================== -->
 <section id="testimonials">
   <div class="blob blob-1" style="opacity:0.12;bottom:-50px;right:-100px;top:auto"></div>
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="test.label">Testimonials</div>
-      <h2 data-i18n="test.title">What our<br>clients say</h2>
+      <div class="section-label" data-i18n="test.label">Testimonios</div>
+      <h2 data-i18n="test.title">Lo que dicen<br>nuestros clientes</h2>
     </div>
 
     <div class="testimonials-slider-wrapper">
       <div class="testimonials-grid" id="testimonialsTrack">
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t1.text">"Quintasoft completely transformed my digital business. In 3 months we tripled online bookings. The team was incredibly professional and always available. 100% recommended!"</p>
+          <p class="testimonial-text" data-i18n="t1.text">"Quintasoft transformó completamente mi negocio digital. En 3 meses triplicamos las reservas en línea. El equipo fue increíblemente profesional y siempre disponible. ¡100% recomendados!"</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">MR</div>
             <div>
               <div class="author-name" data-i18n="t1.name">María R.</div>
-              <div class="author-role" data-i18n="t1.role">Owner, Boutique Hotel Tulum</div>
+              <div class="author-role" data-i18n="t1.role">Dueña, Boutique Hotel Tulum</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t2.text">"The SEO they implemented moved my restaurant from position 30 to top 3 on Google Maps. Now I get calls and reservations every day. Excellent investment."</p>
+          <p class="testimonial-text" data-i18n="t2.text">"El SEO que implementaron llevó mi restaurante del puesto 30 al top 3 en Google Maps. Ahora recibo llamadas y reservas todos los días. Excelente inversión."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">CL</div>
             <div>
               <div class="author-name" data-i18n="t2.name">Carlos L.</div>
-              <div class="author-role" data-i18n="t2.role">Chef &amp; Owner, Playa del Carmen</div>
+              <div class="author-role" data-i18n="t2.role">Chef y Propietario, Playa del Carmen</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t3.text">"Our SaaS platform was delivered on time and exceeded all expectations. The code quality is impeccable. Quintasoft is our trusted technology team."</p>
+          <p class="testimonial-text" data-i18n="t3.text">"Nuestra plataforma SaaS fue entregada a tiempo y superó todas las expectativas. La calidad del código es impecable. Quintasoft es nuestro equipo de tecnología de confianza."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">AP</div>
             <div>
               <div class="author-name" data-i18n="t3.name">Andrés P.</div>
-              <div class="author-role" data-i18n="t3.role">CEO, Cancún Startup</div>
+              <div class="author-role" data-i18n="t3.role">CEO, Startup Cancún</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t4.text">"They redesigned my online store and sales skyrocketed 240% in two months. They know exactly how to blend design with conversion. Extraordinary work."</p>
+          <p class="testimonial-text" data-i18n="t4.text">"Rediseñaron mi tienda en línea y las ventas se dispararon un 240% en dos meses. Saben exactamente cómo combinar diseño y conversión. Extraordinario trabajo."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">SV</div>
             <div>
               <div class="author-name" data-i18n="t4.name">Sofía V.</div>
-              <div class="author-role" data-i18n="t4.role">Founder, E-commerce CDMX</div>
+              <div class="author-role" data-i18n="t4.role">Fundadora, E-commerce CDMX</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t5.text">"Our real estate agency's new website generates leads automatically every day. We recovered the investment in less than 6 weeks. Highly recommended."</p>
+          <p class="testimonial-text" data-i18n="t5.text">"El nuevo sitio web de nuestra inmobiliaria genera leads todos los días de forma automática. La inversión se recuperó en menos de 6 semanas. Totalmente recomendados."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">RM</div>
             <div>
               <div class="author-name" data-i18n="t5.name">Roberto M.</div>
-              <div class="author-role" data-i18n="t5.role">Director, Real Estate Agency Cancún</div>
+              <div class="author-role" data-i18n="t5.role">Director, Inmobiliaria Cancún</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t6.text">"My landing page for the yoga studio is simply perfect. Loads in half a second and converts visitors into real clients. The team understands business, not just code."</p>
+          <p class="testimonial-text" data-i18n="t6.text">"Mi landing page para el estudio de yoga es simplemente perfecta. Carga en medio segundo y convierte visitantes en clientes reales. El equipo entiende el negocio, no solo el código."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">LT</div>
             <div>
               <div class="author-name" data-i18n="t6.name">Laura T.</div>
-              <div class="author-role" data-i18n="t6.role">Instructor &amp; Owner, Tulum Yoga</div>
+              <div class="author-role" data-i18n="t6.role">Instructora y Propietaria, Tulum Yoga</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t7.text">"They built the online ordering system for my 4 locations. Now 60% of sales are digital. Efficiency, speed and professionalism at every stage of the project."</p>
+          <p class="testimonial-text" data-i18n="t7.text">"Desarrollaron el sistema de pedidos en línea para mis 4 sucursales. Ahora el 60% de las ventas son digitales. Eficiencia, velocidad y profesionalismo en cada etapa del proyecto."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">DC</div>
             <div>
               <div class="author-name" data-i18n="t7.name">Diego C.</div>
-              <div class="author-role" data-i18n="t7.role">CEO, Restaurant Chain PDC</div>
+              <div class="author-role" data-i18n="t7.role">CEO, Cadena de Restaurantes PDC</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t8.text">"Working with Quintasoft remotely was seamless. They built our bilingual e-commerce site in record time. Our conversion rate doubled and the design is stunning. Highly recommend!"</p>
+          <p class="testimonial-text" data-i18n="t8.text">"Trabajar con Quintasoft a distancia fue impecable. Construyeron nuestro e-commerce bilingüe en tiempo récord. Nuestra conversión se duplicó y el diseño es espectacular. ¡Muy recomendados!"</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">VR</div>
             <div>
               <div class="author-name" data-i18n="t8.name">Valentina R.</div>
-              <div class="author-role" data-i18n="t8.role">Owner, Fashion Boutique NYC</div>
+              <div class="author-role" data-i18n="t8.role">Dueña, Boutique de Moda NYC</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t9.text">"I needed a serious digital presence for my law firm. Quintasoft delivered exactly that: elegant, fast and professional. We now attract clients from Google every single day."</p>
+          <p class="testimonial-text" data-i18n="t9.text">"Necesitaba una presencia digital seria para mi despacho jurídico. Quintasoft entregó exactamente eso: elegante, rápido y profesional. Ahora captamos clientes desde Google todos los días."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">JO</div>
             <div>
               <div class="author-name" data-i18n="t9.name">Javier O.</div>
-              <div class="author-role" data-i18n="t9.role">Attorney, Law Firm Mérida</div>
+              <div class="author-role" data-i18n="t9.role">Abogado, Despacho Mérida</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t10.text">"The SEO they implemented was a before-and-after moment. We went from invisible on Google to appearing in the top 5 for over 40 keywords. The results speak for themselves."</p>
+          <p class="testimonial-text" data-i18n="t10.text">"El SEO que implementaron fue un antes y un después. Pasamos de ser invisibles en Google a aparecer en el top 5 para más de 40 palabras clave. Los resultados hablan solos."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">EK</div>
             <div>
               <div class="author-name" data-i18n="t10.name">Emma K.</div>
-              <div class="author-role" data-i18n="t10.role">CEO, Travel Agency Cancún</div>
+              <div class="author-role" data-i18n="t10.role">CEO, Agencia de Viajes Cancún</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t11.text">"They built our web app from scratch in record time. The architecture is solid, the code is clean and the team is always ready to iterate. I would definitely hire them again."</p>
+          <p class="testimonial-text" data-i18n="t11.text">"Construyeron nuestra app web desde cero en tiempo récord. La arquitectura es sólida, el código limpio y el equipo siempre dispuesto a iterar. Definitivamente los volvería a contratar."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">AN</div>
             <div>
               <div class="author-name" data-i18n="t11.name">Alejandro N.</div>
-              <div class="author-role" data-i18n="t11.role">CTO, Tech Startup GDL</div>
+              <div class="author-role" data-i18n="t11.role">CTO, Startup Tecnológica GDL</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t12.text">"They built us a complete multilingual website that works perfectly in Spanish and English. Our international client base grew 3x in just four months. Outstanding quality and communication."</p>
+          <p class="testimonial-text" data-i18n="t12.text">"Nos construyeron un sitio multilingüe completo que funciona perfecto en español e inglés. Nuestra base de clientes internacionales creció 3x en solo cuatro meses. Calidad y comunicación sobresalientes."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">MS</div>
             <div>
               <div class="author-name" data-i18n="t12.name">Mark S.</div>
-              <div class="author-role" data-i18n="t12.role">Real Estate Investor, Miami FL</div>
+              <div class="author-role" data-i18n="t12.role">Inversionista Inmobiliario, Miami FL</div>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
           <div class="stars" aria-hidden="true">★★★★★</div>
-          <p class="testimonial-text" data-i18n="t13.text">"My dental clinic needed to modernize digitally. Quintasoft exceeded expectations: online booking, local SEO and a design that builds trust from the first click. Excellent service."</p>
+          <p class="testimonial-text" data-i18n="t13.text">"Mi clínica dental necesitaba modernizarse digitalmente. Quintasoft lo logró con creces: agenda en línea, SEO local y un diseño que da confianza desde el primer click. Excelente servicio."</p>
           <div class="testimonial-author">
             <div class="author-avatar" aria-hidden="true">IF</div>
             <div>
               <div class="author-name" data-i18n="t13.name">Isabella F.</div>
-              <div class="author-role" data-i18n="t13.role">Dentist &amp; Owner, Playa del Carmen</div>
+              <div class="author-role" data-i18n="t13.role">Dentista y Propietaria, Playa del Carmen</div>
             </div>
           </div>
         </div>
@@ -613,11 +698,11 @@
 
     <!-- Slider controls: prev/next arrows + page dots (built by JS) -->
     <div class="slider-controls">
-      <button class="slider-btn" id="sliderPrev" aria-label="Previous testimonials" data-i18n-aria="aria.prev">
+      <button class="slider-btn" id="sliderPrev" aria-label="Testimonios anteriores" data-i18n-aria="aria.prev">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
       <div class="slider-dots" id="sliderDots"></div>
-      <button class="slider-btn" id="sliderNext" aria-label="Next testimonials" data-i18n-aria="aria.next">
+      <button class="slider-btn" id="sliderNext" aria-label="Testimonios siguientes" data-i18n-aria="aria.next">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
     </div>
@@ -626,63 +711,63 @@
 
 <!-- =========================================================================
      FAQ
-     Native <details>/<summary> accordion — accessible by default, zero JS.
+     Native <details>/<summary> accordion: accessible by default, zero JS.
 ========================================================================== -->
 <section id="faq">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="faq.label">FAQ</div>
-      <h2 data-i18n="faq.title">Frequently asked<br>questions</h2>
-      <p class="section-desc" style="margin:0 auto" data-i18n="faq.desc">Everything you need to know before starting a project with us.</p>
+      <div class="section-label" data-i18n="faq.label">Preguntas frecuentes</div>
+      <h2 data-i18n="faq.title">Preguntas<br>frecuentes</h2>
+      <p class="section-desc" style="margin:0 auto" data-i18n="faq.desc">Todo lo que necesitas saber antes de comenzar un proyecto con nosotros.</p>
     </div>
 
     <div class="faq-list reveal">
       <details class="faq-item">
         <summary>
-          <span data-i18n="faq1.q">How long does a typical project take?</span>
+          <span data-i18n="faq1.q">¿Cuánto tarda un proyecto típico?</span>
           <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
-        <p class="faq-answer" data-i18n="faq1.a">Most websites launch in 2–4 weeks. Larger web applications usually take 6–12 weeks. You get a clear timeline before we start and weekly updates along the way.</p>
+        <p class="faq-answer" data-i18n="faq1.a">La mayoría de los sitios web se lanzan en 2 a 4 semanas. Las aplicaciones web grandes suelen tomar de 6 a 12 semanas. Recibes un cronograma claro antes de empezar y avances semanales.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-i18n="faq2.q">How much does a website cost?</span>
+          <span data-i18n="faq2.q">¿Cuánto cuesta un sitio web?</span>
           <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
-        <p class="faq-answer" data-i18n="faq2.a">Every project is scoped individually. After a free consultation we send a fixed, transparent quote — no hourly surprises and no hidden fees.</p>
+        <p class="faq-answer" data-i18n="faq2.a">Cada proyecto se cotiza individualmente. Después de una consulta gratuita te enviamos una cotización fija y transparente, sin sorpresas por hora ni costos ocultos.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-i18n="faq3.q">Do you work with clients outside Mexico?</span>
+          <span data-i18n="faq3.q">¿Trabajan con clientes fuera de México?</span>
           <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
-        <p class="faq-answer" data-i18n="faq3.a">Absolutely. We work with clients across the US, Canada and Europe. We are fully bilingual (English/Spanish) and used to remote collaboration across time zones.</p>
+        <p class="faq-answer" data-i18n="faq3.a">Por supuesto. Trabajamos con clientes en Estados Unidos, Canadá y Europa. Somos totalmente bilingües (inglés y español) y estamos acostumbrados a colaborar a distancia en distintas zonas horarias.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-i18n="faq4.q">What happens after launch?</span>
+          <span data-i18n="faq4.q">¿Qué pasa después del lanzamiento?</span>
           <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
-        <p class="faq-answer" data-i18n="faq4.a">Launch is just the beginning. We offer maintenance plans covering updates, security, backups and continuous improvements — or we hand everything over with full documentation.</p>
+        <p class="faq-answer" data-i18n="faq4.a">El lanzamiento es solo el comienzo. Ofrecemos planes de mantenimiento que cubren actualizaciones, seguridad, respaldos y mejoras continuas, o te entregamos todo con documentación completa.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-i18n="faq5.q">Can you fix or improve my existing website?</span>
+          <span data-i18n="faq5.q">¿Pueden reparar o mejorar mi sitio web actual?</span>
           <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
-        <p class="faq-answer" data-i18n="faq5.a">Yes. We audit, repair and optimize existing sites: bug fixes, speed, SEO and redesigns. You don't have to start from scratch.</p>
+        <p class="faq-answer" data-i18n="faq5.a">Sí. Auditamos, reparamos y optimizamos sitios existentes: corrección de errores, velocidad, SEO y rediseños. No tienes que empezar de cero.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-i18n="faq6.q">What technologies do you use?</span>
+          <span data-i18n="faq6.q">¿Qué tecnologías utilizan?</span>
           <span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
         </summary>
-        <p class="faq-answer" data-i18n="faq6.a">We choose the right tool for each job — React, Next.js, Node.js, WordPress or Shopify — always prioritizing performance, security and maintainability.</p>
+        <p class="faq-answer" data-i18n="faq6.a">Elegimos la herramienta adecuada para cada proyecto, como React, Next.js, Node.js, Flutter o Swift, priorizando siempre rendimiento, seguridad y mantenibilidad.</p>
       </details>
     </div>
   </div>
@@ -697,9 +782,9 @@
     <div class="cta-banner reveal">
       <div class="blob blob-3" style="opacity:0.2"></div>
       <div class="container">
-        <h2 data-i18n="cta.title">Ready to build<br>something great?</h2>
-        <p data-i18n="cta.desc">Tell us about your project and get a free consultation within 24 hours. No strings attached.</p>
-        <a href="#contact" class="btn-primary" data-i18n="cta.btn">Get a free quote →</a>
+        <h2 data-i18n="cta.title">¿Listo para construir<br>algo grandioso?</h2>
+        <p data-i18n="cta.desc">Cuéntanos tu proyecto y recibe una consulta gratuita en menos de 24 horas. Sin compromisos.</p>
+        <a href="#contact" class="btn-primary" data-i18n="cta.btn">Cotiza gratis</a>
       </div>
     </div>
   </div>
@@ -707,24 +792,30 @@
 
 <!-- =========================================================================
      CONTACT
-     Left: WhatsApp / email / phone quick actions + service-area pills.
-     Right: AJAX contact form (FormSubmit — stays on page, shows a toast).
+     A custom-build statement, then: left, WhatsApp / email / phone quick
+     actions + service-area pills; right, AJAX contact form (FormSubmit,
+     stays on the page and shows a toast).
 ========================================================================== -->
 <section id="contact">
   <div class="blob blob-2" style="opacity:0.15;top:-100px;left:-150px;bottom:auto"></div>
   <div class="container" style="position:relative;z-index:1">
     <div class="section-header reveal">
-      <div class="section-label" data-i18n="contact.label">Contact</div>
-      <h2 data-i18n="contact.title">Let's talk about your project</h2>
-      <p class="section-desc" style="margin:0 auto" data-i18n="contact.desc">Have an idea? Tell us and we'll give you a free consultation. No strings attached.</p>
+      <div class="section-label" data-i18n="contact.label">Contacto</div>
+      <h2 data-i18n="contact.title">Hablemos de tu proyecto</h2>
+      <p class="section-desc" style="margin:0 auto" data-i18n="contact.desc">¿Tienes una idea? Cuéntanos y te damos una consulta gratuita. Sin compromisos.</p>
+      <!-- Custom-build messaging (4 of 4): before the contact form -->
+      <div class="custom-note reveal reveal-delay-1">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span data-i18n="contact.custom">Construimos tecnología a medida que evoluciona junto con tu empresa.</span>
+      </div>
     </div>
 
     <div class="contact-grid">
       <!-- Direct contact channels -->
       <div class="contact-info reveal">
-        <a href="https://wa.me/529841670697?text=Hi%20Quintasoft%2C%20I%27m%20interested%20in%20your%20services" target="_blank" rel="noopener" class="whatsapp-btn">
+        <a href="https://wa.me/529841670697?text=Hola%20Quintasoft%2C%20me%20interesa%20su%20servicio" target="_blank" rel="noopener" class="whatsapp-btn">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          <span data-i18n="contact.whatsapp">Chat on WhatsApp</span>
+          <span data-i18n="contact.whatsapp">Chatear por WhatsApp</span>
         </a>
 
         <a href="mailto:quintasoft@protonmail.com" class="contact-item">
@@ -738,58 +829,58 @@
         <a href="tel:+529841670697" class="contact-item">
           <div class="contact-icon" style="background:rgba(56,189,248,0.15);border:1px solid rgba(56,189,248,0.3);color:#7dd3fc"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
           <div>
-            <h4 data-i18n="contact.phone.title">Phone / WhatsApp</h4>
+            <h4 data-i18n="contact.phone.title">Teléfono y WhatsApp</h4>
             <span>+52 984 167 0697</span>
           </div>
         </a>
 
         <!-- Service areas -->
         <div class="locations">
-          <h4 data-i18n="contact.locations.title">🗺️ On-site service in</h4>
+          <h4 data-i18n="contact.locations.title">🗺️ Servicio presencial en</h4>
           <div class="location-list">
             <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Playa del Carmen</span>
             <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cancún</span>
             <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Tulum</span>
-            <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span data-i18n="contact.remote">Worldwide remote</span></span>
+            <span class="location-pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span data-i18n="contact.remote">Remoto mundial</span></span>
           </div>
         </div>
       </div>
 
-      <!-- Contact form (AJAX via FormSubmit — no page redirect) -->
+      <!-- Contact form (AJAX via FormSubmit, no page redirect) -->
       <div class="contact-form reveal reveal-delay-2">
         <form id="contactForm">
-          <input type="hidden" name="_subject" value="New inquiry from the Quintasoft website">
+          <input type="hidden" name="_subject" value="Nueva solicitud desde el sitio de Quintasoft">
           <input type="hidden" name="_captcha" value="false">
 
           <div class="form-group">
-            <label class="form-label" for="contact-name" data-i18n="form.name">Full name</label>
-            <input type="text" id="contact-name" name="name" class="form-input" required placeholder="John Smith" data-i18n="form.name.placeholder" autocomplete="name">
+            <label class="form-label" for="contact-name" data-i18n="form.name">Nombre completo</label>
+            <input type="text" id="contact-name" name="name" class="form-input" required placeholder="Juan García" data-i18n="form.name.placeholder" autocomplete="name">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="contact-email" data-i18n="form.email">Email address</label>
-            <input type="email" id="contact-email" name="email" class="form-input" required placeholder="john@company.com" data-i18n="form.email.placeholder" autocomplete="email">
+            <label class="form-label" for="contact-email" data-i18n="form.email">Correo electrónico</label>
+            <input type="email" id="contact-email" name="email" class="form-input" required placeholder="juan@empresa.com" data-i18n="form.email.placeholder" autocomplete="email">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="contact-service" data-i18n="form.service">Service of interest</label>
+            <label class="form-label" for="contact-service" data-i18n="form.service">Servicio de interés</label>
             <select id="contact-service" name="service" class="form-input">
-              <option value="" data-i18n="form.service.placeholder">Select a service...</option>
-              <option value="web" data-i18n="s1.title">Custom Website Development</option>
-              <option value="perf" data-i18n="s2.title">Optimization &amp; Performance</option>
-              <option value="repair" data-i18n="s3.title">Repairs &amp; Maintenance</option>
-              <option value="seo" data-i18n="s4.title">SEO &amp; Rankings</option>
-              <option value="app" data-i18n="s5.title">Web Applications</option>
-              <option value="consulting" data-i18n="s6.title">Technical Consulting</option>
+              <option value="" data-i18n="form.service.placeholder">Selecciona un servicio...</option>
+              <option value="web" data-i18n="s1.title">Desarrollo Web a Medida</option>
+              <option value="perf" data-i18n="s2.title">Optimización y Rendimiento</option>
+              <option value="repair" data-i18n="s3.title">Reparación y Mantenimiento</option>
+              <option value="seo" data-i18n="s4.title">SEO y Posicionamiento</option>
+              <option value="app" data-i18n="s5.title">Aplicaciones Web y Móviles</option>
+              <option value="consulting" data-i18n="s6.title">Consultoría Técnica</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="contact-message" data-i18n="form.message">Your message</label>
-            <textarea id="contact-message" name="message" class="form-textarea" required placeholder="Tell us about your project..." data-i18n="form.message.placeholder"></textarea>
+            <label class="form-label" for="contact-message" data-i18n="form.message">Tu mensaje</label>
+            <textarea id="contact-message" name="message" class="form-textarea" required placeholder="Cuéntanos sobre tu proyecto..." data-i18n="form.message.placeholder"></textarea>
           </div>
 
-          <button type="submit" class="btn-submit" data-i18n="form.submit">Send message →</button>
+          <button type="submit" class="btn-submit" data-i18n="form.submit">Enviar mensaje</button>
         </form>
       </div>
     </div>
@@ -807,36 +898,36 @@
       <!-- Brand -->
       <div class="footer-brand">
         <a href="#" class="nav-logo">Quintasoft</a>
-        <p data-i18n="footer.desc">World-class software from Quintana Roo. We build the digital future of your business.</p>
+        <p data-i18n="footer.desc">Software de clase mundial, 100% a medida, desde Quintana Roo. Construimos el futuro digital de tu negocio.</p>
       </div>
 
       <!-- Services column -->
       <div class="footer-col">
-        <h5 data-i18n="footer.services">Services</h5>
+        <h5 data-i18n="footer.services">Servicios</h5>
         <ul>
-          <li><a href="#services" data-i18n="s1.title">Custom Website Development</a></li>
-          <li><a href="#services" data-i18n="s2.title">Optimization &amp; Performance</a></li>
-          <li><a href="#services" data-i18n="s4.title">SEO &amp; Rankings</a></li>
-          <li><a href="#services" data-i18n="s5.title">Web Applications</a></li>
-          <li><a href="#services" data-i18n="s6.title">Technical Consulting</a></li>
+          <li><a href="#services" data-i18n="s1.title">Desarrollo Web a Medida</a></li>
+          <li><a href="#services" data-i18n="s2.title">Optimización y Rendimiento</a></li>
+          <li><a href="#services" data-i18n="s4.title">SEO y Posicionamiento</a></li>
+          <li><a href="#services" data-i18n="s5.title">Aplicaciones Web y Móviles</a></li>
+          <li><a href="#services" data-i18n="s6.title">Consultoría Técnica</a></li>
         </ul>
       </div>
 
       <!-- Company column -->
       <div class="footer-col">
-        <h5 data-i18n="footer.company">Company</h5>
+        <h5 data-i18n="footer.company">Empresa</h5>
         <ul>
-          <li><a href="#why" data-i18n="footer.about">About us</a></li>
-          <li><a href="#process" data-i18n="footer.process">Process</a></li>
-          <li><a href="#work" data-i18n="footer.work">Our work</a></li>
-          <li><a href="#testimonials" data-i18n="footer.testimonials">Testimonials</a></li>
-          <li><a href="#faq" data-i18n="footer.faq">FAQ</a></li>
+          <li><a href="#why" data-i18n="footer.about">Sobre nosotros</a></li>
+          <li><a href="#process" data-i18n="footer.process">Proceso</a></li>
+          <li><a href="#solutions" data-i18n="footer.solutions">Soluciones</a></li>
+          <li><a href="#testimonials" data-i18n="footer.testimonials">Testimonios</a></li>
+          <li><a href="#faq" data-i18n="footer.faq">Preguntas frecuentes</a></li>
         </ul>
       </div>
 
       <!-- Contact column + language switcher -->
       <div class="footer-col">
-        <h5 data-i18n="footer.contact.col">Contact</h5>
+        <h5 data-i18n="footer.contact.col">Contacto</h5>
         <ul>
           <li><a href="mailto:quintasoft@protonmail.com">quintasoft@protonmail.com</a></li>
           <li><a href="tel:+529841670697">+52 984 167 0697</a></li>
@@ -845,15 +936,15 @@
           <li><a href="#contact" data-i18n="footer.tulum">Tulum</a></li>
         </ul>
         <div class="footer-langs">
-          <button class="lang-btn active" data-lang="en">🇺🇸 EN</button>
-          <button class="lang-btn" data-lang="es">🇲🇽 ES</button>
+          <button class="lang-btn active" data-lang="es">🇲🇽 ES</button>
+          <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
         </div>
       </div>
     </div>
 
     <!-- Copyright + social -->
     <div class="footer-bottom">
-      <p data-i18n="footer.copy">© 2026 Quintasoft. All rights reserved. Quintana Roo, México.</p>
+      <p data-i18n="footer.copy">© 2026 Quintasoft. Todos los derechos reservados. Quintana Roo, México.</p>
       <div class="footer-social">
         <a href="#" class="social-link" aria-label="Instagram">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>

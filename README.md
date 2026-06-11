@@ -36,10 +36,11 @@ npm run serve   # local preview at http://localhost:8080
 
 ## Languages
 
-- English is the default render language (static HTML is English).
-- Spanish is applied at runtime via `data-i18n` attributes mapped to keys in `js/i18n.js`.
+- Spanish is the default render language (static HTML is Spanish, `<html lang="es">`).
+- English is applied at runtime via `data-i18n` attributes mapped to keys in `js/i18n.js`.
 - The visitor's choice persists in `localStorage` (`quintasoft.lang`).
 - When adding text, add the key to **both** dictionaries in `js/i18n.js`.
+- House style: no em dashes anywhere in the copy.
 
 ## Performance notes
 
@@ -47,4 +48,5 @@ npm run serve   # local preview at http://localhost:8080
 - JS is a single deferred bundle — nothing render-blocking except the minified CSS.
 - Only used Inter font weights (400–900) are loaded, with `display=swap`.
 - Animations honor `prefers-reduced-motion`.
-- Icons, favicon and portfolio thumbnails are inline SVG / CSS gradients — zero extra image requests.
+- Icons and favicon are inline SVG, so there are zero extra image requests.
+- The technology marquee is a pure-CSS infinite loop (one pill set is cloned by JS; the track translates by exactly one set width for a seamless, jump-free scroll). It pauses for `prefers-reduced-motion` users.

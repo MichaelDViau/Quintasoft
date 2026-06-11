@@ -1,5 +1,5 @@
 /* ============================================================================
-   QUINTASOFT — MAIN SCRIPT
+   QUINTASOFT: MAIN SCRIPT
    ----------------------------------------------------------------------------
    All site behavior, grouped by feature. Depends on I18N (js/i18n.js), which
    must load first. Edit these source files, then run `npm run build` to
@@ -20,22 +20,23 @@
   'use strict';
 
   /* ── 01. LANGUAGE SWITCHING ──
-     English is the default; Spanish is secondary. The choice persists in
+     Spanish is the default; English is secondary. The choice persists in
      localStorage so returning visitors keep their language. */
   const LANG_STORAGE_KEY = 'quintasoft.lang';
-  let currentLang = 'en';
+  const DEFAULT_LANG = 'es';
+  let currentLang = DEFAULT_LANG;
 
   function getSavedLang() {
     try {
       const saved = localStorage.getItem(LANG_STORAGE_KEY);
-      return I18N[saved] ? saved : 'en';
+      return I18N[saved] ? saved : DEFAULT_LANG;
     } catch {
-      return 'en'; // localStorage unavailable (private mode, etc.)
+      return DEFAULT_LANG; // localStorage unavailable (private mode, etc.)
     }
   }
 
   function setLang(lang) {
-    if (!I18N[lang]) lang = 'en';
+    if (!I18N[lang]) lang = DEFAULT_LANG;
     currentLang = lang;
     const dict = I18N[lang];
 
@@ -271,6 +272,19 @@
     goTo(0);
   })();
 
-  /* ── 08. INIT ── */
+  /* ── 08. TECH MARQUEE ──
+     Each marquee track holds one set of tech pills. We clone that set once so
+     the CSS animation (translateX 0 -> -50%) loops seamlessly: when the clone
+     reaches the original's start position the two are pixel-identical, so there
+     is no visible jump or reset. Motion is pure CSS (linear, infinite). */
+  document.querySelectorAll('.marquee-track').forEach((track) => {
+    const set = track.querySelector('.marquee-set');
+    if (!set) return;
+    const clone = set.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true'); // duplicate is decorative only
+    track.appendChild(clone);
+  });
+
+  /* ── 09. INIT ── */
   setLang(getSavedLang());
 })();
