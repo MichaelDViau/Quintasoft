@@ -489,7 +489,23 @@ h2[data-i18n] { white-space: pre-line; }
 .service-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
 
 /* ── 11. PROCESS ── */
-#process { background: linear-gradient(180deg, transparent, rgba(14, 165, 233, 0.03) 50%, transparent); }
+/* Photographic backdrop (development workspace). A heavy dark gradient keeps
+   the cards and small print perfectly legible; image-set() serves WebP with a
+   JPEG fallback, exactly like the hero. */
+#process {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(180deg, rgba(6, 6, 15, 0.95) 0%, rgba(6, 6, 15, 0.84) 45%, rgba(6, 6, 15, 0.96) 100%),
+    url('../assets/images/process-dev.jpg');
+  background-image:
+    linear-gradient(180deg, rgba(6, 6, 15, 0.95) 0%, rgba(6, 6, 15, 0.84) 45%, rgba(6, 6, 15, 0.96) 100%),
+    image-set(
+      url('../assets/images/process-dev.webp') type('image/webp'),
+      url('../assets/images/process-dev.jpg') type('image/jpeg')
+    );
+}
 
 .process-grid {
   display: grid;
@@ -500,9 +516,11 @@ h2[data-i18n] { white-space: pre-line; }
 
 .process-card {
   padding: 28px 22px;
-  background: var(--card-bg);
+  background: rgba(10, 12, 22, 0.55);
   border: 1px solid var(--card-border);
   border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: all 0.35s;
 }
 .process-card:hover {
@@ -530,7 +548,22 @@ h2[data-i18n] { white-space: pre-line; }
 .process-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
 
 /* ── 12. WHY US ── */
-#why { background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.02) 50%, transparent); }
+/* Photographic backdrop (team collaboration). The overlay leans slightly into
+   the brand blue and stays heavy to mute the bright desk in the photo. */
+#why {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(180deg, rgba(6, 6, 15, 0.96) 0%, rgba(7, 14, 28, 0.88) 50%, rgba(6, 6, 15, 0.97) 100%),
+    url('../assets/images/why-team.jpg');
+  background-image:
+    linear-gradient(180deg, rgba(6, 6, 15, 0.96) 0%, rgba(7, 14, 28, 0.88) 50%, rgba(6, 6, 15, 0.97) 100%),
+    image-set(
+      url('../assets/images/why-team.webp') type('image/webp'),
+      url('../assets/images/why-team.jpg') type('image/jpeg')
+    );
+}
 
 .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 64px; }
 
@@ -562,9 +595,11 @@ h2[data-i18n] { white-space: pre-line; }
 .why-visual {
   position: relative;
   height: 500px;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(10, 12, 22, 0.5);
   border: 1px solid var(--card-border);
   border-radius: 28px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -787,7 +822,24 @@ h2[data-i18n] { white-space: pre-line; }
 .faq-answer { padding: 0 24px 22px; font-size: 0.9rem; color: var(--muted); line-height: 1.75; }
 
 /* ── 16. CONTACT ── */
-#contact { background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(14, 165, 233, 0.1) 0%, transparent 70%); }
+/* Photographic backdrop (client handshake) for the closing/contact section.
+   Keeps the original blue glow at the bottom, layered over the photo. */
+#contact {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(14, 165, 233, 0.18) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(6, 6, 15, 0.95) 0%, rgba(6, 6, 15, 0.9) 50%, rgba(6, 6, 15, 0.97) 100%),
+    url('../assets/images/contact-handshake.jpg');
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(14, 165, 233, 0.18) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(6, 6, 15, 0.95) 0%, rgba(6, 6, 15, 0.9) 50%, rgba(6, 6, 15, 0.97) 100%),
+    image-set(
+      url('../assets/images/contact-handshake.webp') type('image/webp'),
+      url('../assets/images/contact-handshake.jpg') type('image/jpeg')
+    );
+}
 
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 64px; }
 
@@ -799,13 +851,15 @@ h2[data-i18n] { white-space: pre-line; }
   gap: 16px;
   padding: 20px;
   border-radius: 16px;
-  background: var(--card-bg);
+  background: rgba(10, 12, 22, 0.55);
   border: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   text-decoration: none;
   color: inherit;
   transition: all 0.3s;
 }
-.contact-item:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(14, 165, 233, 0.3); transform: translateX(4px); }
+.contact-item:hover { background: rgba(20, 24, 38, 0.7); border-color: rgba(14, 165, 233, 0.3); transform: translateX(4px); }
 
 .contact-icon {
   width: 44px;
