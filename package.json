@@ -1,7 +1,7 @@
 {
   "name": "quintasoft-website",
-  "version": "2.0.0",
-  "description": "Quintasoft marketing website — bilingual (EN/ES) static single-page site",
+  "version": "3.0.0",
+  "description": "Quintasoft studio website — bilingual (ES/EN) static single-page site with a liquid glass design system",
   "private": true,
   "scripts": {
     "build": "npm run build:css && npm run build:js",

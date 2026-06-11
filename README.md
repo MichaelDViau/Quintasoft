@@ -1,6 +1,16 @@
 # Quintasoft — Website
 
-Bilingual (English default / Spanish secondary) static single-page marketing site for Quintasoft, a software development company based in Quintana Roo, México.
+Bilingual (Spanish default / English secondary) static single-page site for Quintasoft, a custom software studio based in Quintana Roo, México.
+
+## Design language: Liquid Glass
+
+The site is built around a dark, editorial "liquid glass" design system:
+
+- **Glass surfaces** (navigation capsule, mobile dock, hero lens, cards, form) use a layered recipe that works in every browser: backdrop blur + saturation, a mask-composited gradient rim, and a specular top sheen.
+- **True refraction** on Chromium: `js/main.js` (section 11) generates a per-element displacement map on a canvas (signed-distance-field of the rounded shape, smoothstep bezel profile) and applies it through an SVG `feDisplacementMap` via `backdrop-filter: url(#...)`, so the page content genuinely bends at the edges of glass surfaces. Safari and Firefox keep the layered fallback.
+- **Typography**: Inter (UI/body), Instrument Serif italic (display accents), IBM Plex Mono (micro-labels, numerals).
+- **Mobile-first**: chapter navigation lives in an iOS-style glass dock fixed to the bottom of the screen on small viewports.
+- Honors `prefers-reduced-motion` and `prefers-reduced-transparency`.
 
 ## Project structure
 
@@ -11,13 +21,12 @@ Bilingual (English default / Spanish secondary) static single-page marketing sit
 │   ├── styles.css          # Source stylesheet (documented, table of contents)
 │   └── styles.min.css      # Minified production build (referenced by index.html)
 ├── js/
-│   ├── i18n.js             # EN/ES translation dictionaries
-│   ├── main.js             # Site behavior (nav, i18n, slider, form, reveal)
+│   ├── i18n.js             # ES/EN translation dictionaries
+│   ├── main.js             # Site behavior (nav, glass engine, carousels, form)
 │   └── app.min.js          # Minified production bundle (referenced by index.html)
 ├── assets/
 │   └── images/
-│       ├── hero-bg.webp    # Hero background (WebP, ~76 KB)
-│       └── hero-bg.jpg     # JPEG fallback (~184 KB)
+│       └── logo.svg        # Brand mark (all other visuals are generated in code)
 ├── package.json            # Build scripts (esbuild minification)
 └── README.md
 ```
@@ -38,15 +47,4 @@ npm run serve   # local preview at http://localhost:8080
 
 - Spanish is the default render language (static HTML is Spanish, `<html lang="es">`).
 - English is applied at runtime via `data-i18n` attributes mapped to keys in `js/i18n.js`.
-- The visitor's choice persists in `localStorage` (`quintasoft.lang`).
-- When adding text, add the key to **both** dictionaries in `js/i18n.js`.
-- House style: no em dashes anywhere in the copy.
-
-## Performance notes
-
-- Hero background preloaded as WebP (with JPEG fallback via CSS `image-set()`); it is the LCP element.
-- JS is a single deferred bundle — nothing render-blocking except the minified CSS.
-- Only used Inter font weights (400–900) are loaded, with `display=swap`.
-- Animations honor `prefers-reduced-motion`.
-- Icons and favicon are inline SVG, so there are zero extra image requests.
-- The technology marquee is a pure-CSS infinite loop (one pill set is cloned by JS; the track translates by exactly one set width for a seamless, jump-free scroll). It pauses for `prefers-reduced-motion` users.
+- The choice persists in `localStorage` (`quintasoft.lang`).
